@@ -1,5 +1,14 @@
+import { ThemeProvider } from "@/providers/ThemeProvider";
+import { ThemeToggle } from "./components/ThemeToggle";
+
 function App() {
-  return <h1>Hello World</h1>;
+  return (
+    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+      <div className="flex items-center justify-center w-screen h-screen">
+        <ThemeToggle />
+      </div>
+    </ThemeProvider>
+  );
 }
 
 export default App;
