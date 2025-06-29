@@ -6,6 +6,7 @@ interface LinkProps {
   children: React.ReactNode;
   color?: string; // "blue-400", "amber-500" etc.
   link: string;
+  mail?: boolean;
 }
 
 export function Link({ children, color = "pink-400", link }: LinkProps) {
@@ -14,7 +15,7 @@ export function Link({ children, color = "pink-400", link }: LinkProps) {
       href={link}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex items-center"
+      className="inline-flex items-center"
     >
       <span
         className={`tracking-wider underline transition-all duration-200 decoration-${color} decoration-2 underline-offset-4 hover:decoration-3`}
