@@ -3,6 +3,31 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@font-face {
+  font-family: "Söhne";
+  src: url("/fonts/sohne-subset-0.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Newsreader";
+  src: url("/fonts/newsreader-subset-0.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --font-sans: "Söhne", sans-serif;
+  --font-newsreader: "Newsreader", serif;
+}
+
+body {
+  @apply font-sans tracking-wider;
+}
+
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);

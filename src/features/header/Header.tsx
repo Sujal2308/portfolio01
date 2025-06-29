@@ -11,7 +11,7 @@ export function Header({ className }: HeaderProps) {
         "flex items-center justify-between" + (className ? " " + className : "")
       }
     >
-      <h1 className="font-medium">Sebi</h1>
+      <h1 className="font-semibold">Sebi</h1>
       <ThemeToggle />
     </header>
   );

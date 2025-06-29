@@ -6,10 +6,13 @@ function App() {
       <article className="container max-w-2xl px-4 mx-auto mt-28">
         <div>
           <Header className="mb-6" />
-          <p className="font-mono">
-            I am a full-stack Software Engineer based near Fort Lauderdale,
-            specialized in the development of modern websites, apps, tools, and
-            everything in between.
+          <p>
+            <span className="font-bold font-newsreader">
+              Bringing ideas to life.
+            </span>
+            &nbsp;I am a full-stack Software Engineer based near Fort
+            Lauderdale, specialized in the development of modern websites, apps,
+            tools, and everything in between.
           </p>
         </div>
       </article>
