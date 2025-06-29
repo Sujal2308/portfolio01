@@ -14,7 +14,9 @@ export function Header({ className }: HeaderProps) {
       }
     >
       <h1 className="text-xl font-semibold ">
-        <Link link="https://github.com/sebilune">Sebi</Link>
+        <Link color="pink" link="https://github.com/sebilune">
+          Sebi
+        </Link>
       </h1>
       <ThemeToggle />
     </header>
