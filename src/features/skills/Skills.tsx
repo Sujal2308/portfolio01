@@ -29,7 +29,7 @@ export function Skills() {
   return (
     <div className="flex-shrink-0 md:self-center">
       <div className="relative flex h-[300px] w-[300px] flex-col items-center justify-center overflow-hidden">
-        <OrbitingCircles iconSize={34} radius={120}>
+        <OrbitingCircles iconSize={34} radius={120} speed={0.5}>
           {outer.map((name) => (
             <img
               key={name}
@@ -41,7 +41,7 @@ export function Skills() {
             />
           ))}
         </OrbitingCircles>
-        <OrbitingCircles iconSize={34} radius={60} reverse speed={2}>
+        <OrbitingCircles iconSize={34} radius={60} reverse speed={0.4}>
           {inner.map((name) => (
             <img
               key={name}
