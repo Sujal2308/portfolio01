@@ -1,5 +1,6 @@
 import { Header } from "@/features/header";
 import { Intro } from "@/features/intro";
+import { Skills } from "@/features/skills";
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
         <div>
           <Header className="mb-6" />
           <Intro className="mb-6" />
+          <Skills />
         </div>
       </article>
     </main>
