@@ -1,4 +1,5 @@
 import { OrbitingCircles } from "@/components/magicui/orbiting-circles";
+import { Projects } from "./Projects";
 
 const logos = [
   "cplusplus",
@@ -20,31 +21,38 @@ export function Skills() {
   const outer = logos.slice(half);
 
   return (
-    <div className="relative flex h-[360px] w-full flex-col items-center justify-center overflow-hidden">
-      <OrbitingCircles iconSize={30}>
-        {inner.map((name) => (
-          <img
-            key={name}
-            src={`/svg/logos/${name}.svg`}
-            alt={name}
-            width={30}
-            height={30}
-            style={{ objectFit: "contain" }}
-          />
-        ))}
-      </OrbitingCircles>
-      <OrbitingCircles iconSize={30} radius={100} reverse speed={2}>
-        {outer.map((name) => (
-          <img
-            key={name}
-            src={`/svg/logos/${name}.svg`}
-            alt={name}
-            width={30}
-            height={30}
-            style={{ objectFit: "contain" }}
-          />
-        ))}
-      </OrbitingCircles>
-    </div>
+    <section className="w-full">
+      <div className="flex flex-col md:flex-row items-center md:items-stretch gap-8 w-full">
+        <div className="flex-shrink-0 md:self-center">
+          <div className="relative flex h-[300px] w-[300px] flex-col items-center justify-center overflow-hidden">
+            <OrbitingCircles iconSize={30} radius={120}>
+              {inner.map((name) => (
+                <img
+                  key={name}
+                  src={`/svg/logos/${name}.svg`}
+                  alt={name}
+                  width={30}
+                  height={30}
+                  style={{ objectFit: "contain" }}
+                />
+              ))}
+            </OrbitingCircles>
+            <OrbitingCircles iconSize={30} radius={60} reverse speed={2}>
+              {outer.map((name) => (
+                <img
+                  key={name}
+                  src={`/svg/logos/${name}.svg`}
+                  alt={name}
+                  width={30}
+                  height={30}
+                  style={{ objectFit: "contain" }}
+                />
+              ))}
+            </OrbitingCircles>
+          </div>
+        </div>
+        <Projects />
+      </div>
+    </section>
   );
 }
