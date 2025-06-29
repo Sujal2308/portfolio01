@@ -16,7 +16,7 @@ export function Header({ className }: HeaderProps) {
       }
     >
       <div className="flex items-center gap-2">
-        <Avatar>
+        <Avatar className="w-8 h-8">
           <AvatarImage src="https://github.com/sebilune.png" />
           <AvatarFallback>S</AvatarFallback>
         </Avatar>
