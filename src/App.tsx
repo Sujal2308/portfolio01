@@ -5,6 +5,7 @@ import { Intro } from "@/features/intro";
 import { Skills } from "@/features/skills";
 import { Projects } from "@/features/projects";
 import { Now } from "@/features/now";
+import { Contact } from "@/features/contact";
 
 function App() {
   return (
@@ -26,12 +27,20 @@ function App() {
             <Projects />
           </BlurFade>
         </div>
-        <div className="mb-6">
+        <div className="mb-12">
           <BlurFade delay={0.7} blur="3px">
             <h1 className="mb-6 text-xl font-semibold">Now</h1>
           </BlurFade>
           <BlurFade delay={0.8} blur="3px">
             <Now />
+          </BlurFade>
+        </div>
+        <div className="mb-12">
+          <BlurFade delay={0.9} blur="3px">
+            <h1 className="mb-6 text-xl font-semibold">Contact</h1>
+          </BlurFade>
+          <BlurFade delay={1.0} blur="3px">
+            <Contact />
           </BlurFade>
         </div>
       </article>
