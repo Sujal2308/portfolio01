@@ -44,7 +44,14 @@ export const BoxReveal = ({
   }, [isInView, mainControls, slideControls, delay]);
 
   return (
-    <div ref={ref} style={{ position: "relative", width }}>
+    <div
+      ref={ref}
+      style={{
+        position: "relative",
+        width,
+        display: "inline-block",
+      }}
+    >
       <motion.div
         variants={{
           hidden: { opacity: 0 },
