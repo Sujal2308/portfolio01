@@ -15,23 +15,23 @@ function App() {
           <BlurFade delay={0} blur="3px">
             <Header className="mb-6" />
           </BlurFade>
-          <BlurFade delay={0.2} blur="3px">
+          <BlurFade delay={0.15} blur="3px">
             <Intro />
           </BlurFade>
         </div>
         <div className="flex flex-col items-center w-full gap-8 mb-12 md:flex-row md:items-stretch">
-          <BlurFade delay={0.4} blur="3px">
+          <BlurFade delay={0.3} blur="3px">
             <Skills />
           </BlurFade>
-          <BlurFade delay={0.6} blur="3px">
+          <BlurFade delay={0.45} blur="3px">
             <Projects />
           </BlurFade>
         </div>
         <div className="mb-12">
-          <BlurFade delay={0.7} blur="3px">
+          <BlurFade delay={0.6} blur="3px">
             <h1 className="mb-6 text-xl font-semibold">Now</h1>
           </BlurFade>
-          <BlurFade delay={0.8} blur="3px">
+          <BlurFade delay={0.75} blur="3px">
             <Now />
           </BlurFade>
         </div>
@@ -39,7 +39,7 @@ function App() {
           <BlurFade delay={0.9} blur="3px">
             <h1 className="mb-6 text-xl font-semibold">Contact</h1>
           </BlurFade>
-          <BlurFade delay={1.0} blur="3px">
+          <BlurFade delay={1.05} blur="3px">
             <Contact />
           </BlurFade>
         </div>
