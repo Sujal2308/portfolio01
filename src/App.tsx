@@ -1,8 +1,10 @@
+import { BlurFade } from "@/components/magicui/blur-fade";
+
 import { Header } from "@/features/header";
 import { Intro } from "@/features/intro";
 import { Skills } from "@/features/skills";
 import { Projects } from "@/features/projects";
-import { BlurFade } from "@/components/magicui/blur-fade";
+import { Now } from "@/features/now";
 
 function App() {
   return (
@@ -25,24 +27,12 @@ function App() {
           </BlurFade>
         </div>
         <div className="mb-6">
-          <h1 className="mb-6 text-xl font-semibold">Now</h1>
-          <div className="font-mono">
-            <p className="mb-6">
-              Learning by doing, following what interests me, and trying to
-              build things that feel solid and impactful. I try to stay aware
-              that&nbsp;
-              <span className="font-bold tracking-wider font-newsreader">
-                everything around me is the result of someone else's time and
-                effort.
-              </span>
-            </p>
-            <p>
-              Right now, I just want to code. I want to build things, try out
-              new tools, dig deeper into the Linux ecosystem, and understand how
-              things work under the hood. It's exciting to keep learning and see
-              how all the pieces fit together.
-            </p>
-          </div>
+          <BlurFade delay={0.7}>
+            <h1 className="mb-6 text-xl font-semibold">Now</h1>
+          </BlurFade>
+          <BlurFade delay={0.8}>
+            <Now />
+          </BlurFade>
         </div>
       </article>
     </main>
