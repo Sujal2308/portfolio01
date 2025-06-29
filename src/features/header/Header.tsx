@@ -1,8 +1,8 @@
-import { ThemeToggle } from "./components/ThemeToggle";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { BoxReveal } from "@/components/magicui/box-reveal";
 
 import { Link } from "@/components/internal/Link";
-
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { ThemeToggle } from "./components/ThemeToggle";
 
 interface HeaderProps {
   className?: string;
@@ -44,9 +44,11 @@ export function Header({ className }: HeaderProps) {
           </a>
         </div>
         <h1 className="text-xl font-semibold ">
-          <Link color="pink" link="https://github.com/sebilune">
-            Sebi
-          </Link>
+          <BoxReveal boxColor="#fb64b6" delay={0.05}>
+            <Link color="pink" link="https://github.com/sebilune">
+              Sebi
+            </Link>
+          </BoxReveal>
         </h1>
       </div>
       <ThemeToggle />
