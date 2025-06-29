@@ -7,7 +7,7 @@ function App() {
         <div>
           <Header className="mb-6" />
           <p className="font-mono">
-            I am a professional web developer based near Fort Lauderdale,
+            I am a full-stack Software Engineer based near Fort Lauderdale,
             specialized in the development of modern websites, apps, tools, and
             everything in between.
           </p>
