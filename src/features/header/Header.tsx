@@ -22,7 +22,7 @@ export function Header({ className }: HeaderProps) {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Avatar className="w-8 h-8">
+            <Avatar className="w-6 h-6">
               <AvatarImage
                 src="https://github.com/sebilune.png"
                 className="w-full h-full transition-all scale-100 rotate-0 group-hover:scale-0 group-hover:-rotate-90"
