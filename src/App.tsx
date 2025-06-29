@@ -7,11 +7,11 @@ function App() {
   return (
     <main className="text-zinc-700 dark:text-neutral-300">
       <article className="container max-w-3xl px-10 mx-auto mt-10 sm:mt-28">
-        <div className="mb-6">
+        <div className="mb-12">
           <Header className="mb-6" />
           <Intro />
         </div>
-        <div className="flex flex-col items-center w-full gap-8 mb-6 md:flex-row md:items-stretch">
+        <div className="flex flex-col items-center w-full gap-8 mb-12 md:flex-row md:items-stretch">
           <Skills />
           <Projects />
         </div>
