@@ -1,4 +1,5 @@
 import { Header } from "@/features/header";
+import { Intro } from "@/features/intro";
 
 function App() {
   return (
@@ -6,14 +7,7 @@ function App() {
       <article className="container max-w-2xl px-4 mx-auto mt-28">
         <div>
           <Header className="mb-6" />
-          <p>
-            <span className="font-bold font-newsreader">
-              Bringing ideas to life.
-            </span>
-            &nbsp;I am a full-stack Software Engineer based near Fort
-            Lauderdale, specialized in the development of modern websites, apps,
-            tools, and everything in between.
-          </p>
+          <Intro className="mb-6" />
         </div>
       </article>
     </main>
