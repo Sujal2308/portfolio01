@@ -1,5 +1,6 @@
 import { ThemeToggle } from "./components/ThemeToggle";
-import { ArrowUpRight } from "lucide-react";
+
+import { Link } from "@/components/internal/Link";
 
 interface HeaderProps {
   className?: string;
@@ -12,19 +13,9 @@ export function Header({ className }: HeaderProps) {
         "flex items-center justify-between" + (className ? " " + className : "")
       }
     >
-      <a
-        href="https://github.com/sebilune"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="group"
-      >
-        <h1 className="flex items-center text-xl font-semibold">
-          <span className="tracking-wider no-underline transition-all duration-200 decoration-pink-400 decoration-2 underline-offset-4 group-hover:underline">
-            Sebi
-          </span>
-          <ArrowUpRight size={20} className="ml-1 text-pink-400" />
-        </h1>
-      </a>
+      <h1 className="text-xl font-semibold ">
+        <Link link="https://github.com/sebilune">Sebi</Link>
+      </h1>
       <ThemeToggle />
     </header>
   );
