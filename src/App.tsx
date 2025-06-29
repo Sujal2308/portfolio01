@@ -11,26 +11,26 @@ function App() {
     <main className="text-zinc-700 dark:text-neutral-300">
       <article className="container max-w-3xl px-10 mx-auto mt-10 sm:mt-28">
         <div className="mb-12">
-          <BlurFade delay={0}>
+          <BlurFade delay={0} blur="3px">
             <Header className="mb-6" />
           </BlurFade>
-          <BlurFade delay={0.2}>
+          <BlurFade delay={0.2} blur="3px">
             <Intro />
           </BlurFade>
         </div>
         <div className="flex flex-col items-center w-full gap-8 mb-12 md:flex-row md:items-stretch">
-          <BlurFade delay={0.4}>
+          <BlurFade delay={0.4} blur="3px">
             <Skills />
           </BlurFade>
-          <BlurFade delay={0.6}>
+          <BlurFade delay={0.6} blur="3px">
             <Projects />
           </BlurFade>
         </div>
         <div className="mb-6">
-          <BlurFade delay={0.7}>
+          <BlurFade delay={0.7} blur="3px">
             <h1 className="mb-6 text-xl font-semibold">Now</h1>
           </BlurFade>
-          <BlurFade delay={0.8}>
+          <BlurFade delay={0.8} blur="3px">
             <Now />
           </BlurFade>
         </div>
