@@ -3,7 +3,7 @@ import { Intro } from "@/features/intro";
 
 function App() {
   return (
-    <main className="text-neutral-800 dark:text-neutral-300">
+    <main className="text-zinc-700 dark:text-neutral-300">
       <article className="container max-w-2xl px-4 mx-auto mt-28">
         <div>
           <Header className="mb-6" />
