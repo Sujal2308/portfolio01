@@ -1,6 +1,7 @@
 import { Header } from "@/features/header";
 import { Intro } from "@/features/intro";
 import { Skills } from "@/features/skills";
+import { Projects } from "@/features/projects";
 
 function App() {
   return (
@@ -9,7 +10,10 @@ function App() {
         <div>
           <Header className="mb-6" />
           <Intro className="mb-6" />
-          <Skills />
+          <div className="flex flex-col items-center w-full gap-8 md:flex-row md:items-stretch">
+            <Skills />
+            <Projects />
+          </div>
         </div>
       </article>
     </main>
