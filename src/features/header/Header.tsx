@@ -20,12 +20,12 @@ export function Header({ className }: HeaderProps) {
           <Avatar className="w-8 h-8">
             <AvatarImage
               src="https://github.com/sebilune.png"
-              className="transition-opacity duration-200 group-hover:opacity-0"
+              className="w-full h-full transition-all scale-100 rotate-0 group-hover:scale-0 group-hover:-rotate-90"
             />
             <svg
               viewBox="0 0 98 96"
               xmlns="http://www.w3.org/2000/svg"
-              className="absolute inset-0 w-full h-full transition-opacity duration-200 opacity-0 group-hover:opacity-100 text-zinc-700 dark:text-neutral-300"
+              className="absolute inset-0 w-full h-full transition-all scale-0 rotate-90 group-hover:scale-100 group-hover:rotate-0 text-zinc-700 dark:text-neutral-300"
               fill="currentColor"
             >
               <path
