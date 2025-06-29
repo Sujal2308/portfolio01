@@ -2,9 +2,11 @@ import React from "react";
 
 import { ArrowUpRight } from "lucide-react";
 
+import type { LinkColor } from "@/types/link";
+
 interface LinkProps {
   children: React.ReactNode;
-  color: "pink" | "lime" | "cyan" | "purple";
+  color: LinkColor;
   link: string;
   mail?: boolean;
 }
