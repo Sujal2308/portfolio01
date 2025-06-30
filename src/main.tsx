@@ -12,7 +12,7 @@ createRoot(document.getElementById("root")!).render(
       <DotPattern
         width={30}
         height={30}
-        className="opacity-30 dark:opacity-10"
+        className="opacity-50 dark:opacity-20"
       />
       <App />
     </ThemeProvider>
