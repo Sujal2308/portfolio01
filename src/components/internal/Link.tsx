@@ -30,11 +30,13 @@ export function Link({ children, color, link }: LinkProps) {
       }}
     >
       <span
-        className={`tracking-wider underline transition-all duration-200 decoration-${color}-400 decoration-2 underline-offset-4 ${isHovered ? "decoration-3" : ""}`}
+        className={`tracking-wider underline transition-all duration-200 decoration-${color}-400 decoration-2 underline-offset-4 ${
+          isHovered ? "decoration-3" : ""
+        }`}
       >
         {children}
       </span>
-      <ArrowUpRight size={20} className={`ml-1 text-${color}-400`} />
+      <ArrowUpRight size={20} className={`ml-0.5 text-${color}-400`} />
     </a>
   );
 }

@@ -11,7 +11,7 @@ export function Footer() {
           <p className="group-hover:underline group-hover:decoration-neutral-500 group-hover:decoration-2 group-hover:underline-offset-4">
             Engineers turn dreams into reality.
           </p>
-          <ArrowUpRight size={16} className="ml-1" />
+          <ArrowUpRight size={16} className="ml-0.5" />
         </a>
         <p>2025</p>
       </div>
