@@ -21,7 +21,7 @@ export function Projects() {
       link: "https://example.com",
       color: "lime",
       boxColor: "#9ae600",
-      delay: 0.3,
+      delay: 0.2,
     },
     {
       name: "Project",
@@ -29,7 +29,7 @@ export function Projects() {
       link: "https://example.com",
       color: "pink",
       boxColor: "#fb64b6",
-      delay: 0.35,
+      delay: 0.3,
     },
     {
       name: "Project",
