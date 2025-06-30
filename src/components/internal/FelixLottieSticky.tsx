@@ -35,7 +35,7 @@ export function FelixLottieSticky() {
           src="/animations/lottie/felix.lottie"
           autoplay
           loop={false}
-          style={{ width: 500, height: 500, opacity: 0.08 }}
+          className="w-[500px] h-[500px] opacity-[0.12] dark:opacity-[0.08]"
         />
       </div>
       <div
