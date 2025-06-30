@@ -6,12 +6,12 @@ export function Footer() {
       <div className="container flex justify-between max-w-3xl px-10 mx-auto">
         <a
           href="https://youtu.be/gWI1d891COE?si=5kXxAofcSEvcBuUP&t=32"
-          className="inline-flex items-center"
+          className="inline-flex items-center group"
         >
-          <p className="hover:underline hover:decoration-neutral-500 hover:decoration-2 hover:underline-offset-4">
+          <p className="group-hover:underline group-hover:decoration-neutral-500 group-hover:decoration-2 group-hover:underline-offset-4">
             Engineers turn dreams into reality.
           </p>
-          <ArrowUpRight size={16} />
+          <ArrowUpRight size={16} className="ml-1" />
         </a>
         <p>2025</p>
       </div>
