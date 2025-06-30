@@ -1,6 +1,8 @@
 import { BlurFade } from "@/components/magicui/blur-fade";
 import { DotPattern } from "@/components/magicui/dot-pattern";
 
+import { FelixLottieSticky } from "@/components/internal/FelixLottieSticky";
+
 import { Header } from "@/features/header";
 import { Intro } from "@/features/intro";
 import { Skills } from "@/features/skills";
@@ -11,14 +13,14 @@ import { Footer } from "@/features/footer";
 
 function App() {
   return (
-    <div className="relative w-full min-h-screen overflow-x-hidden">
+    <div className="relative flex flex-col w-full min-h-screen overflow-x-hidden">
       <DotPattern
         width={30}
         height={30}
         className="fixed inset-0 w-full h-full opacity-50 pointer-events-none dark:opacity-20 -z-10"
       />
-      <main className="text-zinc-700 dark:text-neutral-300">
-        <article className="container max-w-3xl px-10 mx-auto mt-10 mb-10 sm:mt-28 sm:mb-28">
+      <main className="relative flex flex-col flex-1 text-zinc-700 dark:text-neutral-300">
+        <article className="container relative max-w-3xl px-10 mx-auto mt-10 mb-10 sm:mt-28 sm:mb-28">
           <div className="mb-12">
             <BlurFade delay={0} direction="up" blur="3px">
               <Header className="mb-6" />
@@ -52,10 +54,10 @@ function App() {
             </BlurFade>
           </div>
         </article>
+        <FelixLottieSticky />
       </main>
       <Footer />
     </div>
   );
 }
-
 export default App;
