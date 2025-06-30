@@ -60,9 +60,9 @@ export function Projects() {
                   href={project.code}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="relative inline-block w-5 h-5 ml-2 group"
+                  className="relative inline-block w-5 h-5 ml-2 group/icon"
                 >
-                  <span className="absolute inset-0 flex items-center justify-center w-full h-full transition-all scale-100 rotate-0 group-hover:scale-0 group-hover:-rotate-90">
+                  <span className="absolute inset-0 flex items-center justify-center w-full h-full transition-all scale-100 rotate-0 group-hover/icon:scale-0 group-hover/icon:-rotate-90">
                     <Code
                       size={20}
                       className="text-zinc-700 dark:text-neutral-300"
@@ -71,7 +71,7 @@ export function Projects() {
                   <svg
                     viewBox="0 0 98 96"
                     xmlns="http://www.w3.org/2000/svg"
-                    className="absolute inset-0 w-full h-full transition-all scale-0 rotate-90 group-hover:scale-100 group-hover:rotate-0 text-zinc-700 dark:text-neutral-300"
+                    className="absolute inset-0 w-full h-full transition-all scale-0 rotate-90 group-hover/icon:scale-100 group-hover/icon:rotate-0 text-zinc-700 dark:text-neutral-300"
                     fill="currentColor"
                   >
                     <path
