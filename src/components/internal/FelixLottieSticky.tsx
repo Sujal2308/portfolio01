@@ -11,7 +11,7 @@ export function FelixLottieSticky() {
       },
       { root: null, threshold: 0 }
     );
-    const sentinel = sentinelRef.current; // Copy ref value
+    const sentinel = sentinelRef.current;
     if (sentinel) {
       observer.observe(sentinel);
     }
@@ -35,10 +35,9 @@ export function FelixLottieSticky() {
           src="/animations/lottie/felix.lottie"
           autoplay
           loop={false}
-          style={{ width: 500, height: 500, opacity: 0.25 }}
+          style={{ width: 500, height: 500, opacity: 0.1 }}
         />
       </div>
-      {/* Sentinel div just above the footer */}
       <div
         ref={sentinelRef}
         style={{
