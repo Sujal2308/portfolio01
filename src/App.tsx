@@ -7,6 +7,7 @@ import { Skills } from "@/features/skills";
 import { Projects } from "@/features/projects";
 import { Now } from "@/features/now";
 import { Contact } from "@/features/contact";
+import { Footer } from "@/features/footer";
 
 function App() {
   return (
@@ -52,12 +53,7 @@ function App() {
           </div>
         </article>
       </main>
-      <footer className="py-4 text-sm border-t border-zinc-300 dark:border-neutral-700 text-neutral-500 dark:text-neutral-400 bg-background">
-        <div className="container flex justify-between max-w-3xl px-10 mx-auto">
-          <p>Sebilune</p>
-          <p>2025</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
