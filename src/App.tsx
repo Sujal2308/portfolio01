@@ -10,7 +10,7 @@ import { Contact } from "@/features/contact";
 function App() {
   return (
     <main className="text-zinc-700 dark:text-neutral-300">
-      <article className="container max-w-3xl px-10 mx-auto mt-10 sm:mt-28">
+      <article className="container max-w-3xl px-10 mx-auto mt-10 mb-10 sm:mt-28 sm:mb-28">
         <div className="mb-12">
           <BlurFade delay={0} direction="up" blur="3px">
             <Header className="mb-6" />
@@ -35,7 +35,7 @@ function App() {
             <Now />
           </BlurFade>
         </div>
-        <div className="mb-12">
+        <div>
           <BlurFade delay={0.9} direction="up" blur="3px">
             <h1 className="mb-6 text-xl font-semibold">Connect</h1>
           </BlurFade>
