@@ -27,7 +27,7 @@ export function Skills() {
   const inner = logos.slice(outerCount);
 
   return (
-    <div className="flex-shrink-0 md:self-center">
+    <div>
       <div className="relative flex h-[300px] w-[300px] flex-col items-center justify-center overflow-hidden">
         <OrbitingCircles iconSize={34} radius={120} speed={0.5}>
           {outer.map((name) => (

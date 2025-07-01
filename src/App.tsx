@@ -29,7 +29,7 @@ function App() {
               <Intro />
             </BlurFade>
           </div>
-          <div className="flex flex-col items-center w-full gap-8 mb-12 md:flex-row md:items-stretch">
+          <div className="flex flex-col items-center w-full gap-8 mb-12 md:flex-row md:items-center">
             <BlurFade delay={0.3} direction="up" blur="3px">
               <Skills />
             </BlurFade>
