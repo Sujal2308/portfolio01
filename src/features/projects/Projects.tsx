@@ -36,7 +36,7 @@ export function Projects() {
     },
     {
       name: "Youtube Trend Scraper API",
-      desc: "Lightweight API that scrapes, caches, rate limits, and returns trending YouTube videos per query.",
+      desc: "Lightweight REST API that scrapes, caches, rate limits, and returns trending YouTube videos per query.",
       link: "https://www.postman.com/sebi-51246/scraper-demo/request/z7wfc4d/",
       code: "https://github.com/sebilune/yt-trend-scraper-api",
       color: "pink",
