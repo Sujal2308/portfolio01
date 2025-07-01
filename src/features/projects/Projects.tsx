@@ -17,31 +17,31 @@ interface Project {
 export function Projects() {
   const projects: Project[] = [
     {
-      name: "Project",
-      desc: "lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      link: "https://example.com",
-      code: "https://github.com",
+      name: "Cellular Simulations",
+      desc: "GPU-accelerated cellular automata playground simulating artificial life patterns with customizable interactions.",
+      link: "https://cells.sebilune.dev",
+      code: "https://github.com/sebilune/cells-sim",
       color: "lime",
       boxColor: "#9ae600",
       delay: 0.2,
     },
     {
-      name: "Project",
-      desc: "lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      link: "https://example.com",
-      code: "https://github.com",
-      color: "pink",
-      boxColor: "#fb64b6",
-      delay: 0.3,
-    },
-    {
-      name: "Project",
-      desc: "lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      link: "https://example.com",
-      code: "https://github.com",
+      name: "Discord Movie Torrent Bot",
+      desc: "Discord bot to search, queue, and manage movie torrents with slash commands integration.",
+      link: "https://github.com/sebilune/dc-torrent",
+      code: "https://github.com/sebilune/dc-torrent",
       color: "cyan",
       boxColor: "#53eafd",
       delay: 0.4,
+    },
+    {
+      name: "Youtube Trend Scraper API",
+      desc: "Lightweight API that scrapes, caches, rate limits, and returns trending YouTube videos per query.",
+      link: "https://www.postman.com/sebi-51246/scraper-demo/request/z7wfc4d/",
+      code: "https://github.com/sebilune/yt-trend-scraper-api",
+      color: "pink",
+      boxColor: "#fb64b6",
+      delay: 0.3,
     },
   ];
 
