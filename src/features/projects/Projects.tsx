@@ -32,7 +32,7 @@ export function Projects() {
       code: "https://github.com/sebilune/dc-torrent",
       color: "cyan",
       boxColor: "#53eafd",
-      delay: 0.4,
+      delay: 0.3,
     },
     {
       name: "Youtube Trend Scraper API",
@@ -41,7 +41,7 @@ export function Projects() {
       code: "https://github.com/sebilune/yt-trend-scraper-api",
       color: "pink",
       boxColor: "#fb64b6",
-      delay: 0.3,
+      delay: 0.4,
     },
   ];
 
