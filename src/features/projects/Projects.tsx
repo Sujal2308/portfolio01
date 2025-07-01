@@ -27,7 +27,7 @@ export function Projects() {
     },
     {
       name: "Discord Movie Torrent Bot",
-      desc: "Discord bot to search, queue, and manage movie torrents with slash commands integration.",
+      desc: "Discord TypeScript bot to search, queue, and manage movie torrents with slash commands integration.",
       link: "https://github.com/sebilune/dc-torrent",
       code: "https://github.com/sebilune/dc-torrent",
       color: "cyan",
