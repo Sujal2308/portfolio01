@@ -10,7 +10,7 @@ const logos = [
   { name: "sass", scale: 1.1 },
   { name: "docker", scale: 1.4 },
   { name: "bash", scale: 1.2 },
-  { name: "next", scale: 0.95 },
+  { name: "next", scale: 1 },
   { name: "go", scale: 1.1 },
   { name: "cloudfare", scale: 1.2 },
   { name: "vim", scale: 0.95 },
