@@ -1,24 +1,25 @@
 import { OrbitingCircles } from "@/components/magicui/orbiting-circles";
 
 const logos = [
-  { name: "typescript", scale: 0.9 },
   { name: "github", scale: 0.9 },
   { name: "visualstudiocode", scale: 0.95 },
   { name: "debian", scale: 1.0 },
-  { name: "python", scale: 1.0 },
+  { name: "python", scale: 1.1 },
   { name: "node", scale: 1.0 },
   { name: "git", scale: 0.9 },
   { name: "sass", scale: 1.1 },
   { name: "docker", scale: 1.4 },
   { name: "bash", scale: 1.2 },
   { name: "go", scale: 1.1 },
+  { name: "cloudfare", scale: 1.2 },
+  { name: "next", scale: 0.95 },
+  { name: "vim", scale: 0.95 },
+  { name: "react", scale: 1.0 },
+  { name: "typescript", scale: 0.85 },
   { name: "postgres", scale: 1.1 },
   { name: "hono", scale: 1.0 },
-  { name: "vim", scale: 0.9 },
   { name: "tailwindcss", scale: 1.0 },
   { name: "bun", scale: 1.0 },
-  { name: "next", scale: 1.0 },
-  { name: "react", scale: 1.0 },
   { name: "vitejs", scale: 1.0 },
 ];
 
