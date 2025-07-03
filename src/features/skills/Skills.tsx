@@ -24,7 +24,7 @@ const logos = [
 ];
 
 export function Skills() {
-  const outerCount = Math.ceil(logos.length * 0.6); // 60% of logos in outer circle
+  const outerCount = Math.ceil(logos.length * 0.65); // 65% of logos in outer circle
   const outer = logos.slice(0, outerCount);
   const inner = logos.slice(outerCount);
 
