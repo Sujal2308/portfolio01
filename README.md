@@ -8,7 +8,7 @@ My modern, animated, and minimal personal portfolio.
 
 ## Technologies
 
-<p align="center">
+<p align="left">
   <a href="https://github.com/sebilune">
     <img src="https://skillicons.dev/icons?i=vite,react,tailwind,ts,bun&perline=8" />
   </a>
