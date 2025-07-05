@@ -28,7 +28,7 @@ export function Projects() {
     {
       name: "Edge Trending API",
       desc: "Lightweight Edge REST API that scrapes, caches, and returns trending videos per query.",
-      link: "https://hopp.sh/r/wleDtjiCycfg",
+      link: "https://hopp.sh/r/TpAqdU8SPOI9",
       code: "https://github.com/sebilune/edge-trending-api",
       color: "pink",
       boxColor: "#fb64b6",
