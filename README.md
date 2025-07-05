@@ -1,6 +1,7 @@
 # 📰 Portfolio
 
 ![License](https://img.shields.io/github/license/sebilune/portfolio)
+![Code Size (bytes)](https://img.shields.io/github/languages/code-size/sebilune/portfolio)
 ![Repo Size](https://img.shields.io/github/repo-size/sebilune/portfolio)
 ![Last Commit](https://img.shields.io/github/last-commit/sebilune/portfolio)
 
