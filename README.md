@@ -1,5 +1,9 @@
 # 📰 Portfolio
 
+![License](https://img.shields.io/github/license/sebilune/portfolio)
+![Repo Size](https://img.shields.io/github/repo-size/sebilune/portfolio)
+![Last Commit](https://img.shields.io/github/last-commit/sebilune/portfolio)
+
 My modern, animated, and minimal personal portfolio.
 
 ## Technologies
