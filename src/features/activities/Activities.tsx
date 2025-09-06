@@ -46,17 +46,17 @@ const activities: Activity[] = [
     certifications: [
       {
         name: "Java",
-        url: "https://example.com/java-cert", // Replace with actual Java certification URL
+        url: "https://www.linkedin.com/learning/certificates/598a4d50a966de32844da956991d4e7ee976a6d5fe071aaebbde04b0e317de12?trk=share_certificate",
         color: "orange",
       },
       {
         name: "SQL",
-        url: "https://example.com/sql-cert", // Replace with actual SQL certification URL
+        url: "https://www.linkedin.com/learning/certificates/1c375b82b05d294375c1ab8a9157351daf9fc13870329fba04cb6050207387ed?trk=share_certificate",
         color: "cyan",
       },
       {
         name: "React.js",
-        url: "https://example.com/react-cert", // Replace with actual React certification URL
+        url: "https://drive.google.com/file/d/184Xs5DsyjbIn2Pgtmk3gJJCCrqZopJDm/view?usp=sharing",
         color: "purple",
       },
     ],

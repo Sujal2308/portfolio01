@@ -1,6 +1,5 @@
 import { BoxReveal } from "@/components/magicui/box-reveal";
 import { Code } from "lucide-react";
-import { useState } from "react";
 
 import { Link } from "@/components/internal/Link";
 import type { LinkColor } from "@/types/link";
@@ -36,10 +35,10 @@ export function Projects() {
       delay: 0.3,
     },
     {
-      name: "Serverless Trending API",
-      desc: "Lightweight serverless REST API that scrapes, caches, and returns trending videos per query.",
-      link: "https://hopp.sh/r/y69mfyXkJGjB",
-      code: "https://github.com/sebilune/serverless-trending-api",
+      name: "A-Rice",
+      desc: "Delivered a custom cloud kitchen website for ARICE with real-time order management, secure payments, and responsive UI using React, Express.js and MongoDB.",
+      link: "https://www.a-rice.in/",
+      code: "https://www.a-rice.in/",
       color: "pink",
       boxColor: "#fb64b6",
       delay: 0.4,
@@ -68,8 +67,6 @@ export function Projects() {
 }
 
 function ProjectCard({ project }: { project: Project }) {
-  const [isExpanded, setIsExpanded] = useState(false);
-
   return (
     <div>
       <h1 className="mb-1 font-semibold tracking-wider">
@@ -106,42 +103,9 @@ function ProjectCard({ project }: { project: Project }) {
           </div>
         </BoxReveal>
       </h1>
-      <div className="font-mono text-neutral-500 dark:text-neutral-400">
-        {!isExpanded ? (
-          <div className="relative">
-            <p
-              className="line-clamp-4 overflow-hidden"
-              style={{
-                display: "-webkit-box",
-                WebkitLineClamp: 4,
-                WebkitBoxOrient: "vertical",
-                overflow: "hidden",
-              }}
-            >
-              {project.desc}
-            </p>
-            {/* Check if text overflows 4 lines */}
-            <div className="absolute bottom-0 right-0 bg-gradient-to-l from-white dark:from-gray-900 to-transparent pl-8">
-              <button
-                onClick={() => setIsExpanded(true)}
-                className="text-blue-500 hover:text-blue-400 dark:text-blue-400 dark:hover:text-blue-300 transition-colors duration-200 underline cursor-pointer bg-white dark:bg-gray-900 pl-1"
-              >
-                view more
-              </button>
-            </div>
-          </div>
-        ) : (
-          <div>
-            <p>{project.desc}</p>
-            <button
-              onClick={() => setIsExpanded(false)}
-              className="mt-2 text-blue-500 hover:text-blue-400 dark:text-blue-400 dark:hover:text-blue-300 transition-colors duration-200 underline cursor-pointer"
-            >
-              view less
-            </button>
-          </div>
-        )}
-      </div>
+      <p className="font-mono text-neutral-500 dark:text-neutral-400">
+        {project.desc}
+      </p>
     </div>
   );
 }
