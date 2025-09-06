@@ -1,0 +1,1 @@
+export { TechSkills } from "./TechSkills";

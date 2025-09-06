@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 export function FelixLottieSticky() {
   const [stuck, setStuck] = useState(false);
   const sentinelRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     const observer = new window.IntersectionObserver(
       ([entry]) => {
@@ -21,6 +22,7 @@ export function FelixLottieSticky() {
       }
     };
   }, []);
+
   return (
     <>
       <div

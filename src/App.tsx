@@ -5,9 +5,13 @@ import { FelixLottieSticky } from "@/components/internal/FelixLottieSticky";
 
 import { Header } from "@/features/header";
 import { Intro } from "@/features/intro";
-import { Skills } from "@/features/skills";
+// import { Skills } from "@/features/skills";
+import { Socials } from "@/features/socials";
 import { Projects } from "@/features/projects";
 import { Now } from "@/features/now";
+import { TechSkills } from "@/features/tech-skills";
+import { Education } from "@/features/education";
+import { Activities } from "@/features/activities";
 import { Contact } from "@/features/contact";
 import { Footer } from "@/features/footer";
 
@@ -29,10 +33,15 @@ function App() {
               <Intro />
             </BlurFade>
           </div>
-          <div className="flex flex-col items-center w-full gap-8 mb-12 md:flex-row md:items-center">
+          <div className="mb-12">
             <BlurFade delay={0.3} direction="up" blur="3px">
-              <Skills />
+              <Socials />
             </BlurFade>
+          </div>
+          <div className="flex flex-col items-center w-full gap-8 mb-12 md:flex-row md:items-center">
+            {/* <BlurFade delay={0.3} direction="up" blur="3px">
+              <Skills />
+            </BlurFade> */}
             <BlurFade delay={0.45} direction="up" blur="3px">
               <Projects />
             </BlurFade>
@@ -45,11 +54,32 @@ function App() {
               <Now />
             </BlurFade>
           </div>
-          <div>
+          <div className="mb-12">
+            <BlurFade delay={0.8} direction="up" blur="3px">
+              <h1 className="mb-6 text-xl font-semibold">Tech Stack</h1>
+            </BlurFade>
+            <BlurFade delay={0.85} direction="up" blur="3px">
+              <TechSkills />
+            </BlurFade>
+          </div>
+          <div className="mb-12">
             <BlurFade delay={0.9} direction="up" blur="3px">
+              <h1 className="mb-6 text-xl font-semibold">Education</h1>
+            </BlurFade>
+            <BlurFade delay={0.95} direction="up" blur="3px">
+              <Education />
+            </BlurFade>
+          </div>
+          <div className="mb-12">
+            <BlurFade delay={1.0} direction="up" blur="3px">
+              <Activities />
+            </BlurFade>
+          </div>
+          <div>
+            <BlurFade delay={1.05} direction="up" blur="3px">
               <h1 className="mb-6 text-xl font-semibold">Connect</h1>
             </BlurFade>
-            <BlurFade delay={1.05} direction="up" blur="3px">
+            <BlurFade delay={1.1} direction="up" blur="3px">
               <Contact />
             </BlurFade>
           </div>
