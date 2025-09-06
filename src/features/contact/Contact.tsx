@@ -6,8 +6,8 @@ export function Contact() {
     <div className="font-mono">
       Reach me at&nbsp;
       <BoxReveal boxColor="#c27aff">
-        <Link color="purple" link="mailto:sebilune@proton.me">
-          sebilune@proton.me
+        <Link color="purple" link="mailto:sujalbhugul08@gmail.com">
+          sujalbhugul08@gmail.com
         </Link>
       </BoxReveal>
     </div>
