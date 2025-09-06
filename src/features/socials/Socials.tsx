@@ -12,22 +12,22 @@ const socialLinks: SocialLink[] = [
   {
     name: "LinkedIn",
     logo: "linkedin (1).svg",
-    url: "https://linkedin.com/in/sujal-bhugul-78a94a271",
+    url: "https://www.linkedin.com/in/sujal23/",
   },
   {
     name: "Twitter",
     logo: "twitter (1).svg",
-    url: "https://twitter.com/sujal2308",
+    url: "https://x.com/sujal_bhugul?t=IFGoFmQzvSiixtsQK-o2_Q&s=08",
   },
   {
     name: "Discord",
     logo: "discord-svgrepo-com.svg",
-    url: "https://discord.com/users/sujal2308",
+    url: "https://discordapp.com/users/sujal230841",
   },
   {
     name: "LeetCode",
     logo: "leetcode.svg",
-    url: "https://leetcode.com/sujal2308",
+    url: "https://leetcode.com/u/sujalbhugul/",
   },
 ];
 

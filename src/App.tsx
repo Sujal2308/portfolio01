@@ -77,7 +77,7 @@ function App() {
           </div>
           <div>
             <BlurFade delay={1.05} direction="up" blur="3px">
-              <h1 className="mb-6 text-xl font-semibold">Connect</h1>
+              <h1 className="mb-6 text-xl font-semibold">Contact</h1>
             </BlurFade>
             <BlurFade delay={1.1} direction="up" blur="3px">
               <Contact />

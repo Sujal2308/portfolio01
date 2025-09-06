@@ -1,6 +1,3 @@
-import { GraduationCap, School, BookOpen } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
-
 interface EducationProps {
   className?: string;
 }
@@ -11,7 +8,6 @@ interface EducationItem {
   location: string;
   period: string;
   status?: string;
-  icon: LucideIcon;
 }
 
 const educationData: EducationItem[] = [
@@ -21,21 +17,18 @@ const educationData: EducationItem[] = [
     location: "Amravati, Maharashtra, INDIA",
     period: "Jun-2026",
     status: "Expected",
-    icon: GraduationCap,
   },
   {
     institution: "Shri Shivaji Multipurpose Jr. College, Amt",
     degree: "HSC in PCM",
     location: "Amt, Maharashtra",
     period: "Feb-2022",
-    icon: School,
   },
   {
     institution: "Golden Kids English High School, Amt",
     degree: "SSC",
     location: "Amt, Maharashtra",
     period: "Mar-2020",
-    icon: BookOpen,
   },
 ];
 
@@ -44,7 +37,6 @@ export function Education({ className }: EducationProps) {
     <div className={className}>
       <div className="space-y-6">
         {educationData.map((edu, index) => {
-          const IconComponent = edu.icon;
           return (
             <div
               key={index}
@@ -53,9 +45,10 @@ export function Education({ className }: EducationProps) {
               <div className="flex items-start gap-4">
                 {/* Icon */}
                 <div className="flex-shrink-0 p-2 bg-gradient-to-br from-blue-400/20 to-purple-400/20 rounded-lg border border-blue-400/30 dark:border-purple-400/30">
-                  <IconComponent
-                    size={24}
-                    className="text-blue-600 dark:text-purple-400"
+                  <img
+                    src="/svg/logos/writing-education-learning-pencil-note-write-notebook-svgrepo-com.svg"
+                    alt="Education"
+                    className="w-6 h-6 object-contain"
                   />
                 </div>
 
@@ -79,9 +72,14 @@ export function Education({ className }: EducationProps) {
                   <div className="flex flex-col items-start sm:items-end mt-2 sm:mt-0">
                     <span className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
                       {edu.period}
+                      {edu.status && (
+                        <span className="ml-2 text-xs text-blue-600 dark:text-blue-400 font-medium sm:hidden">
+                          {edu.status}
+                        </span>
+                      )}
                     </span>
                     {edu.status && (
-                      <span className="text-xs text-blue-600 dark:text-blue-400 font-medium">
+                      <span className="hidden sm:block text-xs text-blue-600 dark:text-blue-400 font-medium">
                         {edu.status}
                       </span>
                     )}
