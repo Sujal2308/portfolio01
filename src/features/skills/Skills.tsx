@@ -31,26 +31,26 @@ export function Skills() {
   return (
     <div>
       <div className="relative flex h-[300px] w-[300px] flex-col items-center justify-center overflow-hidden">
-        <OrbitingCircles iconSize={34} radius={120} speed={0.5}>
+        <OrbitingCircles iconSize={40} radius={120} speed={0.5}>
           {outer.map(({ name, scale = 1.0 }) => (
             <img
               key={name}
               src={`/svg/logos/${name}.svg`}
               alt={name}
-              width={100 * scale}
-              height={100 * scale}
+              width={32 * scale}
+              height={32 * scale}
               style={{ objectFit: "contain", transform: `scale(${scale})` }}
             />
           ))}
         </OrbitingCircles>
-        <OrbitingCircles iconSize={34} radius={60} reverse speed={0.4}>
+        <OrbitingCircles iconSize={36} radius={60} reverse speed={0.4}>
           {inner.map(({ name, scale = 1.0 }) => (
             <img
               key={name}
               src={`/svg/logos/${name}.svg`}
               alt={name}
-              width={100 * scale}
-              height={100 * scale}
+              width={28 * scale}
+              height={28 * scale}
               style={{ objectFit: "contain", transform: `scale(${scale})` }}
             />
           ))}

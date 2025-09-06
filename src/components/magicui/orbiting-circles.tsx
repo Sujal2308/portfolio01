@@ -35,7 +35,7 @@ export function OrbitingCircles({
           className="absolute inset-0 pointer-events-none size-full"
         >
           <circle
-            className="stroke-1 stroke-black/10 dark:stroke-white/10"
+            className="stroke-2 stroke-border/20 dark:stroke-border/30"
             cx="50%"
             cy="50%"
             r={radius}
@@ -45,16 +45,14 @@ export function OrbitingCircles({
       )}
       {React.Children.map(children, (child, index) => {
         const angle = (360 / React.Children.count(children)) * index;
-        const delay = (calculatedDuration * index) / React.Children.count(children);
         return (
           <div
             style={
               {
                 "--duration": calculatedDuration,
                 "--radius": radius,
+                "--initial-angle": angle,
                 "--icon-size": `${iconSize}px`,
-                transform: `rotate(${angle}deg) translateY(-${radius}px) rotate(-${angle}deg)`,
-                animationDelay: `${delay}s`,
               } as React.CSSProperties
             }
             className={cn(
