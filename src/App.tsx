@@ -1,3 +1,11 @@
+<div className="mb-12">
+  <BlurFade delay={0.9} direction="up" blur="3px">
+    <h1 className="mb-6 text-neutral-500 dark:text-neutral-400">Education</h1>
+  </BlurFade>
+  <BlurFade delay={0.95} direction="up" blur="3px">
+    <Education />
+  </BlurFade>
+</div>;
 import { useState } from "react";
 import { BlurFade } from "@/components/magicui/blur-fade";
 import { DotPattern } from "@/components/magicui/dot-pattern";
@@ -86,22 +94,17 @@ function App() {
             </BlurFade>
           </div>
           <div className="mb-12">
-            <BlurFade delay={0.6} direction="up" blur="3px">
+            <BlurFade delay={1.0} direction="up" blur="3px">
               <h1 className="mb-6 text-neutral-500 dark:text-neutral-400">
                 Now
               </h1>
             </BlurFade>
-            <BlurFade delay={0.75} direction="up" blur="3px">
+            <BlurFade delay={1.05} direction="up" blur="3px">
               <Now />
             </BlurFade>
           </div>
           <div className="mb-12">
-            <BlurFade delay={0.9} direction="up" blur="3px">
-              <h1 className="mb-6 text-neutral-500 dark:text-neutral-400">
-                Education
-              </h1>
-            </BlurFade>
-            <BlurFade delay={0.95} direction="up" blur="3px">
+            <BlurFade delay={1.1} direction="up" blur="3px">
               <Education />
             </BlurFade>
           </div>

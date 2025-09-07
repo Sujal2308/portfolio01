@@ -1,5 +1,5 @@
 import { BlurFade } from "@/components/magicui/blur-fade";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, ArrowRight, ArrowLeft } from "lucide-react";
 
 interface ActivitiesProps {
   className?: string;
@@ -21,22 +21,9 @@ const activities: Activity[] = [
   {
     title: "Hackathon Participation",
     description:
-      "Participated in 6+ hackathons with 1 win and 2 finalist positions",
+      "Participated in more than 6 hackathons with 1 win and 2 finalist positions",
     logo: "Hacakathon.svg",
     highlight: "1 Win, 2 Finalist",
-  },
-  {
-    title: "Technical Mentorship",
-    description: "Mentored 200+ peers through comprehensive technical sessions",
-    logo: "peers.svg",
-    highlight: "200+ Mentees",
-  },
-  {
-    title: "Web Dev Lead",
-    description:
-      "Web Development Lead at Microsoft Learner Student Club (MLSC) Prpcem",
-    logo: "MLSC LEAD.svg",
-    // highlight removed
   },
   {
     title: "Certifications",
@@ -65,9 +52,35 @@ const activities: Activity[] = [
       },
     ],
   },
+  {
+    title: "Technical Mentorship",
+    description: "Mentored 200+ peers via comprehensive technical sessions",
+    logo: "peers.svg",
+    highlight: "200+ Mentees",
+  },
+  {
+    title: "Web Dev Lead",
+    description:
+      "Web Development Lead at Microsoft Learner Student Club (MLSC) Prpcem",
+    logo: "MLSC LEAD.svg",
+    // highlight removed
+  },
 ];
 
+import { useState } from "react";
+
 export function Activities({ className }: ActivitiesProps) {
+  const [page, setPage] = useState(0);
+  const cardsPerPage = 2;
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 640;
+  const totalPages = Math.ceil(activities.length / cardsPerPage);
+
+  // For SSR safety, fallback to always show all on first render
+  const showPagination = typeof window !== "undefined" ? isMobile : false;
+  const paginatedActivities = showPagination
+    ? activities.slice(page * cardsPerPage, (page + 1) * cardsPerPage)
+    : activities;
+
   return (
     <BlurFade delay={0.25}>
       <div className={className}>
@@ -75,7 +88,7 @@ export function Activities({ className }: ActivitiesProps) {
           Extracurricular Activities
         </h2>
         <div className="grid gap-6 sm:grid-cols-2">
-          {activities.map((activity, index) => (
+          {paginatedActivities.map((activity, index) => (
             <BlurFade key={activity.title} delay={0.25 + index * 0.1}>
               <div className="group relative p-6 bg-white/5 dark:bg-black/10 rounded-lg border border-gray-200/20 dark:border-gray-700/30 hover:bg-white/10 dark:hover:bg-black/20 transition-all duration-300 hover:scale-[1.02] min-h-[220px] flex flex-col">
                 <div className="flex items-start space-x-4 flex-1">
@@ -160,6 +173,28 @@ export function Activities({ className }: ActivitiesProps) {
             </BlurFade>
           ))}
         </div>
+        {/* Pagination controls for mobile */}
+        {showPagination && (
+          <div className="flex justify-between mt-4">
+            {page > 0 ? (
+              <button
+                className="text-blue-500 bg-transparent border-none shadow-none px-0 py-0 text-base font-semibold focus:outline-none flex items-center gap-1"
+                onClick={() => setPage((p) => p - 1)}
+              >
+                <ArrowLeft size={18} className="text-blue-500" /> Prev
+              </button>
+            ) : (
+              <span />
+            )}
+            <button
+              className="text-blue-500 bg-transparent border-none shadow-none px-0 py-0 text-base font-semibold focus:outline-none flex items-center gap-1 disabled:opacity-50"
+              onClick={() => setPage((p) => (p + 1) % totalPages)}
+              disabled={page >= totalPages - 1}
+            >
+              Next <ArrowRight size={18} className="text-blue-500" />
+            </button>
+          </div>
+        )}
       </div>
     </BlurFade>
   );
