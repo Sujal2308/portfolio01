@@ -28,7 +28,7 @@ const activities: Activity[] = [
   {
     title: "Certifications",
     description: "Completed multiple industry-recognized certifications",
-    logo: "certificate-award-trophy-svgrepo-com.svg",
+    logo: "certificate-quality-award-education-medal-svgrepo-com.svg",
     certifications: [
       {
         name: "Java",
@@ -90,17 +90,13 @@ export function Activities({ className }: ActivitiesProps) {
         <div className="grid gap-6 sm:grid-cols-2">
           {paginatedActivities.map((activity, index) => (
             <BlurFade key={activity.title} delay={0.25 + index * 0.1}>
-              <div className="group relative p-6 bg-white/5 dark:bg-black/10 rounded-lg border border-gray-200/20 dark:border-gray-700/30 hover:bg-white/10 dark:hover:bg-black/20 transition-all duration-300 hover:scale-[1.02] min-h-[220px] flex flex-col">
+              <div className="group relative p-6 bg-[rgba(255,228,242,0.35)] dark:bg-black/10 rounded-lg border border-gray-200/20 dark:border-gray-700/30 sm:hover:bg-white/10 sm:dark:hover:bg-black/20 transition-all duration-300 sm:hover:scale-[1.02] min-h-[220px] flex flex-col">
                 <div className="flex items-start space-x-4 flex-1">
                   <div className="flex-shrink-0">
                     <img
                       src={`/svg/logos/${activity.logo}`}
                       alt={activity.title}
-                      className={`object-contain ${
-                        activity.title === "Certifications"
-                          ? "w-16 h-16 -mt-2"
-                          : "w-12 h-12"
-                      }`}
+                      className="object-contain w-12 h-12"
                     />
                   </div>
                   <div className="flex-1 min-w-0">
@@ -124,7 +120,7 @@ export function Activities({ className }: ActivitiesProps) {
                           href="https://drive.google.com/file/d/1hqkhu6YYxUHZ-JK6sUuXGdK82coR5jpI/view?usp=drive_link"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 text-base  text-white underline decoration-fuchsia-500 decoration-2 underline-offset-4 transition-opacity hover:opacity-80"
+                          className="inline-flex items-center gap-1 text-base text-black dark:text-white underline decoration-fuchsia-500 decoration-2 underline-offset-4 transition-opacity sm:hover:opacity-80"
                         >
                           See Credentials
                           <ExternalLink
@@ -142,7 +138,7 @@ export function Activities({ className }: ActivitiesProps) {
                             href={cert.url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1 text-sm font-medium underline decoration-1 underline-offset-2 transition-opacity hover:opacity-70"
+                            className="inline-flex items-center gap-1 text-base font-bold underline decoration-1 underline-offset-2 transition-opacity sm:hover:opacity-70"
                             style={{
                               color:
                                 cert.color === "orange"
@@ -168,7 +164,7 @@ export function Activities({ className }: ActivitiesProps) {
                 </div>
 
                 {/* Hover effect gradient */}
-                <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-blue-500/5 to-purple-500/5 opacity-0 sm:group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
               </div>
             </BlurFade>
           ))}

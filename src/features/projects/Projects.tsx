@@ -119,7 +119,7 @@ function ProjectCard({ project }: { project: Project }) {
               viewBox="0 0 24 24"
               strokeWidth={2}
               stroke="currentColor"
-              className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1"
+              className="w-4 h-4 ml-1 transition-transform sm:group-hover:translate-x-1"
             >
               <path
                 strokeLinecap="round"
@@ -143,7 +143,7 @@ function ProjectCard({ project }: { project: Project }) {
               viewBox="0 0 24 24"
               strokeWidth={2}
               stroke="currentColor"
-              className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1"
+              className="w-4 h-4 ml-1 transition-transform sm:group-hover:translate-x-1"
             >
               <path
                 strokeLinecap="round"
@@ -167,7 +167,7 @@ function ProjectCard({ project }: { project: Project }) {
               viewBox="0 0 24 24"
               strokeWidth={2}
               stroke="currentColor"
-              className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1"
+              className="w-4 h-4 ml-1 transition-transform sm:group-hover:translate-x-1"
             >
               <path
                 strokeLinecap="round"

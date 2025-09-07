@@ -105,6 +105,11 @@ function App() {
           </div>
           <div className="mb-12">
             <BlurFade delay={1.1} direction="up" blur="3px">
+              <h1 className="mb-6 text-neutral-500 dark:text-neutral-400">
+                Education
+              </h1>
+            </BlurFade>
+            <BlurFade delay={1.15} direction="up" blur="3px">
               <Education />
             </BlurFade>
           </div>
