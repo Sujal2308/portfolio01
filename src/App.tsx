@@ -56,16 +56,6 @@ function App() {
             </BlurFade>
           </div>
           <div className="mb-12">
-            <BlurFade delay={0.6} direction="up" blur="3px">
-              <h1 className="mb-6 text-neutral-500 dark:text-neutral-400">
-                Now
-              </h1>
-            </BlurFade>
-            <BlurFade delay={0.75} direction="up" blur="3px">
-              <Now />
-            </BlurFade>
-          </div>
-          <div className="mb-12">
             <BlurFade delay={0.8} direction="up" blur="3px">
               <div className="flex items-center justify-between mb-6">
                 <h1 className="text-neutral-500 dark:text-neutral-400">
@@ -93,6 +83,16 @@ function App() {
               <div className="w-full flex justify-center items-center">
                 {isOrbitView ? <Skills /> : <TechSkills />}
               </div>
+            </BlurFade>
+          </div>
+          <div className="mb-12">
+            <BlurFade delay={0.6} direction="up" blur="3px">
+              <h1 className="mb-6 text-neutral-500 dark:text-neutral-400">
+                Now
+              </h1>
+            </BlurFade>
+            <BlurFade delay={0.75} direction="up" blur="3px">
+              <Now />
             </BlurFade>
           </div>
           <div className="mb-12">
