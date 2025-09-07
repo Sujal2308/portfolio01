@@ -94,9 +94,22 @@ export function Activities({ className }: ActivitiesProps) {
                       {activity.description}
                     </p>
                     {activity.highlight && (
-                      <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/20 dark:text-blue-400 mb-3">
-                        {activity.highlight}
-                      </span>
+                      <div className="flex items-center gap-2 mb-3">
+                        <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/20 dark:text-blue-400">
+                          {activity.highlight}
+                        </span>
+                        {activity.title === "Web Dev Lead" && (
+                          <a
+                            href="https://drive.google.com/file/d/1hqkhu6YYxUHZ-JK6sUuXGdK82coR5jpI/view?usp=drive_link"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1 text-sm font-medium text-blue-600 dark:text-blue-400 underline decoration-1 underline-offset-2 transition-opacity hover:opacity-70"
+                          >
+                            see
+                            <ExternalLink size={12} />
+                          </a>
+                        )}
+                      </div>
                     )}
                     {activity.certifications && (
                       <div className="flex flex-wrap gap-3 mt-3">
