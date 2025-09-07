@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { BlurFade } from "@/components/magicui/blur-fade";
 import { DotPattern } from "@/components/magicui/dot-pattern";
 
@@ -5,7 +6,7 @@ import { FelixLottieSticky } from "@/components/internal/FelixLottieSticky";
 
 import { Header } from "@/features/header";
 import { Intro } from "@/features/intro";
-// import { Skills } from "@/features/skills";
+import { Skills } from "@/features/skills";
 import { Socials } from "@/features/socials";
 import { Projects } from "@/features/projects";
 import { Now } from "@/features/now";
@@ -14,8 +15,11 @@ import { Education } from "@/features/education";
 import { Activities } from "@/features/activities";
 import { Contact } from "@/features/contact";
 import { Footer } from "@/features/footer";
+import { Grid3X3, Orbit } from "lucide-react";
 
 function App() {
+  const [isOrbitView, setIsOrbitView] = useState(false);
+
   return (
     <div className="relative flex flex-col w-full min-h-screen overflow-x-hidden">
       <DotPattern
@@ -58,12 +62,32 @@ function App() {
           </div>
           <div className="mb-12">
             <BlurFade delay={0.8} direction="up" blur="3px">
-              <h1 className="mb-6 text-neutral-500 dark:text-neutral-400">
-                Tech Stack
-              </h1>
+              <div className="flex items-center justify-between mb-6">
+                <h1 className="text-neutral-500 dark:text-neutral-400">
+                  Tech Stack
+                </h1>
+                <button
+                  onClick={() => setIsOrbitView(!isOrbitView)}
+                  className="flex items-center gap-2 px-3 py-1.5 text-sm font-medium rounded-lg bg-white/5 dark:bg-black/10 border border-gray-200/20 dark:border-gray-700/30 hover:bg-white/10 dark:hover:bg-black/20 transition-colors duration-200"
+                >
+                  {isOrbitView ? (
+                    <>
+                      <Grid3X3 size={16} />
+                      Grid
+                    </>
+                  ) : (
+                    <>
+                      <Orbit size={16} />
+                      Orbit
+                    </>
+                  )}
+                </button>
+              </div>
             </BlurFade>
             <BlurFade delay={0.85} direction="up" blur="3px">
-              <TechSkills />
+              <div className="w-full flex justify-center items-center">
+                {isOrbitView ? <Skills /> : <TechSkills />}
+              </div>
             </BlurFade>
           </div>
           <div className="mb-12">
