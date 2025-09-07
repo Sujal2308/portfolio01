@@ -8,6 +8,7 @@ interface EducationItem {
   location: string;
   period: string;
   status?: string;
+  logo: string;
 }
 
 const educationData: EducationItem[] = [
@@ -17,18 +18,21 @@ const educationData: EducationItem[] = [
     location: "Amravati, Maharashtra, INDIA",
     period: "Jun-2026",
     status: "Expected",
+    logo: "engineering.svg",
   },
   {
     institution: "Shri Shivaji Multipurpose Jr. College, Amt",
     degree: "HSC in PCM",
     location: "Amt, Maharashtra",
     period: "Feb-2022",
+    logo: "HSC.svg",
   },
   {
     institution: "Golden Kids English High School, Amt",
     degree: "SSC",
     location: "Amt, Maharashtra",
     period: "Mar-2020",
+    logo: "ssc.svg",
   },
 ];
 
@@ -44,11 +48,11 @@ export function Education({ className }: EducationProps) {
             >
               <div className="flex items-start gap-4">
                 {/* Icon */}
-                <div className="flex-shrink-0 p-2 bg-gradient-to-br from-blue-400/20 to-purple-400/20 rounded-lg border border-blue-400/30 dark:border-purple-400/30">
+                <div className="flex-shrink-0">
                   <img
-                    src="/svg/logos/writing-education-learning-pencil-note-write-notebook-svgrepo-com.svg"
+                    src={`/svg/logos/${edu.logo}`}
                     alt="Education"
-                    className="w-6 h-6 object-contain"
+                    className="w-8 h-8 object-contain"
                   />
                 </div>
 
