@@ -6,7 +6,7 @@
     <Education />
   </BlurFade>
 </div>;
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BlurFade } from "@/components/magicui/blur-fade";
 import { DotPattern } from "@/components/magicui/dot-pattern";
 
@@ -23,7 +23,7 @@ import { Education } from "@/features/education";
 import { Activities } from "@/features/activities";
 import { Contact } from "@/features/contact";
 import { Footer } from "@/features/footer";
-import { Grid3X3, Orbit } from "lucide-react";
+import { Grid3X3, Orbit, ArrowUp } from "lucide-react";
 
 // Add spinning animation for Orbit icon
 const orbitSpinStyle = {
@@ -32,6 +32,28 @@ const orbitSpinStyle = {
 
 function App() {
   const [isOrbitView, setIsOrbitView] = useState(false);
+  const [showScrollTop, setShowScrollTop] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    let scrollTimeout: NodeJS.Timeout;
+    const handleScroll = () => {
+      if (window.scrollY > 100) {
+        setShowScrollTop(true);
+        setScrolled(true);
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => setScrolled(false), 1200);
+      } else {
+        setShowScrollTop(false);
+        setScrolled(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      clearTimeout(scrollTimeout);
+    };
+  }, []);
 
   return (
     <div className="relative flex flex-col w-full min-h-screen overflow-x-hidden">
@@ -141,6 +163,23 @@ function App() {
         <FelixLottieSticky />
       </main>
       <Footer />
+
+      {/* Scroll to top button (always visible, fades in/out) */}
+      <button
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        className={`fixed bottom-6 right-6 z-50 p-3 rounded-full bg-blue-500/90 hover:bg-blue-600 text-white shadow-lg transition-all duration-500 flex items-center justify-center
+          ${
+            showScrollTop
+              ? scrolled
+                ? "opacity-100"
+                : "opacity-80"
+              : "opacity-0 pointer-events-none"
+          }`}
+        aria-label="Scroll to top"
+        style={{ transitionProperty: "opacity, background-color" }}
+      >
+        <ArrowUp size={24} />
+      </button>
     </div>
   );
 }
