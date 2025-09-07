@@ -36,10 +36,10 @@ export function Skills() {
 
   return (
     <div
-      className="w-full flex justify-center items-center"
-      style={{ minHeight: 300 }}
+      className="w-full flex justify-center items-center pb-15"
+      style={{ minHeight: 360 }}
     >
-      <div className="relative" style={{ width: 300, height: 300 }}>
+      <div className="relative" style={{ width: 300, height: 340 }}>
         <div className="w-full h-full flex items-center justify-center overflow-hidden">
           <OrbitingCircles
             iconSize={40}
