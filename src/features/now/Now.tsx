@@ -4,15 +4,17 @@ export function Now() {
       <p className="mb-6">
         Learning by doing, following what interests me, and trying to build
         things that feel solid and impactful. I try to stay aware that&nbsp;
-        <span className="font-bold tracking-wider font-newsreader">
+        <mark
+          className="font-extrabold tracking-wider mono"
+          style={{ color: "#2563eb", background: "none" }}
+        >
           everything around me is the result of someone else's time and effort.
-        </span>
+        </mark>
       </p>
       <p>
-        Right now, I just want to code. I want to build things, try out new
-        tools, dig deeper into the Linux ecosystem, and understand how things
-        work under the hood. It's exciting to keep learning and see how all the
-        pieces fit together.
+        Right now, I’m diving deep into Data Structures and Algorithms to
+        sharpen my problem-solving skills, while also exploring blockchain and
+        building projects around it.
       </p>
     </div>
   );

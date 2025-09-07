@@ -17,7 +17,7 @@ const educationData: EducationItem[] = [
     degree: "B.E in Computer Science and Engineering",
     location: "Amravati, Maharashtra, INDIA",
     period: "Jun-2026",
-    status: "Expected",
+    status: "( Expected )",
     logo: "engineering.svg",
   },
   {
