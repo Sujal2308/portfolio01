@@ -18,21 +18,21 @@ const educationData: EducationItem[] = [
     location: "Amravati, Maharashtra, INDIA",
     period: "Jun-2026",
     status: "( Expected )",
-    logo: "engineering.svg",
+    logo: "student-svgrepo-com.svg",
   },
   {
     institution: "Shri Shivaji Multipurpose Jr. College, Amt",
     degree: "HSC in PCM",
     location: "Amt, Maharashtra",
     period: "Feb-2022",
-    logo: "HSC.svg",
+    logo: "student-svgrepo-com.svg",
   },
   {
     institution: "Golden Kids English High School, Amt",
     degree: "SSC",
     location: "Amt, Maharashtra",
     period: "Mar-2020",
-    logo: "ssc.svg",
+    logo: "student-svgrepo-com.svg",
   },
 ];
 

@@ -56,11 +56,26 @@ export function Projects() {
         ))}
       </div>
 
-      {/* Desktop: 2x2 Grid */}
-      <div className="hidden md:grid md:grid-cols-2 md:gap-8 md:gap-y-12">
-        {projects.map((project, index) => (
-          <ProjectCard key={index} project={project} />
-        ))}
+      {/* Desktop: 2x2 Grid with dividing lines */}
+      <div className="hidden md:grid md:grid-cols-2 md:grid-rows-2 md:gap-0 relative border border-dashed border-neutral-700/40 dark:border-neutral-300/10 rounded-xl overflow-hidden min-h-[420px]">
+        {/* Vertical line */}
+  <div className="hidden md:block absolute top-0 bottom-0 left-1/2 w-0.5 border-l-2 border-dashed border-neutral-700/40 dark:border-neutral-300/10 z-10" style={{height:'100%'}} aria-hidden="true" />
+  {/* Horizontal line */}
+  <div className="hidden md:block absolute left-0 right-0 top-1/2 h-0.5 border-t-2 border-dashed border-neutral-700/40 dark:border-neutral-300/10 z-10" style={{width:'100%'}} aria-hidden="true" />
+        {/* Project cards in grid positions */}
+        <div className="p-4 md:p-5 flex flex-col justify-between" style={{gridRow:1, gridColumn:1}}>
+          <ProjectCard project={projects[0]} />
+        </div>
+        <div className="p-4 md:p-5 flex flex-col justify-between" style={{gridRow:1, gridColumn:2}}>
+          <ProjectCard project={projects[1]} />
+        </div>
+        <div className="p-4 md:p-5 flex flex-col justify-between" style={{gridRow:2, gridColumn:1}}>
+          <ProjectCard project={projects[2]} />
+        </div>
+        <div className="p-4 md:p-5 flex flex-col justify-center items-center text-center text-neutral-500 dark:text-neutral-400" style={{gridRow:2, gridColumn:2}}>
+          <span className="text-lg font-semibold mb-2">🚧 Cool projects are on the way!</span>
+          <span className="text-sm opacity-70">Stay tuned for more updates.</span>
+        </div>
       </div>
     </div>
   );

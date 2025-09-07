@@ -14,9 +14,9 @@ export function Intro({ className }: IntroProps) {
         </span>
         <span className="font-mono">
           &nbsp;I'm a Full-Stack Developer passionate about building scalable
-          web applications and impactful tools. With experience in the MERN
-          stack, backend systems, and problem-solving in Java, I bridge the gap
-          between ideas and execution—crafting modern, efficient, and
+          web applications and impactful tools. With a great experience in the
+          MERN stack, backend systems, and problem-solving in Java, I bridge the
+          gap between ideas and execution—crafting modern, efficient, and
           user-focused solutions.
         </span>
       </p>
