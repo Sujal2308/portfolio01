@@ -24,10 +24,10 @@ const techSkills = [
 
 export function Skills() {
   // Map techSkills to logo format for orbiting circles
-  const logos = techSkills.map(skill => ({
+  const logos = techSkills.map((skill) => ({
     name: skill.logo,
     scale: 1.0,
-    displayName: skill.name
+    displayName: skill.name,
   }));
 
   const outerCount = Math.ceil(logos.length * 0.65); // 65% of logos in outer circle
