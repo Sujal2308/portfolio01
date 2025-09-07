@@ -52,7 +52,7 @@ export function Education({ className }: EducationProps) {
                   <img
                     src={`/svg/logos/${edu.logo}`}
                     alt="Education"
-                    className="w-8 h-8 object-contain"
+                    className="w-8 h-8 object-contain mt-2"
                   />
                 </div>
 

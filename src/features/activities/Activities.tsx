@@ -36,7 +36,7 @@ const activities: Activity[] = [
     description:
       "Web Development Lead at Microsoft Learner Student Club (MLSC) Prpcem",
     logo: "MLSC LEAD.svg",
-    highlight: "Leadership Role",
+    // highlight removed
   },
   {
     title: "Certifications",
@@ -83,7 +83,11 @@ export function Activities({ className }: ActivitiesProps) {
                     <img
                       src={`/svg/logos/${activity.logo}`}
                       alt={activity.title}
-                      className="w-12 h-12 object-contain"
+                      className={`object-contain ${
+                        activity.title === "Certifications"
+                          ? "w-16 h-16 -mt-2"
+                          : "w-12 h-12"
+                      }`}
                     />
                   </div>
                   <div className="flex-1 min-w-0">
@@ -93,22 +97,28 @@ export function Activities({ className }: ActivitiesProps) {
                     <p className="text-neutral-600 dark:text-neutral-400 mb-3">
                       {activity.description}
                     </p>
-                    {activity.highlight && (
+                    {activity.highlight &&
+                      activity.title !== "Web Dev Lead" && (
+                        <div className="flex items-center gap-2 mb-3">
+                          <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/20 dark:text-blue-400">
+                            {activity.highlight}
+                          </span>
+                        </div>
+                      )}
+                    {activity.title === "Web Dev Lead" && (
                       <div className="flex items-center gap-2 mb-3">
-                        <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/20 dark:text-blue-400">
-                          {activity.highlight}
-                        </span>
-                        {activity.title === "Web Dev Lead" && (
-                          <a
-                            href="https://drive.google.com/file/d/1hqkhu6YYxUHZ-JK6sUuXGdK82coR5jpI/view?usp=drive_link"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1 text-sm font-medium text-blue-600 dark:text-blue-400 underline decoration-1 underline-offset-2 transition-opacity hover:opacity-70"
-                          >
-                            see
-                            <ExternalLink size={12} />
-                          </a>
-                        )}
+                        <a
+                          href="https://drive.google.com/file/d/1hqkhu6YYxUHZ-JK6sUuXGdK82coR5jpI/view?usp=drive_link"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 text-base  text-white underline decoration-fuchsia-500 decoration-2 underline-offset-4 transition-opacity hover:opacity-80"
+                        >
+                          See Credentials
+                          <ExternalLink
+                            size={18}
+                            className="text-fuchsia-500"
+                          />
+                        </a>
                       </div>
                     )}
                     {activity.certifications && (
