@@ -55,6 +55,7 @@ export function Header({ className }: HeaderProps) {
             src="/svg/logos/sujal.jpg"
             alt="Sujal"
             className="w-20 h-20 rounded-full object-cover border-3 border-pink-400/30"
+            style={{ objectPosition: "center top" }}
           />
           <div className="flex flex-col">
             <h1 className="text-3xl font-semibold mb-2">
@@ -93,6 +94,7 @@ export function Header({ className }: HeaderProps) {
             src="/svg/logos/sujal.jpg"
             alt="Sujal"
             className="w-16 h-16 rounded-full object-cover border-2 border-pink-400/30"
+            style={{ objectPosition: "center top" }}
           />
           <div>
             <h1 className="text-2xl font-semibold">

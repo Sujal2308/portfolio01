@@ -48,7 +48,9 @@ function App() {
           </div>
           <div className="mb-12">
             <BlurFade delay={0.6} direction="up" blur="3px">
-              <h1 className="mb-6 text-xl font-semibold">Now</h1>
+              <h1 className="mb-6 text-neutral-500 dark:text-neutral-400">
+                Now
+              </h1>
             </BlurFade>
             <BlurFade delay={0.75} direction="up" blur="3px">
               <Now />
@@ -56,7 +58,9 @@ function App() {
           </div>
           <div className="mb-12">
             <BlurFade delay={0.8} direction="up" blur="3px">
-              <h1 className="mb-6 text-xl font-semibold">Tech Stack</h1>
+              <h1 className="mb-6 text-neutral-500 dark:text-neutral-400">
+                Tech Stack
+              </h1>
             </BlurFade>
             <BlurFade delay={0.85} direction="up" blur="3px">
               <TechSkills />
@@ -64,7 +68,9 @@ function App() {
           </div>
           <div className="mb-12">
             <BlurFade delay={0.9} direction="up" blur="3px">
-              <h1 className="mb-6 text-xl font-semibold">Education</h1>
+              <h1 className="mb-6 text-neutral-500 dark:text-neutral-400">
+                Education
+              </h1>
             </BlurFade>
             <BlurFade delay={0.95} direction="up" blur="3px">
               <Education />
