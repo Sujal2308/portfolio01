@@ -75,13 +75,24 @@ function App() {
                 >
                   {isOrbitView ? (
                     <>
-                      <Grid3X3 size={16} />
-                      Grid
+                      <Grid3X3
+                        size={16}
+                        className="animate-colorchange text-blue-500 dark:text-blue-400"
+                      />
+                      <span className="animate-colorchange text-blue-500 dark:text-blue-400">
+                        Grid
+                      </span>
                     </>
                   ) : (
                     <>
-                      <Orbit size={16} style={orbitSpinStyle} />
-                      Orbit
+                      <Orbit
+                        size={16}
+                        style={orbitSpinStyle}
+                        className="animate-colorchange text-fuchsia-500 dark:text-fuchsia-400"
+                      />
+                      <span className="animate-colorchange text-fuchsia-500 dark:text-fuchsia-400">
+                        Orbit
+                      </span>
                     </>
                   )}
                 </button>
