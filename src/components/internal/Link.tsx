@@ -9,9 +9,10 @@ interface LinkProps {
   color: LinkColor;
   link: string;
   mail?: boolean;
+  underlineColor?: string; // 'auto' | 'resume' | undefined
 }
 
-export function Link({ children, color, link }: LinkProps) {
+export function Link({ children, color, link, underlineColor }: LinkProps) {
   const [isHovered, setIsHovered] = useState(false);
 
   const getBackgroundColor = (color: LinkColor) => {
@@ -31,6 +32,8 @@ export function Link({ children, color, link }: LinkProps) {
     }
   };
 
+  // Custom underline/arrow color for Resume link
+  const isResume = underlineColor === 'resume';
   return (
     <a
       href={link}
@@ -38,11 +41,9 @@ export function Link({ children, color, link }: LinkProps) {
       rel="noopener noreferrer"
       className="inline-flex items-center relative overflow-hidden"
       onMouseEnter={() => {
-        console.log("Mouse Enter");
         setIsHovered(true);
       }}
       onMouseLeave={() => {
-        console.log("Mouse Leave");
         setIsHovered(false);
       }}
     >
@@ -56,13 +57,26 @@ export function Link({ children, color, link }: LinkProps) {
       />
 
       <span
-        className={`relative tracking-wider underline transition-all duration-200 decoration-${color}-400 decoration-2 underline-offset-4 ${
-          isHovered ? "decoration-3" : ""
-        }`}
+        className={
+          isResume
+            ? `relative tracking-wider underline transition-all duration-200 decoration-2 underline-offset-4
+                dark:decoration-white decoration-black
+                ${isHovered ? 'decoration-3' : ''}`
+            : `relative tracking-wider underline transition-all duration-200 decoration-${color}-400 decoration-2 underline-offset-4 ${
+                isHovered ? 'decoration-3' : ''
+              }`
+        }
       >
         {children}
       </span>
-      <ArrowUpRight size={20} className={`relative ml-0.5 text-${color}-400`} />
+      <ArrowUpRight
+        size={20}
+        className={
+          isResume
+            ? `relative ml-0.5 dark:text-white text-black`
+            : `relative ml-0.5 text-${color}-400`
+        }
+      />
     </a>
   );
 }

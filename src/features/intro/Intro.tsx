@@ -1,4 +1,5 @@
 import { Link } from "@/components/internal/Link";
+import { BoxReveal } from "@/components/magicui/box-reveal";
 
 interface IntroProps {
   className?: string;
@@ -22,12 +23,15 @@ export function Intro({ className }: IntroProps) {
 
       {/* Mobile Resume Button */}
       <div className="mt-4 sm:hidden">
-        <Link
-          color="purple"
-          link="https://drive.google.com/file/d/1TckG6ETmH2WflrjcRknOOG8O0ZqBOE0m/view"
-        >
-          Resume
-        </Link>
+        <BoxReveal boxColor="#c27aff">
+          <Link
+            color="purple"
+            link="https://drive.google.com/file/d/1TckG6ETmH2WflrjcRknOOG8O0ZqBOE0m/view"
+            underlineColor="resume"
+          >
+            <span className="font-bold" style={{ color: 'tomato' }}>Resume</span>
+          </Link>
+        </BoxReveal>
       </div>
     </div>
   );
