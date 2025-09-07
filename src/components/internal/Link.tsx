@@ -33,7 +33,7 @@ export function Link({ children, color, link, underlineColor }: LinkProps) {
   };
 
   // Custom underline/arrow color for Resume link
-  const isResume = underlineColor === 'resume';
+  const isResume = underlineColor === "resume";
   return (
     <a
       href={link}
@@ -61,9 +61,9 @@ export function Link({ children, color, link, underlineColor }: LinkProps) {
           isResume
             ? `relative tracking-wider underline transition-all duration-200 decoration-2 underline-offset-4
                 dark:decoration-white decoration-black
-                ${isHovered ? 'decoration-3' : ''}`
+                ${isHovered ? "decoration-3" : ""}`
             : `relative tracking-wider underline transition-all duration-200 decoration-${color}-400 decoration-2 underline-offset-4 ${
-                isHovered ? 'decoration-3' : ''
+                isHovered ? "decoration-3" : ""
               }`
         }
       >

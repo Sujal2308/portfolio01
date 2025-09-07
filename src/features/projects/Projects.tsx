@@ -105,6 +105,78 @@ function ProjectCard({ project }: { project: Project }) {
       </h1>
       <p className="font-mono text-neutral-500 dark:text-neutral-400">
         {project.desc}
+        {project.name === "Devmate" && (
+          <a
+            href="https://github.com/Sujal2308/DevMate?tab=readme-ov-file#readme"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center ml-2 group transition-colors text-lime-400"
+          >
+            Read more
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={2}
+              stroke="currentColor"
+              className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              />
+            </svg>
+          </a>
+        )}
+        {project.name === "Outliner" && (
+          <a
+            href="https://github.com/Sujal2308/outliner-extension?tab=readme-ov-file#readme"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center ml-2 group transition-colors text-cyan-400"
+          >
+            Read more
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={2}
+              stroke="currentColor"
+              className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              />
+            </svg>
+          </a>
+        )}
+        {project.name === "A-Rice" && (
+          <a
+            href="https://github.com/Sujal2308/a-rice?tab=readme-ov-file#readme"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center ml-2 group transition-colors text-pink-400"
+          >
+            Read more
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={2}
+              stroke="currentColor"
+              className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              />
+            </svg>
+          </a>
+        )}
       </p>
     </div>
   );

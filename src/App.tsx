@@ -17,6 +17,11 @@ import { Contact } from "@/features/contact";
 import { Footer } from "@/features/footer";
 import { Grid3X3, Orbit } from "lucide-react";
 
+// Add spinning animation for Orbit icon
+const orbitSpinStyle = {
+  animation: "orbitLogoSpin 1.5s linear infinite",
+};
+
 function App() {
   const [isOrbitView, setIsOrbitView] = useState(false);
 
@@ -77,7 +82,7 @@ function App() {
                     </>
                   ) : (
                     <>
-                      <Orbit size={16} />
+                      <Orbit size={16} style={orbitSpinStyle} />
                       Orbit
                     </>
                   )}

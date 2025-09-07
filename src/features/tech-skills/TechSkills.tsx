@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 interface TechSkillsProps {
   className?: string;
@@ -30,6 +30,15 @@ export function TechSkills({ className }: TechSkillsProps) {
   const itemsPerPage = 12; // 4 rows × 3 columns on mobile
   const totalPages = Math.ceil(techSkills.length / itemsPerPage);
 
+  // Ref for scrolling
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  const scrollToSkills = () => {
+    if (sectionRef.current) {
+      sectionRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
   const getCurrentPageItems = () => {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
@@ -37,15 +46,23 @@ export function TechSkills({ className }: TechSkillsProps) {
   };
 
   const nextPage = () => {
-    setCurrentPage((prev) => (prev < totalPages ? prev + 1 : prev));
+    setCurrentPage((prev) => {
+      const next = prev < totalPages ? prev + 1 : prev;
+      setTimeout(scrollToSkills, 0);
+      return next;
+    });
   };
 
   const prevPage = () => {
-    setCurrentPage((prev) => (prev > 1 ? prev - 1 : prev));
+    setCurrentPage((prev) => {
+      const next = prev > 1 ? prev - 1 : prev;
+      setTimeout(scrollToSkills, 0);
+      return next;
+    });
   };
 
   return (
-    <div className={className}>
+    <div className={className} id="skills-section" ref={sectionRef}>
       {/* Desktop: Show all items */}
       <div className="hidden sm:grid grid-cols-4 gap-4 md:grid-cols-5 lg:grid-cols-6">
         {techSkills.map((skill) => (
