@@ -45,7 +45,7 @@ export function Skills() {
             iconSize={40}
             radius={120}
             speed={0.5}
-            className="-ml-4"
+            className="-ml-6"
           >
             {outer.map(({ name, scale = 1.0, displayName }) => (
               <img
@@ -63,7 +63,7 @@ export function Skills() {
             radius={60}
             reverse
             speed={0.4}
-            className="-ml-4"
+            className="-ml-6"
           >
             {inner.map(({ name, scale = 1.0, displayName }) => (
               <img
