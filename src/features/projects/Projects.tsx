@@ -76,13 +76,13 @@ export function Projects() {
       <div className="hidden md:grid md:grid-cols-2 md:grid-rows-2 md:gap-0 relative border border-dashed border-neutral-700/40 dark:border-neutral-300/10 rounded-xl overflow-hidden min-h-[420px]">
         {/* Vertical line */}
         <div
-          className="hidden md:block absolute top-0 bottom-0 left-1/2 w-0.5 border-l-2 border-dashed border-neutral-700/40 dark:border-neutral-300/10 z-10"
+          className="hidden md:block absolute top-0 bottom-0 left-1/2 w-0.5 border-l border-dashed border-neutral-700/20 dark:border-neutral-300/5 z-10"
           style={{ height: "100%" }}
           aria-hidden="true"
         />
         {/* Horizontal line */}
         <div
-          className="hidden md:block absolute left-0 right-0 top-1/2 h-0.5 border-t-2 border-dashed border-neutral-700/40 dark:border-neutral-300/10 z-10"
+          className="hidden md:block absolute left-0 right-0 top-1/2 h-0.5 border-t border-dashed border-neutral-700/20 dark:border-neutral-300/5 z-10"
           style={{ width: "100%" }}
           aria-hidden="true"
         />

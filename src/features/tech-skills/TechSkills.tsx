@@ -82,7 +82,13 @@ export function TechSkills({ className }: TechSkillsProps) {
               alt={skill.name}
               className="w-8 h-8 mb-2 object-contain"
             />
-            <span className="text-sm font-medium text-center">
+            <span
+              className={`text-sm font-medium text-center${
+                ["Tailwind CSS", "Router-dom"].includes(skill.name)
+                  ? " whitespace-nowrap"
+                  : ""
+              }`}
+            >
               {skill.name}
             </span>
           </div>
