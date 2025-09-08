@@ -51,7 +51,7 @@ export function StickyNav() {
             <a
               href="#projects"
               onClick={(e) => handleNavClick(e, "projects-section")}
-              className={`hover:underline underline-offset-8 ${
+              className={`underline-offset-8 ${
                 activeLink === "projects-section"
                   ? "underline decoration-2 decoration-orange-500 font-bold"
                   : ""
@@ -62,7 +62,7 @@ export function StickyNav() {
             <a
               href="#skills"
               onClick={(e) => handleNavClick(e, "skills-section")}
-              className={`hover:underline underline-offset-8 ${
+              className={`underline-offset-8 ${
                 activeLink === "skills-section"
                   ? "underline decoration-2 decoration-orange-500 font-bold"
                   : ""
@@ -73,7 +73,7 @@ export function StickyNav() {
             <a
               href="#education"
               onClick={(e) => handleNavClick(e, "education-section")}
-              className={`hover:underline underline-offset-8 ${
+              className={`underline-offset-8 ${
                 activeLink === "education-section"
                   ? "underline decoration-2 decoration-orange-500 font-bold"
                   : ""
@@ -84,7 +84,7 @@ export function StickyNav() {
             <a
               href="#activities"
               onClick={(e) => handleNavClick(e, "activities-section")}
-              className={`hover:underline underline-offset-8 ${
+              className={`underline-offset-8 ${
                 activeLink === "activities-section"
                   ? "underline decoration-2 decoration-orange-500 font-bold"
                   : ""

@@ -45,8 +45,10 @@ export function TechSkills({ className }: TechSkillsProps) {
     if (gridRef.current) {
       gridRef.current.scrollTop = 0;
     }
-    if (sectionRef.current) {
-      sectionRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    // Use the skills-section ID to scroll to the proper position with offset
+    const skillsSection = document.getElementById("skills-section");
+    if (skillsSection) {
+      skillsSection.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
 
@@ -68,6 +70,7 @@ export function TechSkills({ className }: TechSkillsProps) {
 
   return (
     <div className={className} id="skills-section" ref={sectionRef}>
+
       {/* Desktop: Show all items */}
       <div className="hidden sm:grid grid-cols-4 gap-4 md:grid-cols-5 lg:grid-cols-6">
         {techSkills.map((skill) => (
@@ -123,7 +126,10 @@ export function TechSkills({ className }: TechSkillsProps) {
             {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
               <button
                 key={page}
-                onClick={() => setCurrentPage(page)}
+                onClick={() => {
+                  setCurrentPage(page);
+                  setTimeout(scrollGridToTop, 0);
+                }}
                 className={`w-8 h-8 text-sm font-medium rounded-lg transition-colors duration-200 ${
                   currentPage === page
                     ? "bg-blue-600 text-white"
