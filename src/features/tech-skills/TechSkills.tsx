@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import { BlurFade } from "@/components/magicui/blur-fade";
 
 interface TechSkillsProps {
   className?: string;
@@ -30,14 +31,9 @@ export function TechSkills({ className }: TechSkillsProps) {
   const itemsPerPage = 12; // 4 rows × 3 columns on mobile
   const totalPages = Math.ceil(techSkills.length / itemsPerPage);
 
-  // Ref for scrolling
+  // Ref for the grid container to control scroll position
+  const gridRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
-
-  const scrollToSkills = () => {
-    if (sectionRef.current) {
-      sectionRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  };
 
   const getCurrentPageItems = () => {
     const startIndex = (currentPage - 1) * itemsPerPage;
@@ -45,10 +41,19 @@ export function TechSkills({ className }: TechSkillsProps) {
     return techSkills.slice(startIndex, endIndex);
   };
 
+  const scrollGridToTop = () => {
+    if (gridRef.current) {
+      gridRef.current.scrollTop = 0;
+    }
+    if (sectionRef.current) {
+      sectionRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
   const nextPage = () => {
     setCurrentPage((prev) => {
       const next = prev < totalPages ? prev + 1 : prev;
-      setTimeout(scrollToSkills, 0);
+      setTimeout(scrollGridToTop, 0);
       return next;
     });
   };
@@ -56,7 +61,7 @@ export function TechSkills({ className }: TechSkillsProps) {
   const prevPage = () => {
     setCurrentPage((prev) => {
       const next = prev > 1 ? prev - 1 : prev;
-      setTimeout(scrollToSkills, 0);
+      setTimeout(scrollGridToTop, 0);
       return next;
     });
   };
@@ -84,21 +89,23 @@ export function TechSkills({ className }: TechSkillsProps) {
 
       {/* Mobile: Show paginated items */}
       <div className="sm:hidden">
-        <div className="grid grid-cols-3 gap-4 mb-6">
-          {getCurrentPageItems().map((skill) => (
-            <div
-              key={skill.name}
-              className="flex flex-col items-center p-4 bg-white/5 dark:bg-black/10 rounded-lg border border-gray-200/20 dark:border-gray-700/30 hover:bg-white/10 dark:hover:bg-black/20 transition-colors duration-200"
-            >
-              <img
-                src={`/svg/logos/${skill.logo}`}
-                alt={skill.name}
-                className="w-8 h-8 mb-2 object-contain"
-              />
-              <span className="text-sm font-medium text-center">
-                {skill.name}
-              </span>
-            </div>
+        <div
+          ref={gridRef}
+          className="grid grid-cols-3 gap-4 mb-6 max-h-[600px] overflow-y-auto"
+        >
+          {getCurrentPageItems().map((skill, index) => (
+            <BlurFade key={skill.name} delay={0.15 + index * 0.07}>
+              <div className="flex flex-col items-center p-4 bg-white/5 dark:bg-black/10 rounded-lg border border-gray-200/20 dark:border-gray-700/30 hover:bg-white/10 dark:hover:bg-black/20 transition-colors duration-200">
+                <img
+                  src={`/svg/logos/${skill.logo}`}
+                  alt={skill.name}
+                  className="w-8 h-8 mb-2 object-contain"
+                />
+                <span className="text-sm font-medium text-center">
+                  {skill.name}
+                </span>
+              </div>
+            </BlurFade>
           ))}
         </div>
 

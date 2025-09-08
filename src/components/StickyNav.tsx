@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { ThemeToggle } from "@/features/header/components/ThemeToggle";
 
 export function StickyNav() {
-  const [activeLink, setActiveLink] = useState("projects-section");
+  const [activeLink, setActiveLink] = useState("");
 
   // Update active link based on scroll position
   useEffect(() => {
@@ -51,9 +51,9 @@ export function StickyNav() {
             <a
               href="#projects"
               onClick={(e) => handleNavClick(e, "projects-section")}
-              className={`hover:underline underline-offset-4 ${
+              className={`hover:underline underline-offset-8 ${
                 activeLink === "projects-section"
-                  ? "underline decoration-orange-500"
+                  ? "underline decoration-2 decoration-orange-500 font-bold"
                   : ""
               }`}
             >
@@ -62,9 +62,9 @@ export function StickyNav() {
             <a
               href="#skills"
               onClick={(e) => handleNavClick(e, "skills-section")}
-              className={`hover:underline underline-offset-4 ${
+              className={`hover:underline underline-offset-8 ${
                 activeLink === "skills-section"
-                  ? "underline decoration-orange-500"
+                  ? "underline decoration-2 decoration-orange-500 font-bold"
                   : ""
               }`}
             >
@@ -73,9 +73,9 @@ export function StickyNav() {
             <a
               href="#education"
               onClick={(e) => handleNavClick(e, "education-section")}
-              className={`hover:underline underline-offset-4 ${
+              className={`hover:underline underline-offset-8 ${
                 activeLink === "education-section"
-                  ? "underline decoration-orange-500"
+                  ? "underline decoration-2 decoration-orange-500 font-bold"
                   : ""
               }`}
             >
@@ -84,9 +84,9 @@ export function StickyNav() {
             <a
               href="#activities"
               onClick={(e) => handleNavClick(e, "activities-section")}
-              className={`hover:underline underline-offset-4 ${
+              className={`hover:underline underline-offset-8 ${
                 activeLink === "activities-section"
-                  ? "underline decoration-orange-500"
+                  ? "underline decoration-2 decoration-orange-500 font-bold"
                   : ""
               }`}
             >

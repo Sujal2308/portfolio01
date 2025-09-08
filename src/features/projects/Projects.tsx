@@ -54,13 +54,20 @@ export function Projects() {
         {projects.map((project, index) => (
           <ProjectCard key={index} project={project} />
         ))}
-        <div className="p-4 flex flex-col justify-center items-center text-center text-neutral-500 dark:text-neutral-400 border border-dashed border-neutral-700/40 dark:border-neutral-300/10 rounded-xl">
-          <span className="text-lg font-semibold mb-2">
-            🚧 Cool projects are on the way!
-          </span>
-          <span className="text-sm opacity-70">
-            Stay tuned for more updates.
-          </span>
+        <div className="p-4 flex flex-row items-center justify-center gap-3 text-neutral-500 dark:text-neutral-400 border border-dashed border-neutral-700/40 dark:border-neutral-300/10 rounded-xl">
+          <img
+            src="/svg/logos/superman-seeklogo.png"
+            alt="Superman Logo"
+            className="w-10 h-10 min-w-8 min-h-8"
+          />
+          <div className="flex flex-col items-start max-w-[220px] sm:max-w-xs">
+            <span className="text-base sm:text-lg font-semibold leading-tight">
+              Cool projects are on the way!
+            </span>
+            <span className="text-xs sm:text-sm opacity-70 leading-tight font-mono mt-2">
+              Stay tuned for more updates.
+            </span>
+          </div>
         </div>
       </div>
 
