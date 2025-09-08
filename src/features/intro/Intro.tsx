@@ -13,24 +13,14 @@ export function Intro({ className }: IntroProps) {
           Turning concepts into code.
         </span>
         <span className="font-mono">
-          &nbsp;I'm a Full-Stack Developer passionate about building{" "}
-          <span className="underline underline-offset-4 decoration-neutral-400 dark:decoration-neutral-500">
-            scalable web applications
-          </span>{" "}
-          and impactful tools. With a great experience in the{" "}
+          &nbsp;I'm a Full-Stack Developer passionate about building scalable
+          web applications and impactful tools. With a great experience in the{" "}
           <span className="underline underline-offset-4 decoration-neutral-400 dark:decoration-neutral-500">
             MERN stack
           </span>
           , backend systems, and problem-solving in Java, I bridge the gap
-          between ideas and{" "}
-          <span className="underline underline-offset-4 decoration-neutral-400 dark:decoration-neutral-500">
-            execution
-          </span>
-          —
-          <span className="underline underline-offset-4 decoration-neutral-400 dark:decoration-neutral-500">
-            crafting modern
-          </span>
-          , efficient, and user-focused solutions.
+          between ideas and execution — crafting modern, efficient, and
+          user-focused solutions.
         </span>
       </p>
 
