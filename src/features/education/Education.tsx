@@ -21,16 +21,16 @@ const educationData: EducationItem[] = [
     logo: "student-svgrepo-com.svg",
   },
   {
-    institution: "Shri Shivaji Multipurpose Jr. College, Amt",
+    institution: "Shri Shivaji Multipurpose Jr. College, Amravati",
     degree: "HSC in PCM",
-    location: "Amt, Maharashtra",
+    location: "Amravati, Maharashtra",
     period: "Feb-2022",
     logo: "student-svgrepo-com.svg",
   },
   {
-    institution: "Golden Kids English High School, Amt",
+    institution: "Golden Kids English High School, Amravati",
     degree: "SSC",
-    location: "Amt, Maharashtra",
+    location: "Amravati, Maharashtra",
     period: "Mar-2020",
     logo: "student-svgrepo-com.svg",
   },
@@ -66,24 +66,24 @@ export function Education({ className }: EducationProps) {
                         {edu.institution}
                       </h3>
                     </div>
-                    <p className="text-zinc-700 dark:text-zinc-300 font-medium mt-1">
+                    <p className="text-zinc-700 dark:text-zinc-300 font-medium mt-1 font-mono">
                       {edu.degree}
                     </p>
-                    <p className="text-sm text-zinc-600 dark:text-zinc-400">
+                    <p className="text-sm text-zinc-600 dark:text-zinc-400 font-mono">
                       {edu.location}
                     </p>
                   </div>
                   <div className="flex flex-col items-start sm:items-end mt-2 sm:mt-0">
-                    <span className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
+                    <span className="text-sm font-medium text-zinc-700 dark:text-zinc-300 font-mono">
                       {edu.period}
                       {edu.status && (
-                        <span className="ml-2 text-xs text-blue-600 dark:text-blue-400 font-medium sm:hidden">
+                        <span className="ml-2 text-xs text-blue-600 dark:text-blue-400 font-medium sm:hidden font-mono">
                           {edu.status}
                         </span>
                       )}
                     </span>
                     {edu.status && (
-                      <span className="hidden sm:block text-xs text-blue-600 dark:text-blue-400 font-medium">
+                      <span className="hidden sm:block text-xs text-blue-600 dark:text-blue-400 font-medium font-mono">
                         {edu.status}
                       </span>
                     )}

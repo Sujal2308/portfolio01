@@ -99,7 +99,7 @@ export function Activities({ className }: ActivitiesProps) {
         <div className="grid gap-6 sm:grid-cols-2">
           {paginatedActivities.map((activity, index) => (
             <BlurFade key={activity.title} delay={0.25 + index * 0.1}>
-              <div className="group relative p-6 bg-[rgba(255,228,242,0.35)] dark:bg-black/10 rounded-lg border border-gray-200/20 dark:border-gray-700/30 sm:hover:bg-white/10 sm:dark:hover:bg-black/20 transition-all duration-300 sm:hover:scale-[1.02] min-h-[220px] flex flex-col">
+              <div className="group relative p-6 bg-[rgba(255,228,242,0.35)] dark:bg-black/10 rounded-lg border border-gray-200/20 dark:border-gray-700/30 sm:hover:bg-white/10 sm:dark:hover:bg-black/20 transition-all duration-300 sm:hover:scale-[1.02] min-h-[220px] sm:h-[235px] flex flex-col">
                 <div className="flex items-start space-x-4 flex-1">
                   <div className="flex-shrink-0">
                     <img
@@ -112,13 +112,13 @@ export function Activities({ className }: ActivitiesProps) {
                     <h3 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-2">
                       {activity.title}
                     </h3>
-                    <p className="text-neutral-600 dark:text-neutral-400 mb-3">
+                    <p className="text-neutral-600 dark:text-neutral-400 mb-3 font-mono">
                       {activity.description}
                     </p>
                     {activity.highlight &&
                       activity.title !== "Web Dev Lead" && (
                         <div className="flex items-center gap-2 mb-3">
-                          <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/20 dark:text-blue-400">
+                          <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/20 dark:text-blue-400 font-mono">
                             {activity.highlight}
                           </span>
                         </div>
@@ -129,7 +129,7 @@ export function Activities({ className }: ActivitiesProps) {
                           href="https://drive.google.com/file/d/1hqkhu6YYxUHZ-JK6sUuXGdK82coR5jpI/view?usp=drive_link"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 text-base text-black dark:text-white underline decoration-fuchsia-500 decoration-2 underline-offset-4 transition-opacity sm:hover:opacity-80"
+                          className="inline-flex items-center gap-1 text-base text-black dark:text-white underline decoration-fuchsia-500 decoration-2 underline-offset-4 transition-opacity sm:hover:opacity-80 font-mono"
                         >
                           See Credentials
                           <ExternalLink
@@ -147,7 +147,7 @@ export function Activities({ className }: ActivitiesProps) {
                             href={cert.url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1 text-base font-bold underline decoration-1 underline-offset-2 transition-opacity sm:hover:opacity-70"
+                            className="inline-flex items-center gap-1 text-base font-bold underline decoration-1 underline-offset-2 transition-opacity sm:hover:opacity-70 font-mono"
                             style={{
                               color:
                                 cert.color === "orange"
