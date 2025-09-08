@@ -1,4 +1,3 @@
-import { ArrowUpRight } from "lucide-react";
 
 export function Footer() {
   return (
