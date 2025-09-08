@@ -7,6 +7,7 @@ module.exports = {
       fontFamily: {
         sans: ['"Söhne"', "sans-serif"],
         newsreader: ['"Newsreader"', "serif"],
+        poppins: ["Poppins", "sans-serif"],
       },
       colors: {
         background: "var(--background)",

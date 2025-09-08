@@ -42,7 +42,10 @@ export function Intro({ className }: IntroProps) {
             link="https://drive.google.com/file/d/1TckG6ETmH2WflrjcRknOOG8O0ZqBOE0m/view"
             underlineColor="resume"
           >
-            <span className="font-bold" style={{ color: "tomato" }}>
+            <span
+              className="font-bold text-lg sm:text-base"
+              style={{ color: "tomato" }}
+            >
               Resume
             </span>
           </Link>

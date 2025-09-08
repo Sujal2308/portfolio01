@@ -131,7 +131,7 @@ export function TechSkills({ className }: TechSkillsProps) {
           {currentPage > 1 && (
             <span
               onClick={prevPage}
-              className="flex items-center gap-1 select-none cursor-pointer text-sm font-bold text-blue-800 hover:underline absolute left-0"
+              className="flex items-center gap-1 select-none cursor-pointer text-sm font-bold text-blue-500 hover:underline absolute left-0"
               role="button"
               tabIndex={0}
               style={{ minWidth: "80px" }}
@@ -142,7 +142,7 @@ export function TechSkills({ className }: TechSkillsProps) {
                 viewBox="0 0 24 24"
                 strokeWidth={2}
                 stroke="currentColor"
-                className="w-4 h-4"
+                className="w-4 h-4 text-blue-500"
               >
                 <path
                   strokeLinecap="round"
@@ -180,7 +180,7 @@ export function TechSkills({ className }: TechSkillsProps) {
             className={`flex items-center gap-1 select-none cursor-pointer text-sm font-bold ${
               currentPage === totalPages
                 ? "opacity-50 cursor-default"
-                : "text-blue-800 hover:underline"
+                : "text-blue-500 hover:underline"
             } absolute right-0`}
             role="button"
             tabIndex={currentPage === totalPages ? -1 : 0}
@@ -194,7 +194,7 @@ export function TechSkills({ className }: TechSkillsProps) {
               viewBox="0 0 24 24"
               strokeWidth={2}
               stroke="currentColor"
-              className="w-4 h-4"
+              className="w-4 h-4 text-blue-500"
             >
               <path
                 strokeLinecap="round"

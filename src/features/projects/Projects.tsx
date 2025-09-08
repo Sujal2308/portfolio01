@@ -20,7 +20,7 @@ export function Projects() {
       name: "Devmate",
       desc: "A social media platform exclusively for developers. It enables users to share posts, showcase projects, and connect with peers in a developer-focused community.",
       link: "https://devmate.dev",
-      code: "https://devmate.dev",
+      code: "https://github.com/Sujal2308/DevMate",
       color: "lime",
       boxColor: "#9ae600",
       delay: 0.2,

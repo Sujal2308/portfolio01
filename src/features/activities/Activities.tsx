@@ -1,5 +1,6 @@
 import { BlurFade } from "@/components/magicui/blur-fade";
 import { ExternalLink, ArrowRight, ArrowLeft } from "lucide-react";
+import { useState, useRef } from "react";
 
 interface ActivitiesProps {
   className?: string;
@@ -67,13 +68,12 @@ const activities: Activity[] = [
   },
 ];
 
-import { useState } from "react";
-
 export function Activities({ className }: ActivitiesProps) {
   const [page, setPage] = useState(0);
   const cardsPerPage = 2;
   const isMobile = typeof window !== "undefined" && window.innerWidth < 640;
   const totalPages = Math.ceil(activities.length / cardsPerPage);
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   // For SSR safety, fallback to always show all on first render
   const showPagination = typeof window !== "undefined" ? isMobile : false;
@@ -81,9 +81,18 @@ export function Activities({ className }: ActivitiesProps) {
     ? activities.slice(page * cardsPerPage, (page + 1) * cardsPerPage)
     : activities;
 
+  // Scroll to section on page change (mobile)
+  const scrollSectionToTop = () => {
+    if (sectionRef.current) {
+      const rect = sectionRef.current.getBoundingClientRect();
+      const scrollTop = window.pageYOffset + rect.top - 20; // Add 20px offset from top
+      window.scrollTo({ top: scrollTop, behavior: "smooth" });
+    }
+  };
+
   return (
     <BlurFade delay={0.25}>
-      <div className={className}>
+      <div className={className} ref={sectionRef}>
         <h2 className="mb-6 text-neutral-500 dark:text-neutral-400">
           Extracurricular Activities
         </h2>
@@ -175,7 +184,10 @@ export function Activities({ className }: ActivitiesProps) {
             {page > 0 ? (
               <button
                 className="text-blue-500 bg-transparent border-none shadow-none px-0 py-0 text-base font-semibold focus:outline-none flex items-center gap-1"
-                onClick={() => setPage((p) => p - 1)}
+                onClick={() => {
+                  setPage((p) => p - 1);
+                  setTimeout(scrollSectionToTop, 0);
+                }}
               >
                 <ArrowLeft size={18} className="text-blue-500" /> Prev
               </button>
@@ -184,7 +196,13 @@ export function Activities({ className }: ActivitiesProps) {
             )}
             <button
               className="text-blue-500 bg-transparent border-none shadow-none px-0 py-0 text-base font-semibold focus:outline-none flex items-center gap-1 disabled:opacity-50"
-              onClick={() => setPage((p) => (p + 1) % totalPages)}
+              onClick={() => {
+                setPage((p) => {
+                  const next = (p + 1) % totalPages;
+                  setTimeout(scrollSectionToTop, 0);
+                  return next;
+                });
+              }}
               disabled={page >= totalPages - 1}
             >
               Next <ArrowRight size={18} className="text-blue-500" />
