@@ -1,4 +1,3 @@
-
 export function Footer() {
   return (
     <footer className="py-4 text-sm border-t-2 border-natural-400 dark:border-neutral-700 text-neutral-400 bg-background">
