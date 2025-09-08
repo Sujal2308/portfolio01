@@ -114,13 +114,18 @@ export function TechSkills({ className }: TechSkillsProps) {
 
         {/* Pagination Controls */}
         <div className="flex items-center justify-between">
-          <button
-            onClick={prevPage}
-            disabled={currentPage === 1}
-            className="px-4 py-2 text-sm font-medium rounded-lg bg-white/5 dark:bg-black/10 border border-gray-200/20 dark:border-gray-700/30 hover:bg-white/10 dark:hover:bg-black/20 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+          <span
+            onClick={currentPage === 1 ? undefined : prevPage}
+            className={`flex items-center gap-1 select-none cursor-pointer text-sm font-medium ${currentPage === 1 ? 'opacity-50 cursor-default' : 'text-blue-400 hover:underline'}`}
+            role="button"
+            tabIndex={currentPage === 1 ? -1 : 0}
+            aria-disabled={currentPage === 1}
           >
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
             Previous
-          </button>
+          </span>
 
           <div className="flex items-center space-x-2">
             {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
@@ -141,13 +146,18 @@ export function TechSkills({ className }: TechSkillsProps) {
             ))}
           </div>
 
-          <button
-            onClick={nextPage}
-            disabled={currentPage === totalPages}
-            className="px-4 py-2 text-sm font-medium rounded-lg bg-white/5 dark:bg-black/10 border border-gray-200/20 dark:border-gray-700/30 hover:bg-white/10 dark:hover:bg-black/20 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+          <span
+            onClick={currentPage === totalPages ? undefined : nextPage}
+            className={`flex items-center gap-1 select-none cursor-pointer text-sm font-medium ${currentPage === totalPages ? 'opacity-50 cursor-default' : 'text-blue-400 hover:underline'}`}
+            role="button"
+            tabIndex={currentPage === totalPages ? -1 : 0}
+            aria-disabled={currentPage === totalPages}
           >
             Next
-          </button>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </span>
         </div>
       </div>
     </div>
