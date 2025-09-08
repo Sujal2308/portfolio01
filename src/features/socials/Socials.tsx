@@ -48,7 +48,9 @@ export function Socials({ className }: SocialsProps) {
             <img
               src={`/svg/logos/${social.logo}`}
               alt={social.name}
-              className="w-12 h-12 object-contain"
+              className={`object-contain ${
+                social.name === "Discord" ? "w-14 h-14" : "w-12 h-12"
+              }`}
             />
             <span className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-xs text-neutral-500 dark:text-neutral-400 opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
               {social.name}

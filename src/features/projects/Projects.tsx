@@ -54,7 +54,8 @@ export function Projects() {
         {projects.map((project, index) => (
           <ProjectCard key={index} project={project} />
         ))}
-        <div className="p-4 flex flex-row items-center justify-center gap-3 text-neutral-500 dark:text-neutral-400 border border-dashed border-neutral-700/40 dark:border-neutral-300/10 rounded-xl">
+        {/* Superman logo placeholder strictly mobile only */}
+        <div className="p-4 flex flex-row items-center justify-center gap-3 text-neutral-500 dark:text-neutral-400 border border-dashed border-neutral-700/40 dark:border-neutral-300/10 rounded-xl md:hidden">
           <img
             src="/svg/logos/superman-seeklogo.png"
             alt="Superman Logo"
@@ -108,8 +109,13 @@ export function Projects() {
           className="p-4 md:p-5 flex flex-col justify-center items-center text-center text-neutral-500 dark:text-neutral-400"
           style={{ gridRow: 2, gridColumn: 2 }}
         >
+          <img
+            src="/svg/logos/superman-seeklogo.png"
+            alt="Superman Logo"
+            className="w-14 h-14 mb-2"
+          />
           <span className="text-lg font-semibold mb-2">
-            🚧 Cool projects are on the way!
+            Cool projects are on the way!
           </span>
           <span className="text-sm opacity-70">
             Stay tuned for more updates.
