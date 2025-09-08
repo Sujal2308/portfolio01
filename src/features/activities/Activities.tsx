@@ -22,9 +22,9 @@ const activities: Activity[] = [
   {
     title: "Hackathon Participation",
     description:
-      "Participated in more than 6 hackathons with 1 win and 2 finalist positions",
+      "Participated in more than 6 hackathons across various domains",
     logo: "Hacakathon.svg",
-    highlight: "1 Win, 2 Finalist",
+    highlight: "<b>1 Win, 2 Finalist</b>",
   },
   {
     title: "Certifications",
@@ -42,7 +42,7 @@ const activities: Activity[] = [
         color: "cyan",
       },
       {
-        name: "React.js",
+        name: "React",
         url: "https://drive.google.com/file/d/184Xs5DsyjbIn2Pgtmk3gJJCCrqZopJDm/view?usp=sharing",
         color: "purple",
       },
@@ -119,7 +119,11 @@ export function Activities({ className }: ActivitiesProps) {
                       activity.title !== "Web Dev Lead" && (
                         <div className="flex items-center gap-2 mb-3">
                           <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/20 dark:text-blue-400 font-mono">
-                            {activity.highlight}
+                            <span
+                              dangerouslySetInnerHTML={{
+                                __html: activity.highlight,
+                              }}
+                            />
                           </span>
                         </div>
                       )}
