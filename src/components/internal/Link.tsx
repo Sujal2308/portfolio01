@@ -41,7 +41,10 @@ export function Link({ children, color, link, underlineColor }: LinkProps) {
       rel="noopener noreferrer"
       className="inline-flex items-center relative overflow-hidden"
       onMouseEnter={() => {
-        setIsHovered(true);
+        if (window.innerWidth >= 640) {
+          // Only on desktop (sm breakpoint)
+          setIsHovered(true);
+        }
       }}
       onMouseLeave={() => {
         setIsHovered(false);

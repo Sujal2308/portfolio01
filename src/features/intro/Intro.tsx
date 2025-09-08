@@ -36,7 +36,7 @@ export function Intro({ className }: IntroProps) {
 
       {/* Mobile Resume Button */}
       <div className="mt-4 sm:hidden">
-        <BoxReveal boxColor="#c27aff">
+        <BoxReveal boxColor="tomato">
           <Link
             color="purple"
             link="https://drive.google.com/file/d/1TckG6ETmH2WflrjcRknOOG8O0ZqBOE0m/view"

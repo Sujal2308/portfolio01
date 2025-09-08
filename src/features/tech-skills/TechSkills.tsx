@@ -75,7 +75,7 @@ export function TechSkills({ className }: TechSkillsProps) {
         {techSkills.map((skill) => (
           <div
             key={skill.name}
-            className="flex flex-col items-center p-4 bg-white/5 dark:bg-black/10 rounded-lg border border-gray-300 dark:border-gray-700/30 hover:bg-white/10 dark:hover:bg-black/20 transition-colors duration-200"
+            className="flex flex-col items-center p-4 bg-white/5 dark:bg-black/10 rounded-lg border border-gray-300 dark:border-gray-700/30 sm:hover:bg-white/10 sm:dark:hover:bg-black/20 transition-colors duration-200"
           >
             <img
               src={`/svg/logos/${skill.logo}`}
@@ -97,7 +97,7 @@ export function TechSkills({ className }: TechSkillsProps) {
         >
           {getCurrentPageItems().map((skill, index) => (
             <BlurFade key={skill.name} delay={0.15 + index * 0.07}>
-              <div className="flex flex-col items-center p-4 bg-white/5 dark:bg-black/10 rounded-lg border border-gray-300 dark:border-gray-700/30 hover:bg-white/10 dark:hover:bg-black/20 transition-colors duration-200">
+              <div className="flex flex-col items-center p-4 bg-white/5 dark:bg-black/10 rounded-lg border border-gray-300 dark:border-gray-700/30 sm:hover:bg-white/10 sm:dark:hover:bg-black/20 transition-colors duration-200">
                 {skill.logoDark ? (
                   <>
                     <img
@@ -131,7 +131,7 @@ export function TechSkills({ className }: TechSkillsProps) {
           {currentPage > 1 && (
             <span
               onClick={prevPage}
-              className="flex items-center gap-1 select-none cursor-pointer text-sm font-bold text-blue-500 hover:underline absolute left-0"
+              className="flex items-center gap-1 select-none cursor-pointer text-sm font-bold text-blue-500 sm:hover:underline absolute left-0"
               role="button"
               tabIndex={0}
               style={{ minWidth: "80px" }}
@@ -166,7 +166,7 @@ export function TechSkills({ className }: TechSkillsProps) {
                     className={`w-8 h-8 text-sm font-medium rounded-lg transition-colors duration-200 ${
                       currentPage === page
                         ? "bg-blue-600 text-white"
-                        : "bg-white/5 dark:bg-black/10 border border-gray-200/20 dark:border-gray-700/30 hover:bg-white/10 dark:hover:bg-black/20"
+                        : "bg-white/5 dark:bg-black/10 border border-gray-200/20 dark:border-gray-700/30 sm:hover:bg-white/10 sm:dark:hover:bg-black/20"
                     }`}
                   >
                     {page}
@@ -180,7 +180,7 @@ export function TechSkills({ className }: TechSkillsProps) {
             className={`flex items-center gap-1 select-none cursor-pointer text-sm font-bold ${
               currentPage === totalPages
                 ? "opacity-50 cursor-default"
-                : "text-blue-500 hover:underline"
+                : "text-blue-500 sm:hover:underline"
             } absolute right-0`}
             role="button"
             tabIndex={currentPage === totalPages ? -1 : 0}

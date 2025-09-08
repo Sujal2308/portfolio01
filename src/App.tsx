@@ -24,6 +24,7 @@ import { Education } from "@/features/education";
 import { Activities } from "@/features/activities";
 import { Contact } from "@/features/contact";
 import { Footer } from "@/features/footer";
+import { useRef } from "react";
 import { Grid3X3, Orbit, ArrowUp } from "lucide-react";
 
 // Add spinning animation for Orbit icon
@@ -32,10 +33,12 @@ const orbitSpinStyle = {
 };
 
 function App() {
+  const footerRef = useRef<HTMLDivElement | null>(null);
   const [isOrbitView, setIsOrbitView] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [showStickyNav, setShowStickyNav] = useState(false);
+  const [footerVisible, setFooterVisible] = useState(false);
 
   useEffect(() => {
     let scrollTimeout: NodeJS.Timeout;
@@ -54,9 +57,17 @@ function App() {
       }
     };
     window.addEventListener("scroll", handleScroll);
+
+    // Intersection Observer for Footer
+    const observer = new window.IntersectionObserver(
+      ([entry]) => setFooterVisible(entry.isIntersecting),
+      { threshold: 0.01 }
+    );
+    if (footerRef.current) observer.observe(footerRef.current);
     return () => {
       window.removeEventListener("scroll", handleScroll);
       clearTimeout(scrollTimeout);
+      if (footerRef.current) observer.unobserve(footerRef.current);
     };
   }, []);
 
@@ -102,7 +113,7 @@ function App() {
                 </h1>
                 <button
                   onClick={() => setIsOrbitView(!isOrbitView)}
-                  className="flex items-center gap-2 px-3 py-1.5 text-sm font-medium rounded-lg bg-white/5 dark:bg-black/10 border border-gray-200/20 dark:border-gray-700/30 hover:bg-white/10 dark:hover:bg-black/20 transition-colors duration-200"
+                  className="flex items-center gap-2 px-3 py-1.5 text-sm font-medium rounded-lg bg-white/5 dark:bg-black/10 border border-gray-300 dark:border-gray-700/30 sm:hover:bg-white/10 sm:dark:hover:bg-black/20 transition-colors duration-200"
                 >
                   {isOrbitView ? (
                     <>
@@ -179,12 +190,14 @@ function App() {
         </article>
         <FelixLottieSticky />
       </main>
-      <Footer />
+      <div ref={footerRef}>
+        <Footer />
+      </div>
 
       {/* Scroll to top button (always visible, fades in/out) */}
       <button
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        className={`fixed bottom-6 right-6 z-50 p-3 rounded-full bg-blue-500/90 hover:bg-blue-600 text-white shadow-lg transition-all duration-500 flex items-center justify-center
+        className={`fixed right-6 z-50 p-3 rounded-full bg-blue-500/90 sm:hover:bg-blue-600 text-white shadow-lg transition-all duration-500 flex items-center justify-center
           ${
             showScrollTop
               ? scrolled
@@ -193,7 +206,10 @@ function App() {
               : "opacity-0 pointer-events-none"
           }`}
         aria-label="Scroll to top"
-        style={{ transitionProperty: "opacity, background-color" }}
+        style={{
+          transitionProperty: "opacity, background-color, bottom",
+          bottom: footerVisible ? "80px" : "24px",
+        }}
       >
         <ArrowUp size={24} />
       </button>

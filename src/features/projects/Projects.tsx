@@ -139,9 +139,9 @@ function ProjectCard({ project }: { project: Project }) {
               href={project.code}
               target="_blank"
               rel="noopener noreferrer"
-              className="relative inline-block w-5 h-5 ml-2 group/icon"
+              className="relative inline-block w-5 h-5 ml-2 sm:group/icon"
             >
-              <span className="absolute inset-0 flex items-center justify-center w-full h-full transition-all scale-100 rotate-0 group-hover/icon:scale-0 group-hover/icon:-rotate-90">
+              <span className="absolute inset-0 flex items-center justify-center w-full h-full transition-all scale-100 rotate-0 sm:group-hover/icon:scale-0 sm:group-hover/icon:-rotate-90">
                 <Code
                   size={20}
                   className="text-zinc-700 dark:text-neutral-300"
@@ -150,7 +150,7 @@ function ProjectCard({ project }: { project: Project }) {
               <svg
                 viewBox="0 0 98 96"
                 xmlns="http://www.w3.org/2000/svg"
-                className="absolute inset-0 w-full h-full transition-all scale-0 rotate-90 group-hover/icon:scale-100 group-hover/icon:rotate-0 text-zinc-700 dark:text-neutral-300"
+                className="absolute inset-0 w-full h-full transition-all scale-0 rotate-90 sm:group-hover/icon:scale-100 sm:group-hover/icon:rotate-0 text-zinc-700 dark:text-neutral-300"
                 fill="currentColor"
               >
                 <path
@@ -170,16 +170,18 @@ function ProjectCard({ project }: { project: Project }) {
             href="https://github.com/Sujal2308/DevMate?tab=readme-ov-file#readme"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center ml-2 group transition-colors text-lime-400"
+            className="inline-flex items-center ml-2 group transition-colors text-green-800 dark:text-lime-400"
           >
-            Read more
+            <span className="decoration-green-800 dark:decoration-lime-400">
+              Read more
+            </span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               strokeWidth={2}
               stroke="currentColor"
-              className="w-4 h-4 ml-1 transition-transform sm:group-hover:translate-x-1"
+              className="w-4 h-4 ml-1 transition-transform sm:group-hover:translate-x-1 text-green-800 dark:text-lime-400"
             >
               <path
                 strokeLinecap="round"

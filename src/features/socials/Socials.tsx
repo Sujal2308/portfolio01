@@ -42,7 +42,7 @@ export function Socials({ className }: SocialsProps) {
             href={social.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative hover:scale-110 transition-transform duration-200"
+            className="group relative sm:hover:scale-110 transition-transform duration-200"
             aria-label={social.name}
           >
             <img
@@ -52,7 +52,7 @@ export function Socials({ className }: SocialsProps) {
                 social.name === "Discord" ? "w-14 h-14" : "w-12 h-12"
               }`}
             />
-            <span className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-xs text-neutral-500 dark:text-neutral-400 opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
+            <span className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-xs text-neutral-500 dark:text-neutral-400 opacity-0 sm:group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
               {social.name}
             </span>
           </a>
