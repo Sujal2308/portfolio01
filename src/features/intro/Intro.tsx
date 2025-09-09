@@ -8,7 +8,7 @@ interface IntroProps {
 export function Intro({ className }: IntroProps) {
   return (
     <div className={className}>
-      <p>
+      <p className="text-base sm:text-lg md:text-lg lg:text-xl">
         <span className="font-bold tracking-wider font-newsreader">
           Turning concepts into code.
         </span>

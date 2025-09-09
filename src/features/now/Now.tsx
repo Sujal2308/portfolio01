@@ -1,6 +1,6 @@
 export function Now() {
   return (
-    <div className="font-mono">
+    <div className="font-mono text-base sm:text-lg md:text-lg lg:text-xl">
       <p className="mb-6">
         Learning by doing, following what interests me, and trying to build
         things that feel solid and impactful. I try to stay aware that&nbsp;

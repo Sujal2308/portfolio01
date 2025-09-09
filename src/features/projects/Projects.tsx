@@ -62,7 +62,7 @@ export function Projects() {
             className="w-10 h-10 min-w-8 min-h-8"
           />
           <div className="flex flex-col items-start max-w-[220px] sm:max-w-xs">
-            <span className="text-base sm:text-lg font-semibold leading-tight">
+            <span className="text-base sm:text-lg md:text-lg lg:text-xl font-semibold leading-tight">
               Cool projects are on the way!
             </span>
             <span className="text-xs sm:text-sm opacity-70 leading-tight font-mono mt-2">
@@ -97,13 +97,13 @@ export function Projects() {
           className="p-4 md:p-5 flex flex-col justify-between"
           style={{ gridRow: 1, gridColumn: 2 }}
         >
-          <ProjectCard project={projects[1]} />
+          <ProjectCard project={projects[2]} />
         </div>
         <div
           className="p-4 md:p-5 flex flex-col justify-between"
           style={{ gridRow: 2, gridColumn: 1 }}
         >
-          <ProjectCard project={projects[2]} />
+          <ProjectCard project={projects[1]} />
         </div>
         <div
           className="p-4 md:p-5 flex flex-col justify-center items-center text-center text-neutral-500 dark:text-neutral-400"
@@ -114,7 +114,7 @@ export function Projects() {
             alt="Superman Logo"
             className="w-14 h-14 mb-2"
           />
-          <span className="text-lg font-semibold mb-2">
+          <span className="text-base sm:text-lg md:text-lg lg:text-xl font-semibold mb-2">
             Cool projects are on the way!
           </span>
           <span className="text-sm opacity-70">
@@ -129,7 +129,7 @@ export function Projects() {
 function ProjectCard({ project }: { project: Project }) {
   return (
     <div>
-      <h1 className="mb-1 font-semibold tracking-wider">
+      <h1 className="mb-1 font-semibold tracking-wider text-base sm:text-base md:text-lg lg:text-xl">
         <BoxReveal boxColor={project.boxColor} delay={project.delay}>
           <div className="inline-flex items-center">
             <Link color={project.color} link={project.link}>
@@ -163,7 +163,7 @@ function ProjectCard({ project }: { project: Project }) {
           </div>
         </BoxReveal>
       </h1>
-      <p className="font-mono text-neutral-500 dark:text-neutral-400">
+      <p className="font-mono text-base sm:text-lg md:text-lg lg:text-xl text-neutral-500 dark:text-neutral-400">
         {project.desc}
         {project.name === "Devmate" && (
           <a
