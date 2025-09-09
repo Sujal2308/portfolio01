@@ -44,7 +44,7 @@ export function Education({ className }: EducationProps) {
           return (
             <div
               key={index}
-              className="p-4 bg-[rgba(186,230,253,0.25)] dark:bg-black/10 rounded-lg border border-gray-200/20 dark:border-gray-700/30 transition-colors duration-200 sm:shadow-lg"
+              className="p-4 bg-[rgba(186,230,253,0.25)] dark:bg-black/10 rounded-lg border border-gray-200/20 dark:border-gray-700/30 transition-colors duration-200 shadow-lg"
             >
               <div className="flex items-start gap-4">
                 {/* Icon */}
