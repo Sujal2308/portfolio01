@@ -132,8 +132,10 @@ export function Education({ className }: EducationProps) {
                 {/* Back Side */}
                 <div className="absolute inset-0 p-4 bg-[#2563eb] rounded-lg border border-gray-200/20 dark:border-gray-700/30 shadow-lg backface-hidden rotate-y-180 flex items-center justify-center">
                   <div className="w-full">
-                    <div className="text-white text-sm leading-relaxed whitespace-pre-line">
-                      {edu.description}
+                    <div className="text-white text-sm leading-relaxed">
+                      {edu.description?.split('\n').map((point, idx) => (
+                        <div key={idx} className="mb-2 last:mb-0">{point}</div>
+                      ))}
                     </div>
                   </div>
                 </div>
