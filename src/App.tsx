@@ -1,14 +1,7 @@
-<div className="mb-12">
-  <BlurFade delay={0.9} direction="up" blur="3px">
-    <h1 className="mb-6 text-neutral-500 dark:text-neutral-400">Education</h1>
-  </BlurFade>
-  <BlurFade delay={0.95} direction="up" blur="3px">
-    <Education />
-  </BlurFade>
-</div>;
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { BlurFade } from "@/components/magicui/blur-fade";
 import { DotPattern } from "@/components/magicui/dot-pattern";
+import { BoxReveal } from "@/components/magicui/box-reveal";
 
 import { FelixLottieSticky } from "@/components/internal/FelixLottieSticky";
 import { StickyNav } from "@/components/StickyNav";
@@ -24,7 +17,6 @@ import { Education } from "@/features/education";
 import { Activities } from "@/features/activities";
 import { Contact } from "@/features/contact";
 import { Footer } from "@/features/footer";
-import { useRef } from "react";
 import { Grid3X3, Orbit, ArrowUp } from "lucide-react";
 
 // Add spinning animation for Orbit icon
@@ -111,33 +103,40 @@ function App() {
                 <h1 className="text-neutral-500 dark:text-neutral-400">
                   Tech Stack
                 </h1>
-                <button
-                  onClick={() => setIsOrbitView(!isOrbitView)}
-                  className="flex items-center gap-2 px-3 py-1.5 text-sm font-medium rounded-lg bg-white/5 dark:bg-black/10 border border-gray-300 dark:border-gray-700/30 sm:hover:bg-white/10 sm:dark:hover:bg-black/20 transition-colors duration-200"
-                >
-                  {isOrbitView ? (
-                    <>
-                      <Grid3X3
-                        size={16}
-                        className="animate-colorchange text-blue-500 dark:text-blue-400"
-                      />
-                      <span className="animate-colorchange text-blue-500 dark:text-blue-400">
-                        Grid
-                      </span>
-                    </>
-                  ) : (
-                    <>
-                      <Orbit
-                        size={16}
-                        style={orbitSpinStyle}
-                        className="animate-colorchange text-fuchsia-500 dark:text-fuchsia-400"
-                      />
-                      <span className="animate-colorchange text-fuchsia-500 dark:text-fuchsia-400">
-                        Orbit
-                      </span>
-                    </>
-                  )}
-                </button>
+                <BoxReveal boxColor="#4b006e" width="fit-content" delay={0.1}>
+                  <button
+                    onClick={() => setIsOrbitView(!isOrbitView)}
+                    className={
+                      `flex items-center gap-2 px-3 py-1.5 text-sm font-medium rounded-full bg-white/5 dark:bg-black/10 border transition-colors duration-300 ` +
+                      (isOrbitView
+                        ? 'border-blue-500 dark:border-blue-400 sm:hover:border-blue-400'
+                        : 'border-fuchsia-500 dark:border-fuchsia-400 sm:hover:border-fuchsia-400')
+                    }
+                  >
+                    {isOrbitView ? (
+                      <>
+                        <Grid3X3
+                          size={16}
+                          className="animate-colorchange text-blue-500 dark:text-blue-400"
+                        />
+                        <span className="animate-colorchange text-blue-500 dark:text-blue-400 font-bold">
+                          Grid
+                        </span>
+                      </>
+                    ) : (
+                      <>
+                        <Orbit
+                          size={16}
+                          style={orbitSpinStyle}
+                          className="animate-colorchange text-fuchsia-500 dark:text-fuchsia-400"
+                        />
+                        <span className="animate-colorchange text-fuchsia-500 dark:text-fuchsia-400 font-bold">
+                          Orbit
+                        </span>
+                      </>
+                    )}
+                  </button>
+                </BoxReveal>
               </div>
             </BlurFade>
             <BlurFade delay={0.85} direction="up" blur="3px">
