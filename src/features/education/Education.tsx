@@ -23,7 +23,7 @@ const educationData: EducationItem[] = [
     status: "( Expected )",
     logo: "student-svgrepo-com.svg",
     description:
-      "• Focused on software development and algorithms\n• Learning modern technologies and system design\n• Active in coding competitions and tech events",
+      "• 💻 Focused on software development and algorithms\n• 🚀 Learning modern technologies and system design\n• 🏆 Active in coding competitions and tech events",
   },
   {
     institution: "Shri Shivaji Multipurpose Jr. College, Amravati",
@@ -32,7 +32,7 @@ const educationData: EducationItem[] = [
     period: "Feb-2022",
     logo: "student-svgrepo-com.svg",
     description:
-      "• Strong foundation in Physics, Chemistry, Mathematics\n• Developed analytical and problem-solving skills",
+      "• 📚 Strong foundation in Physics, Chemistry, Mathematics\n• 🧠 Developed analytical and problem-solving skills",
   },
   {
     institution: "Golden Kids English High School, Amravati",
@@ -41,7 +41,7 @@ const educationData: EducationItem[] = [
     period: "Mar-2020",
     logo: "student-svgrepo-com.svg",
     description:
-      "• Completed with distinction\n• Built fundamental academic skills",
+      "• 🎓 Completed with distinction\n• 🏫 Built fundamental academic skills",
   },
 ];
 
@@ -72,7 +72,7 @@ export function Education({ className }: EducationProps) {
                       <img
                         src={`/svg/logos/${edu.logo}`}
                         alt="Education"
-                        className="w-8 h-8 object-contain mt-2"
+                        className="w-10 h-10 object-contain mt-2"
                       />
                     </div>
 
@@ -107,21 +107,20 @@ export function Education({ className }: EducationProps) {
                             {edu.status}
                           </span>
                         )}
-                        {/* Flip Icon: Only show on mobile */}
-                        <div className="sm:hidden absolute -right-2 -bottom-1 animate-spin">
+                        {/* Flip Icon: Only show on mobile, now right arrow */}
+                        <div className="sm:hidden absolute -right-2 -bottom-1">
                           <svg
-                            width="16"
-                            height="16"
+                            width="22"
+                            height="22"
                             viewBox="0 0 24 24"
                             fill="none"
-                            stroke="#a21caf"
-                            strokeWidth="2"
+                            stroke="#ff6347"
+                            strokeWidth="2.2"
                             strokeLinecap="round"
                             strokeLinejoin="round"
                           >
-                            <polyline points="23 4 23 10 17 10"></polyline>
-                            <polyline points="1 20 1 14 7 14"></polyline>
-                            <path d="M3.51 9a9 9 0 0114.13-3.36L23 10M1 14l5.36 5.36A9 9 0 0020.49 15"></path>
+                            <line x1="5" y1="12" x2="19" y2="12" />
+                            <polyline points="12 5 19 12 12 19" />
                           </svg>
                         </div>
                       </div>
@@ -130,11 +129,38 @@ export function Education({ className }: EducationProps) {
                 </div>
 
                 {/* Back Side */}
-                <div className="absolute inset-0 p-4 bg-[#2563eb] rounded-lg border border-gray-200/20 dark:border-gray-700/30 shadow-lg backface-hidden rotate-y-180 flex items-center justify-center">
-                  <div className="w-full">
-                    <div className="text-white text-sm leading-relaxed whitespace-pre-line">
+                <div className="absolute inset-0 p-4 bg-[rgba(186,230,253,0.25)] dark:bg-black/10 rounded-lg border border-gray-200/20 dark:border-gray-700/30 transition-colors duration-200 shadow-lg backface-hidden rotate-y-180 flex items-center justify-center">
+                  <div className="w-full relative">
+                    <div className="text-black dark:text-white text-sm leading-relaxed whitespace-pre-line font-mono">
                       {edu.description}
                     </div>
+                    {/* Left Arrow for flipping back, only on mobile, same position as right arrow */}
+                    <div className="sm:hidden absolute -right-2 -bottom-1 translate-y-4">
+                      <button
+                        type="button"
+                        className="p-1 bg-white/20 rounded-full backdrop-blur-md shadow-md pointer-events-auto"
+                        aria-label="Flip back"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setFlipped(null);
+                        }}
+                      >
+                        <svg
+                          width="22"
+                          height="22"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="#4b006e"
+                          strokeWidth="2.2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        >
+                          <line x1="19" y1="12" x2="5" y2="12" />
+                          <polyline points="12 19 5 12 12 5" />
+                        </svg>
+                      </button>
+                    </div>
+                    {/* Left Arrow for flipping back, only on mobile */}
                   </div>
                 </div>
               </div>

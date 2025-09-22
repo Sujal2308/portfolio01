@@ -109,8 +109,8 @@ function App() {
                     className={
                       `flex items-center gap-2 px-3 py-1.5 text-sm font-medium rounded-full bg-white/5 dark:bg-black/10 border transition-colors duration-300 ` +
                       (isOrbitView
-                        ? 'border-blue-500 dark:border-blue-400 sm:hover:border-blue-400'
-                        : 'border-fuchsia-500 dark:border-fuchsia-400 sm:hover:border-fuchsia-400')
+                        ? "border-blue-500 dark:border-blue-400 sm:hover:border-blue-400"
+                        : "border-fuchsia-500 dark:border-fuchsia-400 sm:hover:border-fuchsia-400")
                     }
                   >
                     {isOrbitView ? (
