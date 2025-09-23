@@ -131,36 +131,14 @@ export function Education({ className }: EducationProps) {
                 {/* Back Side */}
                 <div className="absolute inset-0 p-4 bg-[rgba(186,230,253,0.25)] dark:bg-black/10 rounded-lg border border-gray-200/20 dark:border-gray-700/30 transition-colors duration-200 shadow-lg backface-hidden rotate-y-180 flex items-center justify-center">
                   <div className="w-full relative">
-                    <div className="text-black dark:text-white text-sm leading-relaxed whitespace-pre-line font-mono">
-                      {edu.description}
+                    <div className="text-black dark:text-white text-sm leading-relaxed whitespace-pre-line font-mono font-bold space-y-2">
+                      {edu.description &&
+                        edu.description.split("\n").map((line, index) => (
+                          <div key={index} className={line.trim() ? "" : "h-2"}>
+                            {line}
+                          </div>
+                        ))}
                     </div>
-                    {/* Left Arrow for flipping back, only on mobile, same position as right arrow */}
-                    <div className="sm:hidden absolute -right-2 -bottom-1 translate-y-4">
-                      <button
-                        type="button"
-                        className="p-1 bg-white/20 rounded-full backdrop-blur-md shadow-md pointer-events-auto"
-                        aria-label="Flip back"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setFlipped(null);
-                        }}
-                      >
-                        <svg
-                          width="22"
-                          height="22"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="#4b006e"
-                          strokeWidth="2.2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        >
-                          <line x1="19" y1="12" x2="5" y2="12" />
-                          <polyline points="12 19 5 12 12 5" />
-                        </svg>
-                      </button>
-                    </div>
-                    {/* Left Arrow for flipping back, only on mobile */}
                   </div>
                 </div>
               </div>

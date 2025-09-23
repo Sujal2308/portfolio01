@@ -131,12 +131,6 @@ function ProjectCard({ project }: { project: Project }) {
         padding: "1rem",
       }}
     >
-      {/* Emoji in top right corner */}
-      <span className="absolute top-3 right-4 text-2xl select-none">
-        {project.name === "Devmate" && "🤩"}
-        {project.name === "Outliner" && "😎"}
-        {project.name === "A-Rice" && "🫣"}
-      </span>
       <h1 className="mb-1 font-semibold tracking-wider text-base sm:text-base md:text-lg lg:text-xl">
         <BoxReveal boxColor={project.boxColor} delay={project.delay}>
           <div className="inline-flex items-center">
