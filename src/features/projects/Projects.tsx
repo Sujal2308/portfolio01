@@ -73,17 +73,11 @@ export function Projects() {
       </div>
 
       {/* Desktop: 2x2 Grid with dividing lines */}
-      <div className="hidden md:grid md:grid-cols-2 md:grid-rows-2 md:gap-0 relative border border-dashed border-neutral-700/40 dark:border-neutral-300/10 rounded-xl overflow-hidden min-h-[420px]">
+      <div className="hidden md:grid md:grid-cols-2 md:gap-0 items-start relative border border-dashed border-neutral-700/40 dark:border-neutral-300/10 rounded-xl overflow-hidden">
         {/* Vertical line */}
         <div
           className="hidden md:block absolute top-0 bottom-0 left-1/2 w-0.5 border-l border-dashed border-neutral-700/20 dark:border-neutral-300/5 z-10"
           style={{ height: "100%" }}
-          aria-hidden="true"
-        />
-        {/* Horizontal line */}
-        <div
-          className="hidden md:block absolute left-0 right-0 top-1/2 h-0.5 border-t border-dashed border-neutral-700/20 dark:border-neutral-300/5 z-10"
-          style={{ width: "100%" }}
           aria-hidden="true"
         />
         {/* Project cards in grid positions */}
@@ -106,7 +100,7 @@ export function Projects() {
           <ProjectCard project={projects[1]} />
         </div>
         <div
-          className="p-4 md:p-5 flex flex-col justify-center items-center text-center text-neutral-500 dark:text-neutral-400"
+          className="p-4 md:p-5 flex flex-col justify-center items-center text-center text-neutral-500 dark:text-neutral-400 h-full"
           style={{ gridRow: 2, gridColumn: 2 }}
         >
           <img
@@ -129,18 +123,27 @@ export function Projects() {
 function ProjectCard({ project }: { project: Project }) {
   return (
     <div
-  className="md:bg-transparent md:border-none bg-[rgba(144,238,144,0.18)] dark:bg-transparent"
+      className="bg-[rgba(144,238,144,0.18)] dark:bg-transparent relative"
       style={{
-        border: 'none',
-        borderRadius: '16px',
-        boxShadow: 'none',
-        padding: '1rem',
+        border: "none",
+        borderRadius: "16px",
+        boxShadow: "none",
+        padding: "1rem",
       }}
     >
+      {/* Emoji in top right corner */}
+      <span className="absolute top-3 right-4 text-2xl select-none">
+        {project.name === "Devmate" && "🤩"}
+        {project.name === "Outliner" && "😎"}
+        {project.name === "A-Rice" && "🫣"}
+      </span>
       <h1 className="mb-1 font-semibold tracking-wider text-base sm:text-base md:text-lg lg:text-xl">
         <BoxReveal boxColor={project.boxColor} delay={project.delay}>
           <div className="inline-flex items-center">
-            <Link color={project.name === 'Devmate' ? 'purple' : project.color} link={project.link}>
+            <Link
+              color={project.name === "Devmate" ? "purple" : project.color}
+              link={project.link}
+            >
               {project.name}
             </Link>
             <a
@@ -180,23 +183,21 @@ function ProjectCard({ project }: { project: Project }) {
             rel="noopener noreferrer"
             className="inline-flex items-center ml-2 group transition-colors text-purple-600"
           >
-              <span className="decoration-purple-600">
-                Read more
-              </span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={2}
-                stroke="#7c3aed"
-                className="w-4 h-4 ml-1 transition-transform sm:group-hover:translate-x-1 text-purple-600"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M17 8l4 4m0 0l-4 4m4-4H3"
-                />
-              </svg>
+            <span className="decoration-purple-600">Read more</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={2}
+              stroke="#7c3aed"
+              className="w-4 h-4 ml-1 transition-transform sm:group-hover:translate-x-1 text-purple-600"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              />
+            </svg>
           </a>
         )}
         {project.name === "Outliner" && (

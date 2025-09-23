@@ -36,13 +36,15 @@ export function Socials({ className }: SocialsProps) {
     <div className={className}>
       <h1 className="mb-6 text-neutral-500 dark:text-neutral-400">Connect</h1>
       <div className="flex items-center gap-6">
-        {socialLinks.map((social) => (
+        {socialLinks.map((social, idx) => (
           <a
             key={social.name}
             href={social.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative sm:hover:scale-110 transition-transform duration-200"
+            className={`group relative sm:hover:scale-110 transition-transform duration-200 ${
+              idx !== 0 ? "pl-6 ml-2" : ""
+            }`}
             aria-label={social.name}
           >
             <img
