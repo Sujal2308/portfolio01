@@ -128,11 +128,19 @@ export function Projects() {
 
 function ProjectCard({ project }: { project: Project }) {
   return (
-    <div>
+    <div
+  className="md:bg-transparent md:border-none bg-[rgba(144,238,144,0.18)] dark:bg-transparent"
+      style={{
+        border: 'none',
+        borderRadius: '16px',
+        boxShadow: 'none',
+        padding: '1rem',
+      }}
+    >
       <h1 className="mb-1 font-semibold tracking-wider text-base sm:text-base md:text-lg lg:text-xl">
         <BoxReveal boxColor={project.boxColor} delay={project.delay}>
           <div className="inline-flex items-center">
-            <Link color={project.color} link={project.link}>
+            <Link color={project.name === 'Devmate' ? 'purple' : project.color} link={project.link}>
               {project.name}
             </Link>
             <a
@@ -170,25 +178,25 @@ function ProjectCard({ project }: { project: Project }) {
             href="https://github.com/Sujal2308/DevMate?tab=readme-ov-file#readme"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center ml-2 group transition-colors text-green-800 dark:text-lime-400"
+            className="inline-flex items-center ml-2 group transition-colors text-purple-600"
           >
-            <span className="decoration-green-800 dark:decoration-lime-400">
-              Read more
-            </span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={2}
-              stroke="currentColor"
-              className="w-4 h-4 ml-1 transition-transform sm:group-hover:translate-x-1 text-green-800 dark:text-lime-400"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M17 8l4 4m0 0l-4 4m4-4H3"
-              />
-            </svg>
+              <span className="decoration-purple-600">
+                Read more
+              </span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={2}
+                stroke="#7c3aed"
+                className="w-4 h-4 ml-1 transition-transform sm:group-hover:translate-x-1 text-purple-600"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
           </a>
         )}
         {project.name === "Outliner" && (
