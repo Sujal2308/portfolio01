@@ -159,7 +159,7 @@ export function TechSkills({ className }: TechSkillsProps) {
               Previous
             </span>
           )}
-          
+
           {/* Dynamic Island/Notch Style Pagination */}
           <div className="flex items-center justify-center">
             <div className="bg-white/25 dark:bg-gray-800/40 backdrop-blur-lg border-2 border-white/40 dark:border-gray-600/50 rounded-full px-3 py-2 shadow-xl shadow-black/20 dark:shadow-black/40">
@@ -185,7 +185,7 @@ export function TechSkills({ className }: TechSkillsProps) {
               </div>
             </div>
           </div>
-          
+
           <span
             onClick={currentPage === totalPages ? undefined : nextPage}
             className={`flex items-center gap-1 select-none cursor-pointer text-sm font-bold ${
