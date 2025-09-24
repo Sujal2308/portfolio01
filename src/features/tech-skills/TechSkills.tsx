@@ -103,7 +103,7 @@ export function TechSkills({ className }: TechSkillsProps) {
         >
           {getCurrentPageItems().map((skill, index) => (
             <BlurFade key={skill.name} delay={0.15 + index * 0.07}>
-              <div className="flex flex-col items-center p-4 bg-white/5 dark:bg-black/10 rounded-lg border border-gray-300 dark:border-gray-700/30 sm:hover:bg-white/10 sm:dark:hover:bg-black/20 transition-colors duration-200">
+              <div className="flex flex-col items-center p-4 bg-white/5 dark:bg-black/50 rounded-lg border border-gray-300 dark:border-gray-700/30 sm:hover:bg-white/10 sm:dark:hover:bg-black/60 transition-colors duration-200">
                 {skill.logoDark ? (
                   <>
                     <img

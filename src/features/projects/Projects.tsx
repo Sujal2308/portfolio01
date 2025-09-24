@@ -123,7 +123,7 @@ export function Projects() {
 function ProjectCard({ project }: { project: Project }) {
   return (
     <div
-      className="bg-[rgba(144,238,144,0.18)] dark:bg-transparent relative"
+      className="bg-[rgba(144,238,144,0.18)] dark:bg-black/70 relative"
       style={{
         border: "none",
         borderRadius: "16px",

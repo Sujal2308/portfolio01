@@ -99,7 +99,7 @@ export function Activities({ className }: ActivitiesProps) {
         <div className="grid gap-6 sm:grid-cols-2">
           {paginatedActivities.map((activity, index) => (
             <BlurFade key={activity.title} delay={0.25 + index * 0.1}>
-              <div className="group relative p-6 bg-[rgba(255,228,242,0.35)] dark:bg-black/10 rounded-lg border border-gray-200/20 dark:border-gray-700/30 sm:hover:bg-white/10 sm:dark:hover:bg-black/20 transition-all duration-300 sm:hover:scale-[1.02] min-h-[220px] sm:h-[235px] flex flex-col shadow-lg">
+              <div className="group relative p-6 bg-[rgba(255,228,242,0.35)] dark:bg-black/50 rounded-lg border border-gray-200/20 dark:border-gray-700/30 sm:hover:bg-white/10 sm:dark:hover:bg-black/60 transition-all duration-300 sm:hover:scale-[1.02] min-h-[220px] sm:h-[235px] flex flex-col shadow-lg">
                 <div className="flex items-start space-x-4 flex-1">
                   <div className="flex-shrink-0">
                     <img
