@@ -20,7 +20,7 @@ const educationData: EducationItem[] = [
     degree: "B.E in Computer Science and Engineering",
     location: "Amravati, Maharashtra, INDIA",
     period: "Jun-2026",
-    status: "( Expected )",
+    status: "",
     logo: "student-svgrepo-com.svg",
     description:
       "• 💻 Focused on software development and algorithms\n• 🚀 Learning modern technologies and system design\n• 🏆 Active in coding competitions and tech events",

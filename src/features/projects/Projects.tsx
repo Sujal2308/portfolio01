@@ -22,7 +22,7 @@ export function Projects() {
       link: "https://devmate.dev",
       code: "https://github.com/Sujal2308/DevMate",
       color: "lime",
-      boxColor: "#9ae600",
+      boxColor: "#6b21a8",
       delay: 0.2,
     },
     {

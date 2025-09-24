@@ -103,7 +103,7 @@ function App() {
                 <h1 className="text-neutral-500 dark:text-neutral-400">
                   Tech Stack
                 </h1>
-                <BoxReveal boxColor="#4b006e" width="fit-content" delay={0.1}>
+                <BoxReveal boxColor="#0ea5e9" width="fit-content" delay={0.1}>
                   <button
                     onClick={() => setIsOrbitView(!isOrbitView)}
                     className={
