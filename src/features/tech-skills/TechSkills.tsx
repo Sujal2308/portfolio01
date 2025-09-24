@@ -132,7 +132,7 @@ export function TechSkills({ className }: TechSkillsProps) {
           ))}
         </div>
 
-        {/* Pagination Controls */}
+        {/* Pagination Controls - Dynamic Island Style */}
         <div className="relative flex items-center w-full justify-center">
           {currentPage > 1 && (
             <span
@@ -159,28 +159,33 @@ export function TechSkills({ className }: TechSkillsProps) {
               Previous
             </span>
           )}
-          <div className="w-full flex items-center justify-center">
-            <div className="flex items-center space-x-2">
-              {Array.from({ length: totalPages }, (_, i) => i + 1).map(
-                (page) => (
-                  <button
-                    key={page}
-                    onClick={() => {
-                      setCurrentPage(page);
-                      setTimeout(scrollGridToTop, 0);
-                    }}
-                    className={`w-8 h-8 text-sm font-medium rounded-lg transition-colors duration-200 ${
-                      currentPage === page
-                        ? "bg-blue-600 text-white"
-                        : "bg-white/5 dark:bg-black/10 border border-gray-200/20 dark:border-gray-700/30 sm:hover:bg-white/10 sm:dark:hover:bg-black/20"
-                    }`}
-                  >
-                    {page}
-                  </button>
-                )
-              )}
+          
+          {/* Dynamic Island/Notch Style Pagination */}
+          <div className="flex items-center justify-center">
+            <div className="bg-white/25 dark:bg-gray-800/40 backdrop-blur-lg border-2 border-white/40 dark:border-gray-600/50 rounded-full px-3 py-2 shadow-xl shadow-black/20 dark:shadow-black/40">
+              <div className="flex items-center space-x-2">
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                  (page) => (
+                    <button
+                      key={page}
+                      onClick={() => {
+                        setCurrentPage(page);
+                        setTimeout(scrollGridToTop, 0);
+                      }}
+                      className={`w-8 h-8 text-sm font-bold rounded-full transition-all duration-300 ${
+                        currentPage === page
+                          ? "bg-blue-500/80 text-white shadow-lg scale-110 backdrop-blur-sm border-2 border-blue-400/60"
+                          : "text-gray-800 dark:text-gray-200 sm:hover:bg-white/30 sm:dark:hover:bg-gray-700/50 sm:hover:scale-105 sm:hover:backdrop-blur-sm border border-transparent sm:hover:border-white/30"
+                      }`}
+                    >
+                      {page}
+                    </button>
+                  )
+                )}
+              </div>
             </div>
           </div>
+          
           <span
             onClick={currentPage === totalPages ? undefined : nextPage}
             className={`flex items-center gap-1 select-none cursor-pointer text-sm font-bold ${
