@@ -8,7 +8,7 @@ export function Contact() {
         Reach me at&nbsp;
         <BoxReveal boxColor="#c27aff">
           <Link color="purple" link="mailto:sujalbhugul08@gmail.com">
-            sujalbhugul08@gmail.com
+            <span className="font-bold">sujalbhugul08@gmail.com</span>
           </Link>
         </BoxReveal>
       </div>

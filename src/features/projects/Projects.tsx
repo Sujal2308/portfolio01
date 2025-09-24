@@ -55,7 +55,7 @@ export function Projects() {
           <ProjectCard key={index} project={project} />
         ))}
         {/* Superman logo placeholder strictly mobile only */}
-        <div className="p-4 flex flex-row items-center justify-center gap-3 text-neutral-500 dark:text-neutral-400 border border-dashed border-neutral-700/40 dark:border-neutral-300/10 rounded-xl md:hidden">
+        <div className="p-4 flex flex-row items-center justify-center gap-3 text-neutral-500 dark:text-neutral-400 border border-dashed border-neutral-700/40 dark:border-neutral-300/10 rounded-xl md:hidden bg-gray-200/40 dark:bg-gray-800/40">
           <img
             src="/svg/logos/superman-seeklogo.png"
             alt="Superman Logo"
@@ -135,7 +135,7 @@ function ProjectCard({ project }: { project: Project }) {
         <BoxReveal boxColor={project.boxColor} delay={project.delay}>
           <div className="inline-flex items-center">
             <Link
-              color={project.name === "Devmate" ? "purple" : project.color}
+              color={project.name === "Devmate" ? "darkpurple" : project.color}
               link={project.link}
             >
               {project.name}
@@ -175,7 +175,7 @@ function ProjectCard({ project }: { project: Project }) {
             href="https://github.com/Sujal2308/DevMate?tab=readme-ov-file#readme"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center ml-2 group transition-colors text-purple-600"
+            className="inline-flex items-center group transition-colors text-purple-600 font-bold"
           >
             <span className="decoration-purple-600">Read more</span>
             <svg
@@ -199,7 +199,7 @@ function ProjectCard({ project }: { project: Project }) {
             href="https://github.com/Sujal2308/outliner-extension?tab=readme-ov-file#readme"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center ml-2 group transition-colors text-cyan-400"
+            className="inline-flex items-center group transition-colors text-cyan-400 font-bold"
           >
             Read more
             <svg
@@ -223,7 +223,7 @@ function ProjectCard({ project }: { project: Project }) {
             href="https://github.com/Sujal2308/a-rice?tab=readme-ov-file#readme"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center ml-2 group transition-colors text-pink-400"
+            className="inline-flex items-center group transition-colors text-pink-400 font-bold"
           >
             Read more
             <svg
