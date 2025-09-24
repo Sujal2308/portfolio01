@@ -79,9 +79,9 @@ export function Education({ className }: EducationProps) {
                     {/* Content */}
                     <div className="flex-1 flex flex-col sm:flex-row sm:justify-between sm:items-start">
                       <div>
-                        <div className="relative inline-block overflow-hidden group">
-                          {/* Background reveal animation */}
-                          <div className="absolute inset-0 bg-gradient-to-r from-blue-400/20 to-purple-400/20 transition-all duration-500 ease-out scale-x-0 group-hover:scale-x-100 origin-left rounded-sm -mx-1 -my-0.5" />
+                        <div className="relative inline-block overflow-hidden">
+                          {/* Background - always visible */}
+                          <div className="absolute inset-0 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-sm -mx-1 -my-0.5" />
                           <h3 className="relative font-semibold text-lg text-zinc-900 dark:text-zinc-100 cursor-default">
                             {edu.institution}
                           </h3>

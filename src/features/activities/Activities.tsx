@@ -199,7 +199,9 @@ export function Activities({ className }: ActivitiesProps) {
               <span />
             )}
             <button
-              className="text-blue-500 bg-transparent border-none shadow-none px-0 py-0 text-base font-semibold focus:outline-none flex items-center gap-1 disabled:opacity-50"
+              className={`bg-transparent border-none shadow-none px-0 py-0 text-base font-semibold focus:outline-none flex items-center gap-1 disabled:opacity-50 ${
+                page >= totalPages - 1 ? "text-gray-500" : "text-blue-500"
+              }`}
               onClick={() => {
                 setPage((p) => {
                   const next = (p + 1) % totalPages;
@@ -209,7 +211,13 @@ export function Activities({ className }: ActivitiesProps) {
               }}
               disabled={page >= totalPages - 1}
             >
-              Next <ArrowRight size={18} className="text-blue-500" />
+              Next{" "}
+              <ArrowRight
+                size={18}
+                className={
+                  page >= totalPages - 1 ? "text-gray-500" : "text-blue-500"
+                }
+              />
             </button>
           </div>
         )}
