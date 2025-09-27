@@ -5,6 +5,7 @@ import { BoxReveal } from "@/components/magicui/box-reveal";
 
 import { FelixLottieSticky } from "@/components/internal/FelixLottieSticky";
 import { StickyNav } from "@/components/StickyNav";
+import { FloatingDock } from "@/components/FloatingDock";
 
 import { Header } from "@/features/header";
 import { Intro } from "@/features/intro";
@@ -66,12 +67,17 @@ function App() {
   return (
     <div className="relative flex flex-col w-full min-h-screen overflow-x-hidden">
       {showStickyNav && <StickyNav />}
+      <FloatingDock />
       <DotPattern
         width={30}
         height={30}
         className="fixed inset-0 w-full h-full opacity-50 pointer-events-none dark:opacity-20 -z-10"
       />
       <main className="relative flex flex-col flex-1 text-zinc-700 dark:text-neutral-300">
+        {/* Left vertical line */}
+        <div className="fixed left-0 top-0 bottom-0 w-px bg-gray-300 dark:bg-gray-600 ml-[calc(50vw-384px)] hidden lg:block z-10"></div>
+        {/* Right vertical line */}
+        <div className="fixed right-0 top-0 bottom-0 w-px bg-gray-300 dark:bg-gray-600 mr-[calc(50vw-384px)] hidden lg:block z-10"></div>
         <article className="container relative max-w-3xl px-10 mx-auto mt-10 mb-10 sm:mt-28 sm:mb-28">
           <div className="mb-12">
             <BlurFade delay={0} direction="up" blur="3px">

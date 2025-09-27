@@ -73,16 +73,31 @@ export function Header({ className }: HeaderProps) {
         </div>
 
         <div className="flex items-center gap-4">
-          <div className="text-xl font-semibold">
-            <BoxReveal boxColor="#8b5cf6" delay={0.025}>
-              <Link
-                color="purple"
-                link="https://drive.google.com/file/d/1TckG6ETmH2WflrjcRknOOG8O0ZqBOE0m/view"
-              >
-                Resume
-              </Link>
-            </BoxReveal>
-          </div>
+          <a
+            href="https://drive.google.com/file/d/1TckG6ETmH2WflrjcRknOOG8O0ZqBOE0m/view"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative hidden sm:inline-flex items-center gap-2 px-5 py-2.5 bg-white/35 dark:bg-gray-800/50 backdrop-blur-xl border-2 border-white/50 dark:border-gray-600/60 rounded-full shadow-2xl transition-all duration-300 font-bold text-lg hover:scale-105 hover:shadow-2xl"
+            style={{ color: "tomato" }}
+          >
+            <span>Resume</span>
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7,10 12,15 17,10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+            {/* Inner magenta border on hover */}
+            <span className="pointer-events-none absolute inset-0 rounded-full border-4 border-fuchsia-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></span>
+          </a>
           <ThemeToggle />
         </div>
       </div>
