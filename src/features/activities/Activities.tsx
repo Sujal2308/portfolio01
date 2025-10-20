@@ -1,11 +1,5 @@
 import { BlurFade } from "@/components/magicui/blur-fade";
-import {
-  ExternalLink,
-  ArrowRight,
-  ArrowLeft,
-  ChevronDown,
-  ChevronUp,
-} from "lucide-react";
+import { ExternalLink, ChevronDown, ChevronUp } from "lucide-react";
 import { useState, useRef } from "react";
 
 interface ActivitiesProps {
