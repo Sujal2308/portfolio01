@@ -106,7 +106,7 @@ export function Education({ className }: EducationProps) {
 
         {/* Progress fill */}
         <div
-          className="absolute left-2 top-0 w-0.5 bg-gradient-to-b from-blue-500 via-purple-500 to-pink-500 rounded-full will-change-transform"
+          className="absolute left-2 top-0 w-0.5 bg-gradient-to-b from-blue-500 via-purple-500 to-pink-500 rounded-full transition-all duration-500 ease-out will-change-transform"
           style={{
             height: `${scrollProgress * 100}%`,
             transform: "translateZ(0)", // Hardware acceleration
