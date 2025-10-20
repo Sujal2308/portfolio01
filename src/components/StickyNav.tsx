@@ -81,7 +81,7 @@ export function StickyNav() {
         showNavbar ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
       }`}
     >
-      <div className="flex items-center gap-3 px-5 py-3 bg-white/20 dark:bg-black/30 backdrop-blur-xl border border-white/30 dark:border-white/10 rounded-full shadow-2xl">
+      <div className="flex items-center gap-3 px-5 py-3 bg-white/10 dark:bg-black/15 backdrop-blur-xl border border-white/20 dark:border-white/5 rounded-full shadow-2xl">
         <div className="flex gap-2">
           <a
             href="#projects"
