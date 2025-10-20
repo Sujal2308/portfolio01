@@ -1,5 +1,11 @@
 import { BlurFade } from "@/components/magicui/blur-fade";
-import { ExternalLink, ArrowRight, ArrowLeft } from "lucide-react";
+import {
+  ExternalLink,
+  ArrowRight,
+  ArrowLeft,
+  ChevronDown,
+  ChevronUp,
+} from "lucide-react";
 import { useState, useRef } from "react";
 
 interface ActivitiesProps {
@@ -69,25 +75,13 @@ const activities: Activity[] = [
 ];
 
 export function Activities({ className }: ActivitiesProps) {
-  const [page, setPage] = useState(0);
-  const cardsPerPage = 2;
-  const isMobile = typeof window !== "undefined" && window.innerWidth < 640;
-  const totalPages = Math.ceil(activities.length / cardsPerPage);
+  const [expandedCards, setExpandedCards] = useState<number[]>([]);
   const sectionRef = useRef<HTMLDivElement>(null);
 
-  // For SSR safety, fallback to always show all on first render
-  const showPagination = typeof window !== "undefined" ? isMobile : false;
-  const paginatedActivities = showPagination
-    ? activities.slice(page * cardsPerPage, (page + 1) * cardsPerPage)
-    : activities;
-
-  // Scroll to section on page change (mobile)
-  const scrollSectionToTop = () => {
-    if (sectionRef.current) {
-      const rect = sectionRef.current.getBoundingClientRect();
-      const scrollTop = window.pageYOffset + rect.top - 20; // Add 20px offset from top
-      window.scrollTo({ top: scrollTop, behavior: "smooth" });
-    }
+  const toggleCard = (index: number) => {
+    setExpandedCards((prev) =>
+      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
+    );
   };
 
   return (
@@ -96,10 +90,102 @@ export function Activities({ className }: ActivitiesProps) {
         <h2 className="mb-6 text-neutral-500 dark:text-neutral-400">
           Extracurricular Activities
         </h2>
-        <div className="grid gap-6 sm:grid-cols-2">
-          {paginatedActivities.map((activity, index) => (
+        <div className="space-y-4 sm:grid sm:gap-6 sm:grid-cols-2 sm:space-y-0">
+          {activities.map((activity, index) => (
             <BlurFade key={activity.title} delay={0.25 + index * 0.1}>
-              <div className="group relative p-6 bg-[rgba(255,228,242,0.35)] dark:bg-black/50 rounded-lg border border-gray-200/20 dark:border-gray-700/30 sm:hover:bg-white/10 sm:dark:hover:bg-black/60 transition-all duration-300 sm:hover:scale-[1.02] min-h-[220px] sm:h-[235px] flex flex-col shadow-lg">
+              {/* Mobile: Pill-shaped stack */}
+              <div className="sm:hidden">
+                <div
+                  className="flex items-center justify-between p-4 bg-white/10 dark:bg-white/5 backdrop-blur-lg rounded-full border border-white/20 dark:border-white/10 shadow-lg cursor-pointer transition-all duration-300"
+                  onClick={() => toggleCard(index)}
+                >
+                  <div className="flex items-center gap-3">
+                    <img
+                      src={`/svg/logos/${activity.logo}`}
+                      alt={activity.title}
+                      className="object-contain w-8 h-8"
+                    />
+                    <h3 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100">
+                      {activity.title}
+                    </h3>
+                  </div>
+                  {expandedCards.includes(index) ? (
+                    <ChevronUp className="w-5 h-5 text-neutral-600 dark:text-neutral-400" />
+                  ) : (
+                    <ChevronDown className="w-5 h-5 text-neutral-600 dark:text-neutral-400" />
+                  )}
+                </div>
+
+                {/* Expanded content */}
+                {expandedCards.includes(index) && (
+                  <div className="mt-3 p-4 bg-white/5 dark:bg-white/3 backdrop-blur-lg rounded-lg border border-white/10 dark:border-white/5 shadow-lg">
+                    <p className="text-neutral-600 dark:text-neutral-400 mb-3 font-mono">
+                      {activity.description}
+                    </p>
+                    {activity.highlight &&
+                      activity.title !== "Web Dev Lead" && (
+                        <div className="flex items-center gap-2 mb-3">
+                          <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-bold bg-blue-100 text-blue-800 dark:bg-blue-900/20 dark:text-blue-400 font-mono">
+                            <span
+                              dangerouslySetInnerHTML={{
+                                __html: activity.highlight,
+                              }}
+                            />
+                          </span>
+                        </div>
+                      )}
+                    {activity.title === "Web Dev Lead" && (
+                      <div className="flex items-center gap-2 mb-3">
+                        <a
+                          href="https://drive.google.com/file/d/1hqkhu6YYxUHZ-JK6sUuXGdK82coR5jpI/view?usp=drive_link"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 text-base text-black dark:text-white underline decoration-fuchsia-500 decoration-2 underline-offset-4 transition-opacity hover:opacity-80 font-mono"
+                        >
+                          See Credentials
+                          <ExternalLink
+                            size={18}
+                            className="text-fuchsia-500"
+                          />
+                        </a>
+                      </div>
+                    )}
+                    {activity.certifications && (
+                      <div className="flex flex-wrap gap-3 mt-3">
+                        {activity.certifications.map((cert) => (
+                          <a
+                            key={cert.name}
+                            href={cert.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1 text-base font-bold underline decoration-1 underline-offset-2 transition-opacity hover:opacity-70 font-mono"
+                            style={{
+                              color:
+                                cert.color === "orange"
+                                  ? "#f97316"
+                                  : cert.color === "cyan"
+                                  ? "#06b6d4"
+                                  : cert.color === "purple"
+                                  ? "#a855f7"
+                                  : cert.color === "lime"
+                                  ? "#84cc16"
+                                  : cert.color === "pink"
+                                  ? "#ec4899"
+                                  : "#6b7280",
+                            }}
+                          >
+                            {cert.name}
+                            <ExternalLink size={12} />
+                          </a>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+
+              {/* Desktop: Original design */}
+              <div className="hidden sm:flex group relative p-6 bg-[rgba(255,228,242,0.35)] dark:bg-black/50 rounded-lg border border-gray-200/20 dark:border-gray-700/30 sm:hover:bg-white/10 sm:dark:hover:bg-black/60 transition-all duration-300 sm:hover:scale-[1.02] min-h-[220px] sm:h-[235px] flex-col shadow-lg">
                 <div className="flex items-start space-x-4 flex-1">
                   <div className="flex-shrink-0">
                     <img
@@ -182,45 +268,6 @@ export function Activities({ className }: ActivitiesProps) {
             </BlurFade>
           ))}
         </div>
-        {/* Pagination controls for mobile */}
-        {showPagination && (
-          <div className="flex justify-between mt-4">
-            {page > 0 ? (
-              <button
-                className="text-blue-500 bg-transparent border-none shadow-none px-0 py-0 text-base font-semibold focus:outline-none flex items-center gap-1"
-                onClick={() => {
-                  setPage((p) => p - 1);
-                  setTimeout(scrollSectionToTop, 0);
-                }}
-              >
-                <ArrowLeft size={18} className="text-blue-500" /> Prev
-              </button>
-            ) : (
-              <span />
-            )}
-            <button
-              className={`bg-transparent border-none shadow-none px-0 py-0 text-base font-semibold focus:outline-none flex items-center gap-1 disabled:opacity-50 ${
-                page >= totalPages - 1 ? "text-gray-500" : "text-blue-500"
-              }`}
-              onClick={() => {
-                setPage((p) => {
-                  const next = (p + 1) % totalPages;
-                  setTimeout(scrollSectionToTop, 0);
-                  return next;
-                });
-              }}
-              disabled={page >= totalPages - 1}
-            >
-              Next{" "}
-              <ArrowRight
-                size={18}
-                className={
-                  page >= totalPages - 1 ? "text-gray-500" : "text-blue-500"
-                }
-              />
-            </button>
-          </div>
-        )}
       </div>
     </BlurFade>
   );
