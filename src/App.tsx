@@ -199,10 +199,10 @@ function App() {
         <Footer />
       </div>
 
-      {/* Scroll to top button (always visible, fades in/out) */}
+      {/* Scroll to top button (desktop only) */}
       <button
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        className={`fixed right-6 z-50 p-3 rounded-full bg-blue-500/90 sm:hover:bg-blue-600 text-white shadow-lg transition-all duration-500 flex items-center justify-center
+        className={`fixed right-6 z-50 p-3 rounded-full bg-blue-500/90 sm:hover:bg-blue-600 text-white shadow-lg transition-all duration-500 items-center justify-center hidden md:flex
           ${
             showScrollTop
               ? scrolled
