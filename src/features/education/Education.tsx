@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 
 interface EducationProps {
   className?: string;
@@ -47,7 +47,6 @@ const educationData: EducationItem[] = [
 
 export function Education({ className }: EducationProps) {
   const [flipped, setFlipped] = useState<number | null>(null);
-  const [scrollProgress, setScrollProgress] = useState(0);
   const [currentCard, setCurrentCard] = useState(0);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
@@ -91,53 +90,6 @@ export function Education({ className }: EducationProps) {
       setCurrentCard(currentCard - 1);
     }
   };
-
-  useEffect(() => {
-    let rafId: number;
-
-    const handleScroll = () => {
-      if (rafId) {
-        cancelAnimationFrame(rafId);
-      }
-
-      rafId = requestAnimationFrame(() => {
-        if (!sectionRef.current) return;
-
-        const section = sectionRef.current;
-        const rect = section.getBoundingClientRect();
-        const windowHeight = window.innerHeight;
-
-        // Calculate progress based on section visibility
-        const sectionTop = rect.top;
-        const sectionHeight = rect.height;
-
-        // Progress starts when section enters viewport and completes when it fully exits
-        const startProgress = windowHeight;
-        const endProgress = -sectionHeight + 100; // Add buffer to complete before section fully exits
-
-        // Alternative: Complete when section is mostly scrolled through
-        const progress = Math.max(
-          0,
-          Math.min(
-            1,
-            (startProgress - sectionTop) / (startProgress - endProgress)
-          )
-        );
-
-        setScrollProgress(progress);
-      });
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll(); // Initial calculation
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      if (rafId) {
-        cancelAnimationFrame(rafId);
-      }
-    };
-  }, []);
 
   return (
     <div className={className} ref={sectionRef}>
