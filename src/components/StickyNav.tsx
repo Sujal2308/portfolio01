@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { ThemeToggle } from "@/features/header/components/ThemeToggle";
+import { FolderOpen, Code, GraduationCap, Trophy } from "lucide-react";
 
 export function StickyNav() {
   const [activeLink, setActiveLink] = useState("");
@@ -44,55 +45,59 @@ export function StickyNav() {
   };
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 md:hidden">
-      <div className="w-full flex justify-center bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-neutral-200/40 dark:border-neutral-200/10 shadow-sm">
-        <div className="w-full max-w-3xl flex items-center justify-between px-4 sm:px-6 py-2">
-          <div className="flex gap-6 text-sm font-medium text-neutral-900 dark:text-neutral-100">
-            <a
-              href="#projects"
-              onClick={(e) => handleNavClick(e, "projects-section")}
-              className={`underline-offset-8 ${
-                activeLink === "projects-section"
-                  ? "underline decoration-2 decoration-orange-500 font-bold"
-                  : ""
-              }`}
-            >
-              Projects
-            </a>
-            <a
-              href="#skills"
-              onClick={(e) => handleNavClick(e, "skills-section")}
-              className={`underline-offset-8 ${
-                activeLink === "skills-section"
-                  ? "underline decoration-2 decoration-orange-500 font-bold"
-                  : ""
-              }`}
-            >
-              Skills
-            </a>
-            <a
-              href="#education"
-              onClick={(e) => handleNavClick(e, "education-section")}
-              className={`underline-offset-8 ${
-                activeLink === "education-section"
-                  ? "underline decoration-2 decoration-orange-500 font-bold"
-                  : ""
-              }`}
-            >
-              Education
-            </a>
-            <a
-              href="#activities"
-              onClick={(e) => handleNavClick(e, "activities-section")}
-              className={`underline-offset-8 ${
-                activeLink === "activities-section"
-                  ? "underline decoration-2 decoration-orange-500 font-bold"
-                  : ""
-              }`}
-            >
-              Activity
-            </a>
-          </div>
+    <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 md:hidden">
+      <div className="flex items-center gap-4 px-6 py-3 bg-white/20 dark:bg-black/30 backdrop-blur-xl border border-white/30 dark:border-white/10 rounded-full shadow-2xl">
+        <div className="flex gap-3">
+          <a
+            href="#projects"
+            onClick={(e) => handleNavClick(e, "projects-section")}
+            className={`p-2.5 rounded-full transition-all duration-300 ${
+              activeLink === "projects-section"
+                ? "bg-orange-500/20 text-orange-600 dark:text-orange-400"
+                : "text-neutral-600 dark:text-neutral-400 hover:bg-white/10 dark:hover:bg-white/5"
+            }`}
+            title="Projects"
+          >
+            <FolderOpen size={18} />
+          </a>
+          <a
+            href="#skills"
+            onClick={(e) => handleNavClick(e, "skills-section")}
+            className={`p-2.5 rounded-full transition-all duration-300 ${
+              activeLink === "skills-section"
+                ? "bg-orange-500/20 text-orange-600 dark:text-orange-400"
+                : "text-neutral-600 dark:text-neutral-400 hover:bg-white/10 dark:hover:bg-white/5"
+            }`}
+            title="Skills"
+          >
+            <Code size={18} />
+          </a>
+          <a
+            href="#education"
+            onClick={(e) => handleNavClick(e, "education-section")}
+            className={`p-2.5 rounded-full transition-all duration-300 ${
+              activeLink === "education-section"
+                ? "bg-orange-500/20 text-orange-600 dark:text-orange-400"
+                : "text-neutral-600 dark:text-neutral-400 hover:bg-white/10 dark:hover:bg-white/5"
+            }`}
+            title="Education"
+          >
+            <GraduationCap size={18} />
+          </a>
+          <a
+            href="#activities"
+            onClick={(e) => handleNavClick(e, "activities-section")}
+            className={`p-2.5 rounded-full transition-all duration-300 ${
+              activeLink === "activities-section"
+                ? "bg-orange-500/20 text-orange-600 dark:text-orange-400"
+                : "text-neutral-600 dark:text-neutral-400 hover:bg-white/10 dark:hover:bg-white/5"
+            }`}
+            title="Activities"
+          >
+            <Trophy size={18} />
+          </a>
+        </div>
+        <div className="ml-4">
           <ThemeToggle />
         </div>
       </div>
