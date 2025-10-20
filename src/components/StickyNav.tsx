@@ -5,6 +5,8 @@ import { FolderOpen, Code, GraduationCap, Trophy, ArrowUp } from "lucide-react";
 export function StickyNav() {
   const [activeLink, setActiveLink] = useState("");
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [showNavbar, setShowNavbar] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   // Update active link based on scroll position and show scroll to top
   useEffect(() => {
@@ -16,9 +18,29 @@ export function StickyNav() {
         "activities-section",
       ];
       const scrollPosition = window.scrollY + 100; // Add offset for navbar height
+      const currentScrollY = window.scrollY;
 
       // Show scroll to top button when scrolled down
-      setShowScrollTop(window.scrollY > 200);
+      setShowScrollTop(currentScrollY > 200);
+
+      // Check if user is near the bottom of the page
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      const isNearBottom =
+        currentScrollY + windowHeight >= documentHeight - 100;
+
+      // Hide navbar when near bottom, show when scrolling up
+      if (isNearBottom) {
+        setShowNavbar(false);
+      } else if (currentScrollY < lastScrollY) {
+        // Scrolling up
+        setShowNavbar(true);
+      } else if (currentScrollY > lastScrollY && currentScrollY > 200) {
+        // Scrolling down after some scroll
+        setShowNavbar(true);
+      }
+
+      setLastScrollY(currentScrollY);
 
       for (let i = sections.length - 1; i >= 0; i--) {
         const element = document.getElementById(sections[i]);
@@ -54,7 +76,11 @@ export function StickyNav() {
   };
 
   return (
-    <nav className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 md:hidden">
+    <nav
+      className={`fixed bottom-6 left-1/2 -translate-x-1/2 z-50 md:hidden transition-all duration-500 ease-in-out ${
+        showNavbar ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
+      }`}
+    >
       <div className="flex items-center gap-3 px-5 py-3 bg-white/20 dark:bg-black/30 backdrop-blur-xl border border-white/30 dark:border-white/10 rounded-full shadow-2xl">
         <div className="flex gap-2">
           <a
