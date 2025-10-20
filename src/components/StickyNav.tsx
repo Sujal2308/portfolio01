@@ -88,7 +88,7 @@ export function StickyNav() {
             onClick={(e) => handleNavClick(e, "projects-section")}
             className={`p-2.5 rounded-full transition-all duration-300 ${
               activeLink === "projects-section"
-                ? "bg-orange-500/20 text-orange-600 dark:text-orange-400"
+                ? "bg-orange-500/20 text-orange-600 dark:text-orange-400 scale-110 -translate-y-1"
                 : "text-neutral-600 dark:text-neutral-400 hover:bg-white/10 dark:hover:bg-white/5"
             }`}
             title="Projects"
@@ -100,7 +100,7 @@ export function StickyNav() {
             onClick={(e) => handleNavClick(e, "skills-section")}
             className={`p-2.5 rounded-full transition-all duration-300 ${
               activeLink === "skills-section"
-                ? "bg-orange-500/20 text-orange-600 dark:text-orange-400"
+                ? "bg-orange-500/20 text-orange-600 dark:text-orange-400 scale-110 -translate-y-1"
                 : "text-neutral-600 dark:text-neutral-400 hover:bg-white/10 dark:hover:bg-white/5"
             }`}
             title="Skills"
@@ -112,7 +112,7 @@ export function StickyNav() {
             onClick={(e) => handleNavClick(e, "education-section")}
             className={`p-2.5 rounded-full transition-all duration-300 ${
               activeLink === "education-section"
-                ? "bg-orange-500/20 text-orange-600 dark:text-orange-400"
+                ? "bg-orange-500/20 text-orange-600 dark:text-orange-400 scale-110 -translate-y-1"
                 : "text-neutral-600 dark:text-neutral-400 hover:bg-white/10 dark:hover:bg-white/5"
             }`}
             title="Education"
@@ -124,7 +124,7 @@ export function StickyNav() {
             onClick={(e) => handleNavClick(e, "activities-section")}
             className={`p-2.5 rounded-full transition-all duration-300 ${
               activeLink === "activities-section"
-                ? "bg-orange-500/20 text-orange-600 dark:text-orange-400"
+                ? "bg-orange-500/20 text-orange-600 dark:text-orange-400 scale-110 -translate-y-1"
                 : "text-neutral-600 dark:text-neutral-400 hover:bg-white/10 dark:hover:bg-white/5"
             }`}
             title="Activities"
