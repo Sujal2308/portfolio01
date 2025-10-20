@@ -111,8 +111,14 @@ export function Activities({ className }: ActivitiesProps) {
                 </div>
 
                 {/* Expanded content */}
-                {expandedCards.includes(index) && (
-                  <div className="mt-3 p-4 bg-white/5 dark:bg-white/3 backdrop-blur-lg rounded-lg border border-white/10 dark:border-white/5 shadow-lg">
+                <div
+                  className={`transition-all duration-300 ease-out overflow-hidden ${
+                    expandedCards.includes(index)
+                      ? "max-h-96 opacity-100 mt-3"
+                      : "max-h-0 opacity-0 mt-0"
+                  }`}
+                >
+                  <div className="p-4 bg-white/5 dark:bg-white/3 backdrop-blur-lg rounded-lg border border-white/10 dark:border-white/5 shadow-lg">
                     <p className="text-neutral-600 dark:text-neutral-400 mb-3 font-mono">
                       {activity.description}
                     </p>
@@ -175,7 +181,7 @@ export function Activities({ className }: ActivitiesProps) {
                       </div>
                     )}
                   </div>
-                )}
+                </div>
               </div>
 
               {/* Desktop: Original design */}
