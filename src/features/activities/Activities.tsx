@@ -1,5 +1,5 @@
 import { BlurFade } from "@/components/magicui/blur-fade";
-import { ExternalLink, ChevronDown, ChevronUp } from "lucide-react";
+import { ExternalLink, ChevronDown } from "lucide-react";
 import { useState, useRef } from "react";
 
 interface ActivitiesProps {
@@ -93,7 +93,15 @@ export function Activities({ className }: ActivitiesProps) {
                   className={`flex items-center justify-between p-4 rounded-full shadow-lg cursor-pointer transition-colors duration-300 backdrop-blur-lg 
                     ${
                       expandedCards.includes(index)
-                        ? "border border-pink-400 bg-pink-100/30 dark:bg-pink-900/20"
+                        ? index === 0
+                          ? "border border-pink-400 bg-pink-100/30 dark:bg-pink-900/20 mb-3"
+                          : index === 1
+                          ? "border border-yellow-400 bg-yellow-100/30 dark:bg-yellow-900/20 mb-3"
+                          : index === 2
+                          ? "border border-green-400 bg-green-100/30 dark:bg-green-900/20 mb-3"
+                          : index === 3
+                          ? "border border-blue-400 bg-blue-100/30 dark:bg-blue-900/20 mb-3"
+                          : "border border-white/20 dark:border-white/10 bg-white/10 dark:bg-white/5 mb-3"
                         : "border border-white/20 dark:border-white/10 bg-white/10 dark:bg-white/5"
                     }
                   `}
@@ -109,23 +117,48 @@ export function Activities({ className }: ActivitiesProps) {
                       {activity.title}
                     </h3>
                   </div>
-                  {expandedCards.includes(index) ? (
-                    <ChevronUp className="w-5 h-5 text-neutral-600 dark:text-neutral-400" />
-                  ) : (
-                    <ChevronDown className="w-5 h-5 text-neutral-600 dark:text-neutral-400" />
-                  )}
+                  <ChevronDown
+                    className={`w-5 h-5 text-neutral-600 dark:text-neutral-400 transition-transform duration-300 ease-in-out ${
+                      expandedCards.includes(index) ? "rotate-180" : "rotate-0"
+                    }`}
+                  />
                 </div>
 
                 {/* Expanded content */}
                 <div
-                  className={`transition-all duration-300 ease-out overflow-hidden ${
+                  className={`overflow-hidden transition-all duration-300 ease-out ${
                     expandedCards.includes(index)
-                      ? "max-h-96 opacity-100 mt-3"
-                      : "max-h-0 opacity-0 mt-0"
+                      ? "max-h-96 opacity-100"
+                      : "max-h-0 opacity-0"
                   }`}
                 >
-                  <div className="p-4 bg-white/5 dark:bg-white/3 backdrop-blur-lg rounded-lg border border-pink-300/60 dark:border-pink-400/40 shadow-lg">
-                    <p className="text-neutral-600 dark:text-neutral-400 mb-3 font-mono">
+                  <div
+                    className={`p-4 backdrop-blur-lg rounded-lg border shadow-lg transition-all duration-300 ease-out transform-gpu mt-0
+                      ${
+                        index === 0
+                          ? "border-pink-400 bg-pink-100/30 dark:bg-black"
+                          : index === 1
+                          ? "border-yellow-400 bg-yellow-100/30 dark:bg-black"
+                          : index === 2
+                          ? "border-green-400 bg-green-100/30 dark:bg-black"
+                          : index === 3
+                          ? "border-blue-400 bg-blue-100/30 dark:bg-black"
+                          : "border-white/20 dark:border-white/5 bg-white/10 dark:bg-black"
+                      }
+                      ${
+                        expandedCards.includes(index)
+                          ? "translate-y-0"
+                          : "-translate-y-4"
+                      }
+                    `}
+                  >
+                    <p
+                      className={`text-neutral-600 dark:text-neutral-400 mb-3 font-mono transition-all duration-300 ${
+                        expandedCards.includes(index)
+                          ? "opacity-100 translate-y-0 delay-150"
+                          : "opacity-0 translate-y-2"
+                      }`}
+                    >
                       {activity.description}
                     </p>
                     {activity.highlight &&

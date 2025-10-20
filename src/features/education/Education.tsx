@@ -97,7 +97,7 @@ export function Education({ className }: EducationProps) {
       <div className="md:hidden relative">
         {/* Carousel Container */}
         <div
-          className="relative overflow-hidden"
+          className="relative overflow-hidden py-4"
           onTouchStart={onTouchStart}
           onTouchMove={onTouchMove}
           onTouchEnd={onTouchEnd}
@@ -109,7 +109,7 @@ export function Education({ className }: EducationProps) {
             {educationData.map((edu, index) => {
               const isFlipped = flipped === index;
               return (
-                <div key={index} className="w-full flex-shrink-0 px-4">
+                <div key={index} className="w-full flex-shrink-0 px-4 py-2">
                   <div className="perspective cursor-pointer relative">
                     <div
                       className={`relative transition-transform duration-700 preserve-3d ${
@@ -118,14 +118,14 @@ export function Education({ className }: EducationProps) {
                       onClick={() => setFlipped(isFlipped ? null : index)}
                     >
                       {/* Front Side */}
-                      <div className="p-4 bg-white/10 dark:bg-white/5 backdrop-blur-lg rounded-lg border border-white/20 dark:border-white/10 transition-colors duration-200 shadow-lg backface-hidden">
+                      <div className="p-4 sm:p-5 bg-white/10 dark:bg-white/5 backdrop-blur-lg rounded-2xl border border-white/20 dark:border-white/10 transition-colors duration-200 shadow-2xl backface-hidden">
                         <div className="flex flex-col space-y-3">
                           <div className="flex justify-between items-start">
                             <div className="flex-1">
-                              <h3 className="font-semibold text-lg text-zinc-900 dark:text-zinc-100 cursor-default">
+                              <h3 className="font-semibold text-lg sm:text-xl text-zinc-900 dark:text-zinc-100 cursor-default">
                                 {edu.institution}
                               </h3>
-                              <p className="text-zinc-700 dark:text-zinc-300 font-medium mt-1 font-mono">
+                              <p className="text-zinc-700 dark:text-zinc-300 font-medium mt-1 font-mono text-base sm:text-lg">
                                 {edu.degree}
                               </p>
                             </div>
@@ -140,6 +140,9 @@ export function Education({ className }: EducationProps) {
                                 strokeWidth="2.2"
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
+                                className={`transition-transform duration-300 ease-in-out ${
+                                  isFlipped ? "rotate-180" : "rotate-0"
+                                }`}
                               >
                                 <line x1="5" y1="12" x2="19" y2="12" />
                                 <polyline points="12 5 19 12 12 19" />
@@ -147,15 +150,15 @@ export function Education({ className }: EducationProps) {
                             </div>
                           </div>
                           <div className="flex justify-between items-end">
-                            <p className="text-sm text-zinc-600 dark:text-zinc-400 font-mono">
+                            <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 font-mono">
                               {edu.location}
                             </p>
                             <div className="flex flex-col items-end">
-                              <span className="text-sm font-medium text-zinc-700 dark:text-zinc-300 font-mono">
+                              <span className="text-sm sm:text-base font-medium text-zinc-700 dark:text-zinc-300 font-mono">
                                 {edu.period}
                               </span>
                               {edu.status && (
-                                <span className="text-xs text-blue-600 dark:text-blue-400 font-medium font-mono">
+                                <span className="text-sm sm:text-base text-blue-600 dark:text-blue-400 font-medium font-mono">
                                   {edu.status}
                                 </span>
                               )}
@@ -165,14 +168,27 @@ export function Education({ className }: EducationProps) {
                       </div>
 
                       {/* Back Side */}
-                      <div className="absolute inset-0 p-4 bg-white/10 dark:bg-white/5 backdrop-blur-lg rounded-lg border border-white/20 dark:border-white/10 transition-colors duration-200 shadow-lg backface-hidden rotate-y-180 flex items-center justify-center">
+                      <div className="absolute inset-0 p-4 sm:p-5 bg-white/10 dark:bg-white/5 backdrop-blur-lg rounded-2xl border border-white/20 dark:border-white/10 transition-colors duration-200 shadow-2xl backface-hidden rotate-y-180 flex items-center justify-center">
                         <div className="w-full relative">
-                          <div className="text-black dark:text-white text-sm leading-relaxed whitespace-pre-line font-mono font-bold space-y-2">
+                          <div
+                            className={`text-black dark:text-white text-sm sm:text-base leading-relaxed whitespace-pre-line font-mono font-bold space-y-3 transition-all duration-500 ${
+                              isFlipped
+                                ? "opacity-100 translate-y-0"
+                                : "opacity-0 translate-y-4"
+                            }`}
+                          >
                             {edu.description &&
                               edu.description.split("\n").map((line, idx) => (
                                 <div
                                   key={idx}
-                                  className={line.trim() ? "" : "h-2"}
+                                  className={`${
+                                    line.trim() ? "mb-2" : "h-2"
+                                  } transition-all duration-500 ${
+                                    isFlipped
+                                      ? "opacity-100 translate-y-0"
+                                      : "opacity-0 translate-y-2"
+                                  }`}
+                                  style={{ transitionDelay: `${idx * 100}ms` }}
                                 >
                                   {line}
                                 </div>
@@ -315,10 +331,26 @@ export function Education({ className }: EducationProps) {
                 {/* Back Side */}
                 <div className="absolute inset-0 p-4 bg-[rgba(186,230,253,0.25)] dark:bg-black/50 rounded-lg border border-gray-200/20 dark:border-gray-700/30 transition-colors duration-200 shadow-lg backface-hidden rotate-y-180 flex items-center justify-center">
                   <div className="w-full relative">
-                    <div className="text-black dark:text-white text-sm leading-relaxed whitespace-pre-line font-mono font-bold space-y-2">
+                    <div
+                      className={`text-black dark:text-white text-sm leading-relaxed whitespace-pre-line font-mono font-bold space-y-2 transition-all duration-500 ${
+                        isFlipped
+                          ? "opacity-100 translate-y-0"
+                          : "opacity-0 translate-y-4"
+                      }`}
+                    >
                       {edu.description &&
-                        edu.description.split("\n").map((line, index) => (
-                          <div key={index} className={line.trim() ? "" : "h-2"}>
+                        edu.description.split("\n").map((line, lineIndex) => (
+                          <div
+                            key={lineIndex}
+                            className={`${
+                              line.trim() ? "" : "h-2"
+                            } transition-all duration-500 ${
+                              isFlipped
+                                ? "opacity-100 translate-y-0"
+                                : "opacity-0 translate-y-2"
+                            }`}
+                            style={{ transitionDelay: `${lineIndex * 100}ms` }}
+                          >
                             {line}
                           </div>
                         ))}
