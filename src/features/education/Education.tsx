@@ -51,36 +51,50 @@ export function Education({ className }: EducationProps) {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    let rafId: number;
+
     const handleScroll = () => {
-      if (!sectionRef.current) return;
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+      }
 
-      const section = sectionRef.current;
-      const rect = section.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
+      rafId = requestAnimationFrame(() => {
+        if (!sectionRef.current) return;
 
-      // Calculate progress based on section visibility
-      const sectionTop = rect.top;
-      const sectionHeight = rect.height;
+        const section = sectionRef.current;
+        const rect = section.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
 
-      // Progress starts when section enters viewport and completes when it exits
-      const startProgress = windowHeight;
-      const endProgress = -sectionHeight;
+        // Calculate progress based on section visibility
+        const sectionTop = rect.top;
+        const sectionHeight = rect.height;
 
-      const progress = Math.max(
-        0,
-        Math.min(
-          1,
-          (startProgress - sectionTop) / (startProgress - endProgress)
-        )
-      );
+        // Progress starts when section enters viewport and completes when it fully exits
+        const startProgress = windowHeight;
+        const endProgress = -sectionHeight + 100; // Add buffer to complete before section fully exits
 
-      setScrollProgress(progress);
+        // Alternative: Complete when section is mostly scrolled through
+        const progress = Math.max(
+          0,
+          Math.min(
+            1,
+            (startProgress - sectionTop) / (startProgress - endProgress)
+          )
+        );
+
+        setScrollProgress(progress);
+      });
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll(); // Initial calculation
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+      }
+    };
   }, []);
 
   return (
@@ -92,8 +106,11 @@ export function Education({ className }: EducationProps) {
 
         {/* Progress fill */}
         <div
-          className="absolute left-2 top-0 w-0.5 bg-gradient-to-b from-blue-500 via-purple-500 to-pink-500 rounded-full transition-all duration-300 ease-out"
-          style={{ height: `${scrollProgress * 100}%` }}
+          className="absolute left-2 top-0 w-0.5 bg-gradient-to-b from-blue-500 via-purple-500 to-pink-500 rounded-full will-change-transform"
+          style={{
+            height: `${scrollProgress * 100}%`,
+            transform: "translateZ(0)", // Hardware acceleration
+          }}
         ></div>
 
         {/* Content with left padding */}
