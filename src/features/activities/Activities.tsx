@@ -90,7 +90,13 @@ export function Activities({ className }: ActivitiesProps) {
               {/* Mobile: Pill-shaped stack */}
               <div className="sm:hidden">
                 <div
-                  className="flex items-center justify-between p-4 bg-white/10 dark:bg-white/5 backdrop-blur-lg rounded-full border border-white/20 dark:border-white/10 shadow-lg cursor-pointer transition-all duration-300"
+                  className={`flex items-center justify-between p-4 rounded-full shadow-lg cursor-pointer transition-colors duration-300 backdrop-blur-lg 
+                    ${
+                      expandedCards.includes(index)
+                        ? "border border-pink-400 bg-pink-100/30 dark:bg-pink-900/20"
+                        : "border border-white/20 dark:border-white/10 bg-white/10 dark:bg-white/5"
+                    }
+                  `}
                   onClick={() => toggleCard(index)}
                 >
                   <div className="flex items-center gap-3">
@@ -118,7 +124,7 @@ export function Activities({ className }: ActivitiesProps) {
                       : "max-h-0 opacity-0 mt-0"
                   }`}
                 >
-                  <div className="p-4 bg-white/5 dark:bg-white/3 backdrop-blur-lg rounded-lg border border-white/10 dark:border-white/5 shadow-lg">
+                  <div className="p-4 bg-white/5 dark:bg-white/3 backdrop-blur-lg rounded-lg border border-pink-300/60 dark:border-pink-400/40 shadow-lg">
                     <p className="text-neutral-600 dark:text-neutral-400 mb-3 font-mono">
                       {activity.description}
                     </p>
