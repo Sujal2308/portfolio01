@@ -83,12 +83,12 @@ function App() {
             <BlurFade delay={0} direction="up" blur="3px">
               <Header className="mb-6" />
             </BlurFade>
-            <BlurFade delay={0.15} direction="up" blur="3px">
+            <BlurFade delay={0} direction="up" blur="3px">
               <Intro />
             </BlurFade>
           </div>
           <div className="mb-12">
-            <BlurFade delay={0.3} direction="up" blur="3px">
+            <BlurFade delay={0} direction="up" blur="3px">
               <Socials />
             </BlurFade>
           </div>
@@ -96,7 +96,7 @@ function App() {
             id="projects-section"
             className="flex flex-col items-center w-full gap-8 mb-12 md:flex-row md:items-center scroll-mt-20 md:scroll-mt-24"
           >
-            <BlurFade delay={0.45} direction="up" blur="3px">
+            <BlurFade delay={0} direction="up" blur="3px">
               <Projects />
             </BlurFade>
           </div>
@@ -104,12 +104,12 @@ function App() {
             id="skills-section"
             className="mb-12 scroll-mt-20 md:scroll-mt-24"
           >
-            <BlurFade delay={0.8} direction="up" blur="3px">
+            <BlurFade delay={0} direction="up" blur="3px">
               <div className="flex items-center justify-between mb-6">
                 <h1 className="text-neutral-500 dark:text-neutral-400">
                   Tech Stack
                 </h1>
-                <BoxReveal boxColor="#0ea5e9" width="fit-content" delay={0.1}>
+                <BoxReveal boxColor="#0ea5e9" width="fit-content" delay={0}>
                   <button
                     onClick={() => setIsOrbitView(!isOrbitView)}
                     className={
@@ -145,19 +145,19 @@ function App() {
                 </BoxReveal>
               </div>
             </BlurFade>
-            <BlurFade delay={0.85} direction="up" blur="3px">
+            <BlurFade delay={0} direction="up" blur="3px">
               <div className="w-full flex justify-center items-center">
                 {isOrbitView ? <Skills /> : <TechSkills />}
               </div>
             </BlurFade>
           </div>
           <div className="mb-12">
-            <BlurFade delay={1.0} direction="up" blur="3px">
+            <BlurFade delay={0} direction="up" blur="3px">
               <h1 className="mb-6 text-neutral-500 dark:text-neutral-400">
                 Now
               </h1>
             </BlurFade>
-            <BlurFade delay={1.05} direction="up" blur="3px">
+            <BlurFade delay={0} direction="up" blur="3px">
               <Now />
             </BlurFade>
           </div>
@@ -166,13 +166,13 @@ function App() {
               id="education-section"
               className="scroll-mt-20 md:scroll-mt-24"
             >
-              <BlurFade delay={1.1} direction="up" blur="3px">
+              <BlurFade delay={0} direction="up" blur="3px">
                 <h1 className="mb-6 text-neutral-500 dark:text-neutral-400">
                   Education
                 </h1>
               </BlurFade>
             </div>
-            <BlurFade delay={1.15} direction="up" blur="3px">
+            <BlurFade delay={0} direction="up" blur="3px">
               <Education />
             </BlurFade>
           </div>
@@ -180,15 +180,15 @@ function App() {
             id="activities-section"
             className="mb-12 scroll-mt-20 md:scroll-mt-24"
           >
-            <BlurFade delay={1.0} direction="up" blur="3px">
+            <BlurFade delay={0} direction="up" blur="3px">
               <Activities />
             </BlurFade>
           </div>
           <div>
-            <BlurFade delay={1.05} direction="up" blur="3px">
+            <BlurFade delay={0} direction="up" blur="3px">
               <h1 className="mb-6 text-xl font-semibold">Contact</h1>
             </BlurFade>
-            <BlurFade delay={1.1} direction="up" blur="3px">
+            <BlurFade delay={0} direction="up" blur="3px">
               <Contact />
             </BlurFade>
           </div>

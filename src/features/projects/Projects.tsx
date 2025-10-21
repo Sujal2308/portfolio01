@@ -28,7 +28,7 @@ export function Projects() {
       code: "https://github.com/Sujal2308/DevMate",
       color: "lime",
       boxColor: "#6b21a8",
-      delay: 0.2,
+      delay: 0,
     },
     {
       name: "Outliner",
@@ -37,7 +37,7 @@ export function Projects() {
       code: "https://github.com/Sujal2308/outliner-extension",
       color: "cyan",
       boxColor: "#53eafd",
-      delay: 0.3,
+      delay: 0,
     },
     {
       name: "A-Rice",
@@ -46,7 +46,7 @@ export function Projects() {
       code: "https://www.a-rice.in/",
       color: "pink",
       boxColor: "#fb64b6",
-      delay: 0.4,
+      delay: 0,
     },
   ];
 

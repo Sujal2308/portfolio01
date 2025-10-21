@@ -79,14 +79,14 @@ export function Activities({ className }: ActivitiesProps) {
   };
 
   return (
-    <BlurFade delay={0.25}>
+    <BlurFade delay={0}>
       <div className={className} ref={sectionRef}>
         <h2 className="mb-6 text-neutral-500 dark:text-neutral-400">
           Extracurricular Activities
         </h2>
         <div className="space-y-4 sm:grid sm:gap-6 sm:grid-cols-2 sm:space-y-0">
           {activities.map((activity, index) => (
-            <BlurFade key={activity.title} delay={0.25 + index * 0.1}>
+            <BlurFade key={activity.title} delay={0}>
               {/* Mobile: Pill-shaped stack */}
               <div className="sm:hidden">
                 <div

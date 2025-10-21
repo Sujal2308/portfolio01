@@ -70,7 +70,7 @@ export function Contact() {
     <div className="flex flex-col items-start gap-6">
       <div className="text-base md:text-lg font-mono">
         Reach me at&nbsp;
-        <BoxReveal boxColor="#c27aff">
+        <BoxReveal boxColor="#c27aff" delay={0}>
           <Link color="purple" link="mailto:sujalbhugul08@gmail.com">
             <span className="font-bold">sujalbhugul08@gmail.com</span>
           </Link>
