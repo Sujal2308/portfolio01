@@ -130,12 +130,17 @@ export function Projects() {
           </div>
         ))}
         {/* Superman logo placeholder strictly mobile only */}
-        <div className="p-4 flex flex-row items-center justify-center gap-3 text-neutral-500 dark:text-neutral-400 border border-dashed border-neutral-700/40 dark:border-neutral-300/10 rounded-xl md:hidden bg-gray-200/40 dark:bg-gray-800/40">
-          <img
-            src="/svg/logos/superman-seeklogo.png"
-            alt="Superman Logo"
-            className="w-10 h-10 min-w-8 min-h-8"
-          />
+        <div className="p-4 flex flex-row items-center justify-center gap-3 text-neutral-500 dark:text-neutral-400 border border-dashed border-neutral-700/40 dark:border-neutral-300/10 rounded-xl md:hidden bg-gray-200/40 dark:bg-gray-800/40 relative overflow-hidden">
+          <div className="relative">
+            <img
+              src="/svg/logos/superman-seeklogo.png"
+              alt="Superman Logo"
+              className="w-10 h-10 min-w-8 min-h-8 animate-pulse"
+              style={{
+                animation: "fly 3s ease-in-out infinite",
+              }}
+            />
+          </div>
           <div className="flex flex-col items-start max-w-[220px] sm:max-w-xs">
             <span className="text-base sm:text-lg md:text-lg lg:text-xl font-semibold leading-tight">
               Cool projects are on the way!
@@ -178,11 +183,17 @@ export function Projects() {
           className="p-4 md:p-5 flex flex-col justify-center items-center text-center text-neutral-500 dark:text-neutral-400 h-full"
           style={{ gridRow: 2, gridColumn: 2 }}
         >
-          <img
-            src="/svg/logos/superman-seeklogo.png"
-            alt="Superman Logo"
-            className="w-14 h-14 mb-2"
-          />
+          <div className="relative mb-2">
+            <img
+              src="/svg/logos/superman-seeklogo.png"
+              alt="Superman Logo"
+              className="w-14 h-14 animate-bounce"
+              style={{
+                animation:
+                  "fly 4s ease-in-out infinite, hover 2s ease-in-out infinite alternate",
+              }}
+            />
+          </div>
           <span className="text-base sm:text-lg md:text-lg lg:text-xl font-semibold mb-2">
             Cool projects are on the way!
           </span>
