@@ -59,7 +59,7 @@ export function Header({ className }: HeaderProps) {
           />
           <div className="flex flex-col">
             <h1 className="text-3xl font-semibold mb-2">
-              <BoxReveal boxColor="#fb64b6" delay={0.025}>
+              <BoxReveal boxColor="#fb64b6" delay={0}>
                 <Link color="pink" link="https://github.com/Sujal2308">
                   Sujal
                 </Link>
@@ -113,7 +113,7 @@ export function Header({ className }: HeaderProps) {
           />
           <div>
             <h1 className="text-2xl font-semibold">
-              <BoxReveal boxColor="#fb64b6" delay={0.025}>
+              <BoxReveal boxColor="#fb64b6" delay={0}>
                 <Link color="pink" link="https://github.com/Sujal2308">
                   Sujal
                 </Link>
