@@ -50,7 +50,6 @@ export function Education({ className }: EducationProps) {
   const [currentCard, setCurrentCard] = useState(0);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
-  const [lastScrollY, setLastScrollY] = useState(0);
   const [isScrolling, setIsScrolling] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
 
@@ -81,60 +80,56 @@ export function Education({ className }: EducationProps) {
     }
   };
 
-  // Scroll detection for education cards
+  // Wheel event handling for education cards navigation
   useEffect(() => {
-    let scrollTimeout: NodeJS.Timeout;
+    let wheelTimeout: NodeJS.Timeout;
 
-    const handleScroll = () => {
+    const handleWheel = (e: WheelEvent) => {
       if (!sectionRef.current) return;
 
-      const currentScrollY = window.scrollY;
-      const sectionTop = sectionRef.current.offsetTop;
-      const sectionBottom = sectionTop + sectionRef.current.offsetHeight;
+      const sectionRect = sectionRef.current.getBoundingClientRect();
+      const isInSection =
+        sectionRect.top <= window.innerHeight / 2 &&
+        sectionRect.bottom >= window.innerHeight / 2;
 
-      // Check if we're in the education section
-      if (
-        currentScrollY >= sectionTop - 200 &&
-        currentScrollY <= sectionBottom + 200
-      ) {
+      if (isInSection && window.innerWidth < 768) {
+        e.preventDefault(); // Prevent page scroll
+
         setIsScrolling(true);
 
-        // Determine scroll direction
-        const scrollDirection = currentScrollY > lastScrollY ? "down" : "up";
-
         // Clear previous timeout
-        if (scrollTimeout) clearTimeout(scrollTimeout);
+        if (wheelTimeout) clearTimeout(wheelTimeout);
 
-        // Set new timeout for scroll end detection
-        scrollTimeout = setTimeout(() => {
-          if (
-            scrollDirection === "down" &&
-            currentCard < educationData.length - 1
-          ) {
+        // Set new timeout for wheel end detection
+        wheelTimeout = setTimeout(() => {
+          if (e.deltaY > 0 && currentCard < educationData.length - 1) {
+            // Scroll down -> next card
             setCurrentCard((prev) =>
               Math.min(prev + 1, educationData.length - 1)
             );
-          } else if (scrollDirection === "up" && currentCard > 0) {
+          } else if (e.deltaY < 0 && currentCard > 0) {
+            // Scroll up -> previous card
             setCurrentCard((prev) => Math.max(prev - 1, 0));
           }
           setIsScrolling(false);
-        }, 150); // Throttle scroll events
+        }, 100);
       }
-
-      setLastScrollY(currentScrollY);
     };
 
-    // Only add scroll listener on mobile
-    const isMobile = window.innerWidth < 768;
-    if (isMobile) {
-      window.addEventListener("scroll", handleScroll, { passive: true });
+    // Add wheel event listener
+    if (sectionRef.current) {
+      sectionRef.current.addEventListener("wheel", handleWheel, {
+        passive: false,
+      });
     }
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-      if (scrollTimeout) clearTimeout(scrollTimeout);
+      if (sectionRef.current) {
+        sectionRef.current.removeEventListener("wheel", handleWheel);
+      }
+      if (wheelTimeout) clearTimeout(wheelTimeout);
     };
-  }, [lastScrollY, currentCard, isScrolling]);
+  }, [currentCard, isScrolling]);
 
   return (
     <div className={className} ref={sectionRef}>
