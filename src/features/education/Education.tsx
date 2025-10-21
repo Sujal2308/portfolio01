@@ -129,7 +129,7 @@ export function Education({ className }: EducationProps) {
         {/* Card Display Container */}
         <div className="relative overflow-hidden h-96 py-4">
           <div
-            className="flex flex-col transition-transform duration-300 ease-out h-full"
+            className="flex flex-col transition-transform duration-500 ease-in-out h-full"
             style={{ transform: `translateY(-${currentCard * 100}%)` }}
           >
             {educationData.map((edu, index) => {
