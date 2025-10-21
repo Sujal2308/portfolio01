@@ -50,7 +50,6 @@ export function Education({ className }: EducationProps) {
   const [currentCard, setCurrentCard] = useState(0);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
-  const [isScrolling, setIsScrolling] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
 
   // Minimum distance for a swipe
@@ -62,6 +61,7 @@ export function Education({ className }: EducationProps) {
   };
 
   const onTouchMove = (e: React.TouchEvent) => {
+    e.preventDefault(); // Prevent page scroll during touch
     setTouchEnd(e.targetTouches[0].clientY); // Changed to clientY for vertical
   };
 
@@ -80,56 +80,64 @@ export function Education({ className }: EducationProps) {
     }
   };
 
-  // Wheel event handling for education cards navigation
+  // Wheel event handling for card navigation with throttling
   useEffect(() => {
     let wheelTimeout: NodeJS.Timeout;
+    let isWheelBlocked = false;
 
     const handleWheel = (e: WheelEvent) => {
-      if (!sectionRef.current) return;
+      if (window.innerWidth >= 768) return; // Only on mobile
+      if (isWheelBlocked) return; // Throttle wheel events
 
-      const sectionRect = sectionRef.current.getBoundingClientRect();
-      const isInSection =
-        sectionRect.top <= window.innerHeight / 2 &&
-        sectionRect.bottom >= window.innerHeight / 2;
+      // Check if the mouse is actually over the education section
+      const target = e.target as Element;
+      const educationSection = sectionRef.current;
 
-      if (isInSection && window.innerWidth < 768) {
-        e.preventDefault(); // Prevent page scroll
+      if (
+        educationSection &&
+        (educationSection.contains(target) || target === educationSection)
+      ) {
+        e.preventDefault(); // Prevent page scroll only when over education section
+        e.stopPropagation();
 
-        setIsScrolling(true);
+        // Block further wheel events temporarily
+        isWheelBlocked = true;
 
-        // Clear previous timeout
-        if (wheelTimeout) clearTimeout(wheelTimeout);
+        // Card navigation with throttling
+        if (e.deltaY > 0 && currentCard < educationData.length - 1) {
+          // Scroll down -> next card
+          setCurrentCard((prev) =>
+            Math.min(prev + 1, educationData.length - 1)
+          );
+        } else if (e.deltaY < 0 && currentCard > 0) {
+          // Scroll up -> previous card
+          setCurrentCard((prev) => Math.max(prev - 1, 0));
+        }
 
-        // Set new timeout for wheel end detection
+        // Unblock after delay
         wheelTimeout = setTimeout(() => {
-          if (e.deltaY > 0 && currentCard < educationData.length - 1) {
-            // Scroll down -> next card
-            setCurrentCard((prev) =>
-              Math.min(prev + 1, educationData.length - 1)
-            );
-          } else if (e.deltaY < 0 && currentCard > 0) {
-            // Scroll up -> previous card
-            setCurrentCard((prev) => Math.max(prev - 1, 0));
-          }
-          setIsScrolling(false);
-        }, 100);
+          isWheelBlocked = false;
+        }, 300); // 300ms delay between card changes
       }
     };
 
-    // Add wheel event listener
-    if (sectionRef.current) {
-      sectionRef.current.addEventListener("wheel", handleWheel, {
+    // Add event listener to the education section only
+    const educationSection = sectionRef.current;
+    if (educationSection) {
+      educationSection.addEventListener("wheel", handleWheel, {
         passive: false,
       });
     }
 
     return () => {
-      if (sectionRef.current) {
-        sectionRef.current.removeEventListener("wheel", handleWheel);
+      if (educationSection) {
+        educationSection.removeEventListener("wheel", handleWheel);
       }
-      if (wheelTimeout) clearTimeout(wheelTimeout);
+      if (wheelTimeout) {
+        clearTimeout(wheelTimeout);
+      }
     };
-  }, [currentCard, isScrolling]);
+  }, [currentCard]);
 
   return (
     <div className={className} ref={sectionRef}>
