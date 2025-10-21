@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 interface EducationProps {
   className?: string;
@@ -50,6 +50,8 @@ export function Education({ className }: EducationProps) {
   const [currentCard, setCurrentCard] = useState(0);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [isScrolling, setIsScrolling] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
 
   // Minimum distance for a swipe
@@ -78,6 +80,61 @@ export function Education({ className }: EducationProps) {
       setCurrentCard(currentCard - 1);
     }
   };
+
+  // Scroll detection for education cards
+  useEffect(() => {
+    let scrollTimeout: NodeJS.Timeout;
+
+    const handleScroll = () => {
+      if (!sectionRef.current) return;
+
+      const currentScrollY = window.scrollY;
+      const sectionTop = sectionRef.current.offsetTop;
+      const sectionBottom = sectionTop + sectionRef.current.offsetHeight;
+
+      // Check if we're in the education section
+      if (
+        currentScrollY >= sectionTop - 200 &&
+        currentScrollY <= sectionBottom + 200
+      ) {
+        setIsScrolling(true);
+
+        // Determine scroll direction
+        const scrollDirection = currentScrollY > lastScrollY ? "down" : "up";
+
+        // Clear previous timeout
+        if (scrollTimeout) clearTimeout(scrollTimeout);
+
+        // Set new timeout for scroll end detection
+        scrollTimeout = setTimeout(() => {
+          if (
+            scrollDirection === "down" &&
+            currentCard < educationData.length - 1
+          ) {
+            setCurrentCard((prev) =>
+              Math.min(prev + 1, educationData.length - 1)
+            );
+          } else if (scrollDirection === "up" && currentCard > 0) {
+            setCurrentCard((prev) => Math.max(prev - 1, 0));
+          }
+          setIsScrolling(false);
+        }, 150); // Throttle scroll events
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    // Only add scroll listener on mobile
+    const isMobile = window.innerWidth < 768;
+    if (isMobile) {
+      window.addEventListener("scroll", handleScroll, { passive: true });
+    }
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (scrollTimeout) clearTimeout(scrollTimeout);
+    };
+  }, [lastScrollY, currentCard, isScrolling]);
 
   return (
     <div className={className} ref={sectionRef}>
