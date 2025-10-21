@@ -10,6 +10,10 @@ export function Contact() {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [toast, setToast] = useState<{
+    type: "success" | "error";
+    message: string;
+  } | null>(null);
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -21,19 +25,43 @@ export function Contact() {
     }));
   };
 
+  const FORMSPREE_ENDPOINT = "https://formspree.io/f/mblzeavl"; // Replace with your Formspree form ID
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-
-    // Reset form
-    setFormData({ name: "", email: "", message: "" });
+    try {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        }),
+      });
+      if (response.ok) {
+        setFormData({ name: "", email: "", message: "" });
+        setToast({ type: "success", message: "Message sent successfully!" });
+      } else {
+        setToast({
+          type: "error",
+          message: "Failed to send message. Please try again later.",
+        });
+      }
+    } catch {
+      setToast({
+        type: "error",
+        message: "Failed to send message. Please try again later.",
+      });
+    }
     setIsSubmitting(false);
-
-    // You can integrate with your preferred form service here
-    alert("Message sent successfully!");
+    // Hide toast after 4 seconds
+    setTimeout(() => setToast(null), 4000);
   };
 
   return (
@@ -52,7 +80,7 @@ export function Contact() {
         <h3 className="text-lg font-semibold mb-4 text-gray-800 dark:text-white">
           Send me a message
         </h3>
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} method="POST" className="space-y-4">
           <div className="bg-white/10 dark:bg-white/5 backdrop-blur-md rounded-xl border border-white/20 dark:border-white/10 p-4 shadow-lg">
             {/* Name Input */}
             <div className="mb-4">
@@ -105,9 +133,73 @@ export function Contact() {
             >
               {isSubmitting ? "Sending..." : "Send Message"}
             </button>
+            {/* Formspree Branding */}
+            <div className="mt-4 flex items-center justify-center text-xs gap-1">
+              <span className="font-bold uppercase text-black dark:text-white mr-2">
+                FORM BY
+              </span>
+              <a
+                href="https://formspree.io"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-bold uppercase text-black dark:text-white flex items-center gap-1"
+              >
+                <img
+                  src="/svg/logos/formspree-icon.svg"
+                  alt="Formspree logo"
+                  className="w-5 h-5 inline-block"
+                />
+                <span style={{ letterSpacing: "0.05em" }}>FORMSPREE</span>
+              </a>
+            </div>
           </div>
         </form>
       </div>
+
+      {/* Toast Message */}
+      {toast && (
+        <div
+          className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 px-6 py-3 rounded-xl shadow-lg font-semibold text-base flex items-center gap-2 transition-all duration-300
+          ${
+            toast.type === "success"
+              ? "bg-green-400/80 text-gray-900 border border-green-500/40"
+              : "bg-red-400/80 text-gray-900 border border-red-500/40"
+          }
+          backdrop-blur-xl`}
+        >
+          {toast.type === "success" ? (
+            <svg
+              className="w-5 h-5 text-green-700"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M5 13l4 4L19 7"
+              />
+            </svg>
+          ) : (
+            <svg
+              className="w-5 h-5 text-red-700"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          )}
+          <span>{toast.message}</span>
+        </div>
+      )}
+
       {/* Open to Work below form */}
       <div className="flex items-center gap-2 mt-4">
         <span className="relative flex h-3 w-3">
