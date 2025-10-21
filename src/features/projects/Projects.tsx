@@ -52,7 +52,7 @@ export function Projects() {
 
   useEffect(() => {
     let ticking = false;
-    
+
     const handleScroll = () => {
       if (!ticking) {
         requestAnimationFrame(() => {
@@ -67,7 +67,8 @@ export function Projects() {
 
           // Check if we're still within the projects section with threshold
           const isInSection =
-            projectsRect.top <= center + threshold && projectsRect.bottom >= center - threshold;
+            projectsRect.top <= center + threshold &&
+            projectsRect.bottom >= center - threshold;
 
           if (!isInSection) {
             setActiveCard(-1);
