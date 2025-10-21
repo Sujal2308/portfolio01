@@ -1,5 +1,6 @@
 import { BoxReveal } from "@/components/magicui/box-reveal";
 import { Code } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
 
 import { Link } from "@/components/internal/Link";
 import type { LinkColor } from "@/types/link";
@@ -15,6 +16,10 @@ interface Project {
 }
 
 export function Projects() {
+  const [activeCard, setActiveCard] = useState(0);
+  const projectsRef = useRef<HTMLDivElement>(null);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+
   const projects: Project[] = [
     {
       name: "Devmate",
@@ -45,14 +50,70 @@ export function Projects() {
     },
   ];
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!projectsRef.current) return;
+
+      const projectsRect = projectsRef.current.getBoundingClientRect();
+      const center = window.innerHeight / 2;
+
+      // Check if we're still within the projects section
+      const isInSection =
+        projectsRect.top <= center && projectsRect.bottom >= center;
+
+      if (!isInSection) {
+        setActiveCard(-1); // No active card when outside section
+        return;
+      }
+
+      const cards = cardRefs.current.filter((ref) => ref !== null);
+      let closestIndex = 0;
+      let minDistance = Infinity;
+
+      cards.forEach((card, index) => {
+        if (card) {
+          const rect = card.getBoundingClientRect();
+          const cardCenter = rect.top + rect.height / 2;
+          const distance = Math.abs(center - cardCenter);
+
+          if (distance < minDistance) {
+            minDistance = distance;
+            closestIndex = index;
+          }
+        }
+      });
+
+      setActiveCard(closestIndex);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Initial check
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <div className="flex flex-col flex-1 w-full max-w-4xl gap-6">
       <h1 className="text-neutral-500 dark:text-neutral-400">Projects</h1>
 
       {/* Mobile: Single column */}
-      <div className="flex flex-col gap-6 md:hidden">
+      <div className="flex flex-col gap-6 md:hidden" ref={projectsRef}>
         {projects.map((project, index) => (
-          <ProjectCard key={index} project={project} />
+          <div
+            key={index}
+            ref={(el) => (cardRefs.current[index] = el)}
+            className={`transition-transform duration-500 ease-out ${
+              activeCard === index
+                ? "scale-105 z-10"
+                : activeCard === -1
+                ? "scale-100 opacity-100" // Normal state when outside section
+                : "scale-95 opacity-80" // Scaled down when other card is active
+            }`}
+          >
+            <ProjectCard project={project} />
+          </div>
         ))}
         {/* Superman logo placeholder strictly mobile only */}
         <div className="p-4 flex flex-row items-center justify-center gap-3 text-neutral-500 dark:text-neutral-400 border border-dashed border-neutral-700/40 dark:border-neutral-300/10 rounded-xl md:hidden bg-gray-200/40 dark:bg-gray-800/40">
@@ -123,11 +184,9 @@ export function Projects() {
 function ProjectCard({ project }: { project: Project }) {
   return (
     <div
-      className="bg-[rgba(144,238,144,0.18)] dark:bg-black/70 relative"
+      className="bg-white/10 dark:bg-white/5 backdrop-blur-md rounded-2xl border border-white/20 dark:border-white/10 shadow-xl p-4 transition-colors duration-300 relative"
       style={{
-        border: "none",
         borderRadius: "16px",
-        boxShadow: "none",
         padding: "1rem",
       }}
     >
