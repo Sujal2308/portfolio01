@@ -51,42 +51,55 @@ export function Projects() {
   ];
 
   useEffect(() => {
+    let ticking = false;
+    
     const handleScroll = () => {
-      if (!projectsRef.current) return;
-
-      const projectsRect = projectsRef.current.getBoundingClientRect();
-      const center = window.innerHeight / 2;
-
-      // Check if we're still within the projects section
-      const isInSection =
-        projectsRect.top <= center && projectsRect.bottom >= center;
-
-      if (!isInSection) {
-        setActiveCard(-1); // No active card when outside section
-        return;
-      }
-
-      const cards = cardRefs.current.filter((ref) => ref !== null);
-      let closestIndex = 0;
-      let minDistance = Infinity;
-
-      cards.forEach((card, index) => {
-        if (card) {
-          const rect = card.getBoundingClientRect();
-          const cardCenter = rect.top + rect.height / 2;
-          const distance = Math.abs(center - cardCenter);
-
-          if (distance < minDistance) {
-            minDistance = distance;
-            closestIndex = index;
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          if (!projectsRef.current) {
+            ticking = false;
+            return;
           }
-        }
-      });
 
-      setActiveCard(closestIndex);
+          const projectsRect = projectsRef.current.getBoundingClientRect();
+          const center = window.innerHeight / 2;
+          const threshold = window.innerHeight * 0.3; // 30% threshold for smoother detection
+
+          // Check if we're still within the projects section with threshold
+          const isInSection =
+            projectsRect.top <= center + threshold && projectsRect.bottom >= center - threshold;
+
+          if (!isInSection) {
+            setActiveCard(-1);
+            ticking = false;
+            return;
+          }
+
+          const cards = cardRefs.current.filter((ref) => ref !== null);
+          let closestIndex = 0;
+          let minDistance = Infinity;
+
+          cards.forEach((card, index) => {
+            if (card) {
+              const rect = card.getBoundingClientRect();
+              const cardCenter = rect.top + rect.height / 2;
+              const distance = Math.abs(center - cardCenter);
+
+              if (distance < minDistance) {
+                minDistance = distance;
+                closestIndex = index;
+              }
+            }
+          });
+
+          setActiveCard(closestIndex);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll(); // Initial check
 
     return () => {
@@ -104,12 +117,12 @@ export function Projects() {
           <div
             key={index}
             ref={(el) => (cardRefs.current[index] = el)}
-            className={`transition-transform duration-500 ease-out ${
+            className={`transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] ${
               activeCard === index
-                ? "scale-105 z-10"
+                ? "scale-105 z-10 opacity-100"
                 : activeCard === -1
                 ? "scale-100 opacity-100" // Normal state when outside section
-                : "scale-95 opacity-80" // Scaled down when other card is active
+                : "scale-95 opacity-75" // Scaled down when other card is active
             }`}
           >
             <ProjectCard project={project} />
