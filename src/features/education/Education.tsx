@@ -48,131 +48,96 @@ const educationData: EducationItem[] = [
 export function Education({ className }: EducationProps) {
   const [flipped, setFlipped] = useState<number | null>(null);
   const [currentCard, setCurrentCard] = useState(0);
-  const [touchStart, setTouchStart] = useState<number | null>(null);
-  const [touchEnd, setTouchEnd] = useState<number | null>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
 
-  // Minimum distance for a swipe
-  const minSwipeDistance = 50;
-
-  const onTouchStart = (e: React.TouchEvent) => {
-    setTouchEnd(null);
-    setTouchStart(e.targetTouches[0].clientY); // Changed to clientY for vertical
-  };
-
-  const onTouchMove = (e: React.TouchEvent) => {
-    e.preventDefault(); // Prevent page scroll during touch
-    setTouchEnd(e.targetTouches[0].clientY); // Changed to clientY for vertical
-  };
-
-  const onTouchEnd = () => {
-    if (!touchStart || !touchEnd) return;
-
-    const distance = touchStart - touchEnd;
-    const isUpSwipe = distance > minSwipeDistance; // Up swipe = next card
-    const isDownSwipe = distance < -minSwipeDistance; // Down swipe = previous card
-
-    if (isUpSwipe && currentCard < educationData.length - 1) {
+  // Navigation functions
+  const goToNextCard = () => {
+    if (currentCard < educationData.length - 1) {
       setCurrentCard(currentCard + 1);
     }
-    if (isDownSwipe && currentCard > 0) {
+  };
+
+  const goToPrevCard = () => {
+    if (currentCard > 0) {
       setCurrentCard(currentCard - 1);
     }
   };
 
-  // Wheel event handling for card navigation with throttling
-  useEffect(() => {
-    let wheelTimeout: NodeJS.Timeout;
-    let isWheelBlocked = false;
-
-    const handleWheel = (e: WheelEvent) => {
-      if (window.innerWidth >= 768) return; // Only on mobile
-      if (isWheelBlocked) return; // Throttle wheel events
-
-      // Check if the mouse is actually over the education section
-      const target = e.target as Element;
-      const educationSection = sectionRef.current;
-
-      if (
-        educationSection &&
-        (educationSection.contains(target) || target === educationSection)
-      ) {
-        e.preventDefault(); // Prevent page scroll only when over education section
-        e.stopPropagation();
-
-        // Block further wheel events temporarily
-        isWheelBlocked = true;
-
-        // Card navigation with throttling
-        if (e.deltaY > 0 && currentCard < educationData.length - 1) {
-          // Scroll down -> next card
-          setCurrentCard((prev) =>
-            Math.min(prev + 1, educationData.length - 1)
-          );
-        } else if (e.deltaY < 0 && currentCard > 0) {
-          // Scroll up -> previous card
-          setCurrentCard((prev) => Math.max(prev - 1, 0));
-        }
-
-        // Unblock after delay
-        wheelTimeout = setTimeout(() => {
-          isWheelBlocked = false;
-        }, 300); // 300ms delay between card changes
-      }
-    };
-
-    // Add event listener to the education section only
-    const educationSection = sectionRef.current;
-    if (educationSection) {
-      educationSection.addEventListener("wheel", handleWheel, {
-        passive: false,
-      });
-    }
-
-    return () => {
-      if (educationSection) {
-        educationSection.removeEventListener("wheel", handleWheel);
-      }
-      if (wheelTimeout) {
-        clearTimeout(wheelTimeout);
-      }
-    };
-  }, [currentCard]);
-
   return (
     <div className={className} ref={sectionRef}>
-      {/* Mobile Vertical Scrolling */}
+      {/* Mobile Simple Navigation */}
       <div className="md:hidden relative">
-        {/* Vertical Progress Bar - Left Side */}
-        <div className="absolute left-2 top-1/2 transform -translate-y-1/2 z-10">
+        {/* Navigation Controls - Right Side */}
+        <div className="absolute right-2 top-1/2 transform -translate-y-1/2 z-20 flex flex-col items-center space-y-4">
+          {/* Counter */}
+          <div className="bg-amber-400/80 dark:bg-amber-500/70 backdrop-blur-md rounded-full px-3 py-1 text-gray-900 dark:text-white text-sm font-medium border border-amber-300/50 dark:border-amber-400/40 shadow-lg">
+            {currentCard + 1}/{educationData.length}
+          </div>
+
+          {/* Navigation Buttons */}
           <div className="flex flex-col space-y-2">
-            {educationData.map((_, index) => (
-              <div
-                key={index}
-                className={`w-1 rounded-full transition-all duration-300 ${
-                  index === currentCard
-                    ? "h-8 bg-gradient-to-b from-blue-500 to-purple-500"
-                    : "h-4 bg-gray-300/40 dark:bg-gray-600/40"
-                }`}
-              />
-            ))}
+            <button
+              onClick={goToPrevCard}
+              disabled={currentCard === 0}
+              className={`p-2 rounded-full backdrop-blur-md transition-all duration-200 border shadow-lg ${
+                currentCard === 0
+                  ? "bg-gray-400/30 dark:bg-gray-600/40 text-gray-500 dark:text-gray-400 cursor-not-allowed border-gray-400/30 dark:border-gray-600/40"
+                  : "bg-white/30 dark:bg-white/20 text-gray-800 dark:text-white hover:bg-white/40 dark:hover:bg-white/30 active:scale-95 border-white/40 dark:border-white/20"
+              }`}
+            >
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M5 15l7-7 7 7"
+                />
+              </svg>
+            </button>
+
+            <button
+              onClick={goToNextCard}
+              disabled={currentCard === educationData.length - 1}
+              className={`p-2 rounded-full backdrop-blur-md transition-all duration-200 border shadow-lg ${
+                currentCard === educationData.length - 1
+                  ? "bg-gray-400/30 dark:bg-gray-600/40 text-gray-500 dark:text-gray-400 cursor-not-allowed border-gray-400/30 dark:border-gray-600/40"
+                  : "bg-white/30 dark:bg-white/20 text-gray-800 dark:text-white hover:bg-white/40 dark:hover:bg-white/30 active:scale-95 border-white/40 dark:border-white/20"
+              }`}
+            >
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
           </div>
         </div>
 
-        {/* Vertical Carousel Container */}
-        <div
-          className="relative overflow-hidden h-96 py-4"
-          onTouchStart={onTouchStart}
-          onTouchMove={onTouchMove}
-          onTouchEnd={onTouchEnd}
-        >
+        {/* Card Display Container */}
+        <div className="relative overflow-hidden h-96 py-4">
           <div
             className="flex flex-col transition-transform duration-300 ease-out h-full"
             style={{ transform: `translateY(-${currentCard * 100}%)` }}
           >
             {educationData.map((edu, index) => {
               return (
-                <div key={index} className="h-full flex-shrink-0 px-8 py-2">
+                <div
+                  key={index}
+                  className="h-full flex-shrink-0 px-2 py-2 pr-16"
+                >
                   <div className="relative h-full">
                     <div className="h-full">
                       {/* Mobile: Single card with description included */}
