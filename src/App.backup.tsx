@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import { BlurFade } from "@/components/magicui/blur-fade";
 import { DotPattern } from "@/components/magicui/dot-pattern";
 import { BoxReveal } from "@/components/magicui/box-reveal";
@@ -23,14 +23,14 @@ import { Footer } from "@/features/footer";
 import { Grid3X3, Orbit, ArrowUp } from "lucide-react";
 
 // Import pages
-import {
-  HomePage,
-  ProjectsPage,
-  EducationPage,
-  SkillsPage,
-  ActivitiesPage,
-  ContactPage,
-  AboutPage,
+import { 
+  HomePage, 
+  ProjectsPage, 
+  EducationPage, 
+  SkillsPage, 
+  ActivitiesPage, 
+  ContactPage, 
+  AboutPage 
 } from "@/pages";
 
 // Add spinning animation for Orbit icon
@@ -44,47 +44,54 @@ function DesktopLayout() {
   const [isOrbitView, setIsOrbitView] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [showStickyNav, setShowStickyNav] = useState(false);
   const [footerVisible, setFooterVisible] = useState(false);
 
-  // Scroll tracking for desktop
   useEffect(() => {
+    let scrollTimeout: NodeJS.Timeout;
     const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      const scrollHeight = document.documentElement.scrollHeight;
-      const clientHeight = window.innerHeight;
-
-      setScrolled(scrollTop > 100);
-      setShowScrollTop(scrollTop > 200);
-
-      // Check if footer is visible
-      if (footerRef.current) {
-        const footerTop = footerRef.current.offsetTop;
-        setFooterVisible(scrollTop + clientHeight >= footerTop);
+      const header = document.querySelector("header");
+      const headerBottom = header ? header.getBoundingClientRect().bottom : 0;
+      setShowStickyNav(headerBottom <= 0);
+      if (window.scrollY > 100) {
+        setShowScrollTop(true);
+        setScrolled(true);
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => setScrolled(false), 1200);
+      } else {
+        setShowScrollTop(false);
+        setScrolled(false);
       }
     };
-
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    // Intersection Observer for Footer
+    const observer = new window.IntersectionObserver(
+      ([entry]) => setFooterVisible(entry.isIntersecting),
+      { threshold: 0.01 }
+    );
+    if (footerRef.current) observer.observe(footerRef.current);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      clearTimeout(scrollTimeout);
+      if (footerRef.current) observer.unobserve(footerRef.current);
+    };
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-neutral-50 via-white to-blue-50 dark:from-black dark:via-gray-900 dark:to-blue-950 relative overflow-x-hidden">
+    <div className="relative flex flex-col w-full min-h-screen overflow-x-hidden">
+      {showStickyNav && <StickyNav />}
+      <FloatingDock />
       <DotPattern
-        width={40}
-        height={40}
-        cx={1}
-        cy={1}
-        cr={1}
-        className={`fill-neutral-400/20 dark:fill-neutral-500/20 [mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)]`}
+        width={30}
+        height={30}
+        className="fixed inset-0 w-full h-full opacity-50 pointer-events-none dark:opacity-20 -z-10"
       />
-      <main>
-        <FloatingDock />
-        <StickyNav />
-
-        {/* Desktop vertical lines */}
+      <main className="relative flex flex-col flex-1 text-zinc-700 dark:text-neutral-300">
+        {/* Left vertical line */}
         <div className="fixed left-0 top-0 bottom-0 w-px bg-gray-300 dark:bg-gray-600 ml-[calc(50vw-384px)] hidden lg:block z-10"></div>
+        {/* Right vertical line */}
         <div className="fixed right-0 top-0 bottom-0 w-px bg-gray-300 dark:bg-gray-600 mr-[calc(50vw-384px)] hidden lg:block z-10"></div>
-
         <article className="container relative max-w-3xl px-10 mx-auto mt-10 mb-10 sm:mt-28 sm:mb-28">
           <div className="mb-12">
             <BlurFade delay={0} direction="up" blur="3px">
@@ -228,50 +235,4 @@ function DesktopLayout() {
     </div>
   );
 }
-
-// Mobile Layout Component with routing
-function MobileLayout() {
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-neutral-50 via-white to-blue-50 dark:from-black dark:via-gray-900 dark:to-blue-950 relative overflow-x-hidden">
-      <DotPattern
-        width={40}
-        height={40}
-        cx={1}
-        cy={1}
-        cr={1}
-        className={`fill-neutral-400/20 dark:fill-neutral-500/20 [mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)]`}
-      />
-      <main>
-        <Routes>
-          <Route path="/" element={<AboutPage />} />
-          <Route path="/projects" element={<ProjectsPage />} />
-          <Route path="/skills" element={<SkillsPage />} />
-          <Route path="/education" element={<EducationPage />} />
-          <Route path="/activities" element={<ActivitiesPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-        </Routes>
-        <FelixLottieSticky />
-        <MobileNav />
-      </main>
-    </div>
-  );
-}
-
-// Main App Component
-function App() {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkIsMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
-    checkIsMobile();
-    window.addEventListener("resize", checkIsMobile);
-    return () => window.removeEventListener("resize", checkIsMobile);
-  }, []);
-
-  return <Router>{isMobile ? <MobileLayout /> : <DesktopLayout />}</Router>;
-}
-
 export default App;
